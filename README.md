@@ -87,6 +87,29 @@ Expected outputs:
 
 The script prints a one-line panel summary and the point-coordinate fraction.
 
+### Step 2: Brazil beta calibration
+
+Fits the population-gravity distance-decay exponent on the currently available
+Brazil grid and writes a calibration diagnostic JSON.
+
+```bash
+python3 pipeline/calibration/fit_beta.py
+```
+
+Expected wall-time on Ian's Mac: 75-90 seconds with the current 10 km Brazil
+grid. The step uses Python/SciPy sparse graph construction and Dijkstra; Go or
+Rust is not needed at this scale.
+
+Expected output:
+
+- `data/outputs/beta_fit_v1.json` (~16 KB)
+
+Current result: `beta_hat=0.50`, 95% bootstrap CI `[0.50, 0.50]`, with
+weighted log-likelihood improvement of `19.588` over the v0.1 baseline
+`beta=1.5`. The JSON intentionally records weak-identification warnings because
+the Brazil subset has only four unique mapped case cells and three point-level
+events.
+
 ## Data Provenance
 
 Case-panel source caches are stored outside git at

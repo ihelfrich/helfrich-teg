@@ -185,3 +185,20 @@ Input files:
 | `/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_hantavirus_esearch.json` | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&term=hantavirus[organism]&retmode=json | 2026-05-13T19:20:30Z | 192571 | `9b4db8b69a2b1dfbd35d7dc9418648e9ae7546eea01b3b6b9163890d8e90f623` | NCBI public data; see NCBI disclaimer and data usage policies | NCBI Nucleotide database, E-utilities esearch for hantavirus[organism]. | Nuccore UID list used for GenBank source-feature extraction. |
 | `/Volumes/HELFRICH-GD/TEG_data/inputs/cases/who/diseaseoutbreaknews_hantavirus_summary.json` | https://www.who.int/api/news/diseaseoutbreaknews?$filter=contains(tolower(Summary),'hanta')&$top=50 | 2026-05-13T19:25:44Z | 59601 | `5906887cf85a2868b0b03d3205599cb5e02a5c011f578cc27e807c006fb0d70f` | WHO website terms and conditions | World Health Organization. Disease Outbreak News API. | Disease Outbreak News items with hantavirus text in Summary. |
 | `/Volumes/HELFRICH-GD/TEG_data/inputs/cases/who/diseaseoutbreaknews_hantavirus_title.json` | https://www.who.int/api/news/diseaseoutbreaknews?$filter=contains(tolower(Title),'hanta')&$top=50 | 2026-05-13T19:25:44Z | 92351 | `dbdf99c49022c5b3e4e5e568deffbcb0bb039564d0600541673307414f1e4f2e` | WHO website terms and conditions | World Health Organization. Disease Outbreak News API. | Disease Outbreak News items with hantavirus text in Title. |
+
+## Beta Fit v1
+
+Generated at: `2026-05-13T21:30:11Z`
+
+Output:
+
+| Path | Size | SHA-256 | Description |
+|---|---:|---|---|
+| `data/outputs/beta_fit_v1.json` | 16148 | `85bf404bde342e5bbbc8dc777ad6a82cf9ae8b7b0b3a7631f68ce25e87138e6c` | Brazil beta profile, bootstrap interval, likelihood comparison, and identification diagnostics. |
+
+Input files:
+
+| Path | Source URL | Pulled at UTC | Size | SHA-256 | License/terms | Citation | Description |
+|---|---|---:|---:|---|---|---|---|
+| `data/outputs/cases_panel_v1.parquet` | derived from Case Panel v1 inputs above | 2026-05-13T19:27:59Z | 59096 | `e56c94395e212c577036af0c3acea5e2b4c4c1b9b18cf35c56c534a38c612656` | Mixed upstream terms; see Case Panel v1 | TEG case-panel loader output. | Unified hantavirus case panel used to select Brazil calibration events. |
+| `/Volumes/HELFRICH-GD/KatiaBlendedFinance/raster_cache/worldpop/bra_ppp_2020_1km_UNadj.tif` | https://data.worldpop.org/GIS/Population/Global_2000_2020/2020/BRA/bra_ppp_2020_1km_UNadj.tif | existing local cache, reused 2026-05-13 | 43602299 | `c3ea5bdefb920cdf788ea49d0d81e6ef59a74fd8b9e2bbb573a9dab31cc8a310` | WorldPop terms and conditions | WorldPop. Brazil 2020 unconstrained population count, UN-adjusted, 1 km. | Population grid coarsened to 10 km for the Brazil gravity graph. |

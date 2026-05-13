@@ -1,0 +1,560 @@
+{
+  "schema_version": "beta_fit_v1",
+  "created_at_utc": "2026-05-13T21:30:11Z",
+  "beta_hat": 0.5,
+  "confidence_interval": {
+    "method": "stratified event bootstrap by point_level and target cell",
+    "n_bootstrap": 500,
+    "seed": 20260513,
+    "level": 0.95,
+    "lower": 0.5,
+    "upper": 0.5
+  },
+  "log_likelihood": {
+    "weighted_at_beta_hat": -284.9067756558118,
+    "baseline_beta": 1.5,
+    "weighted_at_baseline_beta": -304.49466434327803,
+    "improvement_vs_baseline": 19.587888687466204
+  },
+  "profile": [
+    {
+      "beta": 0.5,
+      "weighted_log_likelihood": -284.9067756558118,
+      "mean_weighted_log_likelihood": -4.316769328118361
+    },
+    {
+      "beta": 0.6,
+      "weighted_log_likelihood": -286.51942102574793,
+      "mean_weighted_log_likelihood": -4.341203348874969
+    },
+    {
+      "beta": 0.7,
+      "weighted_log_likelihood": -288.16814532970983,
+      "mean_weighted_log_likelihood": -4.366184020147118
+    },
+    {
+      "beta": 0.8,
+      "weighted_log_likelihood": -289.89867357400783,
+      "mean_weighted_log_likelihood": -4.392404145060724
+    },
+    {
+      "beta": 0.9,
+      "weighted_log_likelihood": -291.69955191447826,
+      "mean_weighted_log_likelihood": -4.419690180522398
+    },
+    {
+      "beta": 1.0,
+      "weighted_log_likelihood": -293.47133399363975,
+      "mean_weighted_log_likelihood": -4.446535363539996
+    },
+    {
+      "beta": 1.1,
+      "weighted_log_likelihood": -295.3707656058432,
+      "mean_weighted_log_likelihood": -4.475314630391564
+    },
+    {
+      "beta": 1.2,
+      "weighted_log_likelihood": -297.42634072922414,
+      "mean_weighted_log_likelihood": -4.506459708018547
+    },
+    {
+      "beta": 1.3,
+      "weighted_log_likelihood": -299.6288298348831,
+      "mean_weighted_log_likelihood": -4.539830755073987
+    },
+    {
+      "beta": 1.4,
+      "weighted_log_likelihood": -301.9852339813708,
+      "mean_weighted_log_likelihood": -4.575533848202588
+    },
+    {
+      "beta": 1.5,
+      "weighted_log_likelihood": -304.49466434327803,
+      "mean_weighted_log_likelihood": -4.613555520352698
+    },
+    {
+      "beta": 1.6,
+      "weighted_log_likelihood": -307.1096114836975,
+      "mean_weighted_log_likelihood": -4.653175931571174
+    },
+    {
+      "beta": 1.7,
+      "weighted_log_likelihood": -309.82926878094025,
+      "mean_weighted_log_likelihood": -4.694382860317276
+    },
+    {
+      "beta": 1.8,
+      "weighted_log_likelihood": -312.52623183762313,
+      "mean_weighted_log_likelihood": -4.7352459369336835
+    },
+    {
+      "beta": 1.9,
+      "weighted_log_likelihood": -315.36191274230515,
+      "mean_weighted_log_likelihood": -4.778210799125835
+    },
+    {
+      "beta": 2.0,
+      "weighted_log_likelihood": -318.350754317026,
+      "mean_weighted_log_likelihood": -4.823496277530697
+    },
+    {
+      "beta": 2.1,
+      "weighted_log_likelihood": -321.438614847752,
+      "mean_weighted_log_likelihood": -4.870282043147757
+    },
+    {
+      "beta": 2.2,
+      "weighted_log_likelihood": -324.662335134001,
+      "mean_weighted_log_likelihood": -4.919126289909106
+    },
+    {
+      "beta": 2.3,
+      "weighted_log_likelihood": -327.9201848537136,
+      "mean_weighted_log_likelihood": -4.968487649298691
+    },
+    {
+      "beta": 2.4,
+      "weighted_log_likelihood": -331.23714370494275,
+      "mean_weighted_log_likelihood": -5.018744601590042
+    },
+    {
+      "beta": 2.5,
+      "weighted_log_likelihood": -334.67179656715297,
+      "mean_weighted_log_likelihood": -5.070784796472014
+    },
+    {
+      "beta": 2.6,
+      "weighted_log_likelihood": -338.16993013942584,
+      "mean_weighted_log_likelihood": -5.123786820294331
+    },
+    {
+      "beta": 2.7,
+      "weighted_log_likelihood": -341.8281742505728,
+      "mean_weighted_log_likelihood": -5.1792147613723145
+    },
+    {
+      "beta": 2.8,
+      "weighted_log_likelihood": -345.5476194186323,
+      "mean_weighted_log_likelihood": -5.235569991191398
+    },
+    {
+      "beta": 2.9,
+      "weighted_log_likelihood": -349.25794464199015,
+      "mean_weighted_log_likelihood": -5.291787040030154
+    },
+    {
+      "beta": 3.0,
+      "weighted_log_likelihood": -353.12050021643256,
+      "mean_weighted_log_likelihood": -5.350310609339887
+    }
+  ],
+  "study_area": {
+    "country": "Brazil",
+    "country_code": "BR",
+    "grid_shape": [
+      468,
+      541
+    ],
+    "grid_bbox": [
+      -73.99291637892128,
+      -33.733749657338706,
+      -28.909583225921274,
+      5.266250186661296
+    ],
+    "grid_crs": "EPSG:4326",
+    "populated_nodes": 86820,
+    "graph_radius_cells": 3,
+    "min_pop": 1.0,
+    "coarsen_factor": 10
+  },
+  "inputs": {
+    "cases_panel": {
+      "path": "data/outputs/cases_panel_v1.parquet",
+      "sha256": "e56c94395e212c577036af0c3acea5e2b4c4c1b9b18cf35c56c534a38c612656",
+      "size_bytes": 59096
+    },
+    "worldpop": {
+      "path": "/Volumes/HELFRICH-GD/KatiaBlendedFinance/raster_cache/worldpop/bra_ppp_2020_1km_UNadj.tif",
+      "sha256": "c3ea5bdefb920cdf788ea49d0d81e6ef59a74fd8b9e2bbb573a9dab31cc8a310",
+      "size_bytes": 43602299
+    }
+  },
+  "calibration": {
+    "candidate_betas": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0,
+      1.1,
+      1.2,
+      1.3,
+      1.4,
+      1.5,
+      1.6,
+      1.7,
+      1.8,
+      1.9,
+      2.0,
+      2.1,
+      2.2,
+      2.3,
+      2.4,
+      2.5,
+      2.6,
+      2.7,
+      2.8,
+      2.9,
+      3.0
+    ],
+    "scoring": "log-softmax over populated cells using minimum effective distance from strictly pre-t source cells",
+    "event_weight": "count * confidence",
+    "min_confidence": 0.35,
+    "point_confidence": 0.95,
+    "scored_events": 66,
+    "scored_weight": 73.34999999999998,
+    "scored_unique_target_cells": 4,
+    "scored_dominant_cell_share": 0.9545454545454546
+  },
+  "sensitivity": {
+    "point_level_only": {
+      "available": true,
+      "events": 3,
+      "scored_events": 2,
+      "unique_target_cells": 2,
+      "beta_hat": 0.5,
+      "confidence_interval": {
+        "method": "stratified event bootstrap by point_level and target cell",
+        "n_bootstrap": 500,
+        "seed": 20260514,
+        "level": 0.95,
+        "lower": 0.5,
+        "upper": 0.5
+      },
+      "weighted_log_likelihood": -155.26210353969623,
+      "baseline_beta": 1.5,
+      "weighted_log_likelihood_at_baseline": -171.1423353964022,
+      "improvement_vs_baseline": 15.880231856705961,
+      "profile": [
+        {
+          "beta": 0.5,
+          "weighted_log_likelihood": -155.26210353969623,
+          "mean_weighted_log_likelihood": -77.63105176984811
+        },
+        {
+          "beta": 0.6,
+          "weighted_log_likelihood": -156.5469952709854,
+          "mean_weighted_log_likelihood": -78.2734976354927
+        },
+        {
+          "beta": 0.7,
+          "weighted_log_likelihood": -157.89554819905123,
+          "mean_weighted_log_likelihood": -78.94777409952562
+        },
+        {
+          "beta": 0.8,
+          "weighted_log_likelihood": -159.3002584927434,
+          "mean_weighted_log_likelihood": -79.6501292463717
+        },
+        {
+          "beta": 0.9,
+          "weighted_log_likelihood": -160.7752645687588,
+          "mean_weighted_log_likelihood": -80.3876322843794
+        },
+        {
+          "beta": 1.0,
+          "weighted_log_likelihood": -162.30437959734937,
+          "mean_weighted_log_likelihood": -81.15218979867468
+        },
+        {
+          "beta": 1.1,
+          "weighted_log_likelihood": -163.92437873852626,
+          "mean_weighted_log_likelihood": -81.96218936926313
+        },
+        {
+          "beta": 1.2,
+          "weighted_log_likelihood": -165.6334412144087,
+          "mean_weighted_log_likelihood": -82.81672060720435
+        },
+        {
+          "beta": 1.3,
+          "weighted_log_likelihood": -167.373122661194,
+          "mean_weighted_log_likelihood": -83.686561330597
+        },
+        {
+          "beta": 1.4,
+          "weighted_log_likelihood": -169.20944165116518,
+          "mean_weighted_log_likelihood": -84.60472082558259
+        },
+        {
+          "beta": 1.5,
+          "weighted_log_likelihood": -171.1423353964022,
+          "mean_weighted_log_likelihood": -85.5711676982011
+        },
+        {
+          "beta": 1.6,
+          "weighted_log_likelihood": -173.1585676667263,
+          "mean_weighted_log_likelihood": -86.57928383336315
+        },
+        {
+          "beta": 1.7,
+          "weighted_log_likelihood": -175.2753038381142,
+          "mean_weighted_log_likelihood": -87.6376519190571
+        },
+        {
+          "beta": 1.8,
+          "weighted_log_likelihood": -177.4024354930165,
+          "mean_weighted_log_likelihood": -88.70121774650825
+        },
+        {
+          "beta": 1.9,
+          "weighted_log_likelihood": -179.45134002542375,
+          "mean_weighted_log_likelihood": -89.72567001271187
+        },
+        {
+          "beta": 2.0,
+          "weighted_log_likelihood": -181.60080062663428,
+          "mean_weighted_log_likelihood": -90.80040031331714
+        },
+        {
+          "beta": 2.1,
+          "weighted_log_likelihood": -183.81752082819426,
+          "mean_weighted_log_likelihood": -91.90876041409713
+        },
+        {
+          "beta": 2.2,
+          "weighted_log_likelihood": -186.14976780973967,
+          "mean_weighted_log_likelihood": -93.07488390486984
+        },
+        {
+          "beta": 2.3,
+          "weighted_log_likelihood": -188.55367736569102,
+          "mean_weighted_log_likelihood": -94.27683868284551
+        },
+        {
+          "beta": 2.4,
+          "weighted_log_likelihood": -191.00691068025495,
+          "mean_weighted_log_likelihood": -95.50345534012747
+        },
+        {
+          "beta": 2.5,
+          "weighted_log_likelihood": -193.48929242490192,
+          "mean_weighted_log_likelihood": -96.74464621245096
+        },
+        {
+          "beta": 2.6,
+          "weighted_log_likelihood": -195.99023602547743,
+          "mean_weighted_log_likelihood": -97.99511801273871
+        },
+        {
+          "beta": 2.7,
+          "weighted_log_likelihood": -198.61463768625717,
+          "mean_weighted_log_likelihood": -99.30731884312858
+        },
+        {
+          "beta": 2.8,
+          "weighted_log_likelihood": -201.30564315098852,
+          "mean_weighted_log_likelihood": -100.65282157549426
+        },
+        {
+          "beta": 2.9,
+          "weighted_log_likelihood": -204.03943130955344,
+          "mean_weighted_log_likelihood": -102.01971565477672
+        },
+        {
+          "beta": 3.0,
+          "weighted_log_likelihood": -206.8848039206514,
+          "mean_weighted_log_likelihood": -103.4424019603257
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "candidate_events": 205,
+    "raw_mapped_records": 205,
+    "mapped_events": 67,
+    "aggregation": "summed by date, source, and populated grid cell",
+    "skipped_outside_grid": 0,
+    "unique_case_cells": 4,
+    "dominant_cell_share": 0.9552238805970149,
+    "point_level_events": 3,
+    "low_confidence_events": 64,
+    "max_snapped_km": 0.0,
+    "unique_source_cells": 4,
+    "timing": {
+      "per_beta": [
+        {
+          "beta": 0.5,
+          "graph_seconds": 0.8335217600688338,
+          "dijkstra_seconds": 0.4395984869915992,
+          "edges": 3839358
+        },
+        {
+          "beta": 0.6,
+          "graph_seconds": 0.9042913540033624,
+          "dijkstra_seconds": 1.042817330104299,
+          "edges": 3839358
+        },
+        {
+          "beta": 0.7,
+          "graph_seconds": 2.261382120079361,
+          "dijkstra_seconds": 0.6628630600171164,
+          "edges": 3839358
+        },
+        {
+          "beta": 0.8,
+          "graph_seconds": 1.3960958541138098,
+          "dijkstra_seconds": 0.7844209159957245,
+          "edges": 3839358
+        },
+        {
+          "beta": 0.9,
+          "graph_seconds": 1.1622243740130216,
+          "dijkstra_seconds": 0.4777688259491697,
+          "edges": 3839358
+        },
+        {
+          "beta": 1.0,
+          "graph_seconds": 1.5529642420588061,
+          "dijkstra_seconds": 1.2132794519420713,
+          "edges": 3839358
+        },
+        {
+          "beta": 1.1,
+          "graph_seconds": 3.1056244230130687,
+          "dijkstra_seconds": 1.2148906040238217,
+          "edges": 3839358
+        },
+        {
+          "beta": 1.2,
+          "graph_seconds": 1.702899552998133,
+          "dijkstra_seconds": 0.5460673728957772,
+          "edges": 3839358
+        },
+        {
+          "beta": 1.3,
+          "graph_seconds": 1.7681981739588082,
+          "dijkstra_seconds": 1.0050480880308896,
+          "edges": 3839358
+        },
+        {
+          "beta": 1.4,
+          "graph_seconds": 0.8984622129937634,
+          "dijkstra_seconds": 1.6669372820761055,
+          "edges": 3839358
+        },
+        {
+          "beta": 1.5,
+          "graph_seconds": 3.538867785013281,
+          "dijkstra_seconds": 3.575985557050444,
+          "edges": 3839358
+        },
+        {
+          "beta": 1.6,
+          "graph_seconds": 2.286159442970529,
+          "dijkstra_seconds": 1.1456612250767648,
+          "edges": 3839358
+        },
+        {
+          "beta": 1.7,
+          "graph_seconds": 2.281281393021345,
+          "dijkstra_seconds": 0.9926999609451741,
+          "edges": 3839358
+        },
+        {
+          "beta": 1.8,
+          "graph_seconds": 1.5226588400546461,
+          "dijkstra_seconds": 1.21278165304102,
+          "edges": 3839358
+        },
+        {
+          "beta": 1.9,
+          "graph_seconds": 1.82634592091199,
+          "dijkstra_seconds": 1.3007595359813422,
+          "edges": 3839358
+        },
+        {
+          "beta": 2.0,
+          "graph_seconds": 1.8004733170382679,
+          "dijkstra_seconds": 1.5452940319664776,
+          "edges": 3839358
+        },
+        {
+          "beta": 2.1,
+          "graph_seconds": 1.4785056409891695,
+          "dijkstra_seconds": 1.0183745810063556,
+          "edges": 3839358
+        },
+        {
+          "beta": 2.2,
+          "graph_seconds": 1.4415808339836076,
+          "dijkstra_seconds": 0.5222146640298888,
+          "edges": 3839358
+        },
+        {
+          "beta": 2.3,
+          "graph_seconds": 0.8783876959932968,
+          "dijkstra_seconds": 1.4706393210217357,
+          "edges": 3839358
+        },
+        {
+          "beta": 2.4,
+          "graph_seconds": 2.134811996947974,
+          "dijkstra_seconds": 1.7364976690150797,
+          "edges": 3839358
+        },
+        {
+          "beta": 2.5,
+          "graph_seconds": 2.8257392620434985,
+          "dijkstra_seconds": 1.6826837500557303,
+          "edges": 3839358
+        },
+        {
+          "beta": 2.6,
+          "graph_seconds": 2.4333688350161538,
+          "dijkstra_seconds": 1.1854809400392696,
+          "edges": 3839358
+        },
+        {
+          "beta": 2.7,
+          "graph_seconds": 1.5200963779352605,
+          "dijkstra_seconds": 1.0396170282037929,
+          "edges": 3839358
+        },
+        {
+          "beta": 2.8,
+          "graph_seconds": 1.562368485960178,
+          "dijkstra_seconds": 1.0596265980275348,
+          "edges": 3839358
+        },
+        {
+          "beta": 2.9,
+          "graph_seconds": 1.16557679802645,
+          "dijkstra_seconds": 1.3123220129637048,
+          "edges": 3839358
+        },
+        {
+          "beta": 3.0,
+          "graph_seconds": 2.3051075149560347,
+          "dijkstra_seconds": 0.9163760130759329,
+          "edges": 3839358
+        }
+      ]
+    },
+    "identification_warnings": [
+      "Fewer than 10 unique Brazil case cells are available; beta is weakly identified.",
+      "Fewer than 20 point-level Brazil events are available; most spatial signal comes from lower-confidence locations.",
+      "More than half of mapped events occupy one grid cell, mainly country-centroid records.",
+      "The likelihood profile is maximized at the edge of the searched beta interval.",
+      "The bootstrap interval is degenerate under the current spatial support."
+    ],
+    "recommended_for_substantive_inference": false
+  },
+  "software": {
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "pandas": "2.2.2",
+    "geopandas": "1.1.1"
+  }
+}
