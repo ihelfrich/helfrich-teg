@@ -194,7 +194,7 @@ Output:
 
 | Path | Size | SHA-256 | Description |
 |---|---:|---|---|
-| `data/outputs/beta_fit_v1.json` | 16148 | `85bf404bde342e5bbbc8dc777ad6a82cf9ae8b7b0b3a7631f68ce25e87138e6c` | Brazil beta profile, bootstrap interval, likelihood comparison, and identification diagnostics. |
+| `data/outputs/beta_fit_v1.json` | 16372 | `a7d1682b05f31db09dcbc87fa554e4e8712caf9134e51f4f5f75d4fe1129553b` | Brazil-only beta smoke diagnostic, bootstrap interval, likelihood comparison, and identification diagnostics. |
 
 Input files:
 
@@ -202,3 +202,24 @@ Input files:
 |---|---|---:|---:|---|---|---|---|
 | `data/outputs/cases_panel_v1.parquet` | derived from Case Panel v1 inputs above | 2026-05-13T19:27:59Z | 59096 | `e56c94395e212c577036af0c3acea5e2b4c4c1b9b18cf35c56c534a38c612656` | Mixed upstream terms; see Case Panel v1 | TEG case-panel loader output. | Unified hantavirus case panel used to select Brazil calibration events. |
 | `/Volumes/HELFRICH-GD/KatiaBlendedFinance/raster_cache/worldpop/bra_ppp_2020_1km_UNadj.tif` | https://data.worldpop.org/GIS/Population/Global_2000_2020/2020/BRA/bra_ppp_2020_1km_UNadj.tif | existing local cache, reused 2026-05-13 | 43602299 | `c3ea5bdefb920cdf788ea49d0d81e6ef59a74fd8b9e2bbb573a9dab31cc8a310` | WorldPop terms and conditions | WorldPop. Brazil 2020 unconstrained population count, UN-adjusted, 1 km. | Population grid coarsened to 10 km for the Brazil gravity graph. |
+
+## Global Exposure v1
+
+Generated at: `2026-05-13T23:09:36Z`
+
+Output:
+
+| Path | Size | SHA-256 | Description |
+|---|---:|---|---|
+| `data/outputs/global_exposure_v1.json` | 4557 | `e1b024dd13a850d7797c29e38bc4c42f2ec122d5989d8a24ae1d7138ea144091` | Global exposed-population summary by 25, 50, and 100 km reported-case geodesic footprints. |
+| `data/outputs/global_exposure_locations_v1.csv` | 28439 | `157e568c1214c031894fa0cb1f540966b0bd59e4df9f629778a6bfd2e725ee09` | Unique high-confidence reported-case locations used for granular exposure accounting. |
+| `data/outputs/_external_index.json` | 550 | `f9a0c48f00c66d10783737a269a7c4feacd5276a7a61d58bb046549618f68ad8` | Pointer to the off-repo 100 km exposure mask. |
+| `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif` | 786185 | `19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e` | External compressed GeoTIFF mask for cells within 100 km geodesic distance of point-supported reported case locations. |
+
+Input files:
+
+| Path | Source URL | Pulled at UTC | Size | SHA-256 | License/terms | Citation | Description |
+|---|---|---:|---:|---|---|---|---|
+| `data/outputs/cases_panel_v1.parquet` | derived from Case Panel v1 inputs above | 2026-05-13T19:27:59Z | 59096 | `e56c94395e212c577036af0c3acea5e2b4c4c1b9b18cf35c56c534a38c612656` | Mixed upstream terms; see Case Panel v1 | TEG case-panel loader output. | Unified hantavirus case panel; high-confidence point records were used for granular exposure footprints, with lower-confidence records reported as unlocalizable. |
+| `/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.zip` | https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_GLOBE_R2023A/GHS_POP_E2020_GLOBE_R2023A_54009_1000/V1-0/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.zip | 2026-05-13T22:43:32Z | 322293568 | `40ccf52af857a82cd327b882d1ebb901f84363b0e7e6806ccee56b0a85df6d2c` | European Commission reuse policy / GHSL terms | Schiavina, M., Freire, S., MacManus, K. et al. GHS-POP R2023A. | Downloaded GHSL 2020 global 1 km population archive. |
+| `/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.tif` | extracted from GHSL archive above | 2026-05-13T22:48:38Z | 261128685 | `db25d12ab0851446af467a56eb1651d383867dc3fbf4aa6348ec8e3372225196` | European Commission reuse policy / GHSL terms | Schiavina, M., Freire, S., MacManus, K. et al. GHS-POP R2023A. | Equal-area World Mollweide population denominator for exposure accounting. |

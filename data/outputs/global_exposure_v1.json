@@ -1,0 +1,123 @@
+{
+  "schema_version": "global_exposure_v1",
+  "created_at_utc": "2026-05-13T23:09:36Z",
+  "interpretation": "Population residing within distance footprints of high-confidence reported case locations. This is exposure accounting from reported evidence, not origin inference.",
+  "case_evidence": {
+    "case_records_total": 9039,
+    "case_records_with_valid_coordinates": 9039,
+    "point_supported_records": 882,
+    "unlocalizable_records": 8157,
+    "point_supported_countries": 26,
+    "unlocalizable_countries": 70,
+    "unique_point_supported_locations": 217,
+    "locations_inside_population_raster": 217,
+    "locations_outside_population_raster": 0,
+    "unlocalizable_by_source": {
+      "cdc_nndss": 25,
+      "genbank_biosample": 53,
+      "genbank_nuccore": 8074,
+      "who_don": 5
+    },
+    "top_unlocalizable_countries": {
+      "China": 2540,
+      "Germany": 1365,
+      "Russia": 844,
+      "South Korea": 616,
+      "United States of America": 463,
+      "France": 291,
+      "Slovenia": 220,
+      "Czechia": 204,
+      "Brazil": 202,
+      "Belgium": 123,
+      "Turkey": 83,
+      "Finland": 75,
+      "Madagascar": 75,
+      "Austria": 71,
+      "Argentina": 65,
+      "Croatia": 60,
+      "Japan": 53,
+      "Vietnam": 53,
+      "Hungary": 48,
+      "Poland": 48
+    }
+  },
+  "parameters": {
+    "min_confidence_for_granular_surface": 0.95,
+    "coordinate_precision": 5,
+    "radii_km": [
+      25.0,
+      50.0,
+      100.0
+    ],
+    "surface_radius_km": 100.0,
+    "distance_footprint": "geodesic circle rasterized to the GHSL World Mollweide grid",
+    "geodesic_vertices": 96,
+    "low_confidence_policy": "country/admin centroid records are reported as unlocalizable and excluded from granular local exposure masks"
+  },
+  "population_raster": {
+    "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.tif",
+    "zip_path": "/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.zip",
+    "source_url": "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_GLOBE_R2023A/GHS_POP_E2020_GLOBE_R2023A_54009_1000/V1-0/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.zip",
+    "sha256": "db25d12ab0851446af467a56eb1651d383867dc3fbf4aa6348ec8e3372225196",
+    "size_bytes": 261128685,
+    "license": "European Commission reuse policy / GHSL terms",
+    "citation": "Schiavina, M., Freire, S., MacManus, K. et al. GHS-POP R2023A."
+  },
+  "outputs": {
+    "locations_csv": {
+      "path": "data/outputs/global_exposure_locations_v1.csv",
+      "sha256": "157e568c1214c031894fa0cb1f540966b0bd59e4df9f629778a6bfd2e725ee09",
+      "size_bytes": 28439
+    },
+    "external_index": "data/outputs/_external_index.json"
+  },
+  "exposure": [
+    {
+      "radius_km": 25.0,
+      "exposed_population": 66330941.31275122,
+      "total_population_in_raster": 7840952947.013645,
+      "share_of_population": 0.00845955099603224,
+      "exposed_cells": 180353,
+      "skipped_footprints": 0,
+      "timing_seconds": {
+        "mark": 1.7942579078953713,
+        "scan_and_write": 39.403396209003404
+      }
+    },
+    {
+      "radius_km": 50.0,
+      "exposed_population": 144355214.857457,
+      "total_population_in_raster": 7840952947.013645,
+      "share_of_population": 0.01841041718180914,
+      "exposed_cells": 627852,
+      "skipped_footprints": 0,
+      "timing_seconds": {
+        "mark": 2.206352050998248,
+        "scan_and_write": 46.5582738959929
+      }
+    },
+    {
+      "radius_km": 100.0,
+      "exposed_population": 358844368.12507915,
+      "total_population_in_raster": 7840952947.013645,
+      "share_of_population": 0.04576540256650193,
+      "exposed_cells": 2178451,
+      "skipped_footprints": 0,
+      "timing_seconds": {
+        "mark": 1.936487813014537,
+        "scan_and_write": 55.53983981197234
+      },
+      "surface": {
+        "path": "/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif",
+        "sha256": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e",
+        "size_bytes": 786185
+      }
+    }
+  ],
+  "warnings": [
+    "Point-supported exposure is a lower-bound local footprint because low-confidence records are not locally mapped.",
+    "Distance footprints are evidence footprints, not transmission probabilities.",
+    "Rasterized geodesic footprints assign whole 1 km cells by the rasterization rule rather than sub-cell population fractions.",
+    "GHSL 2020 population is used for all case years, so historical exposure is not population-year specific."
+  ]
+}

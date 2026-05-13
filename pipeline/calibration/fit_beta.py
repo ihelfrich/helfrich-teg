@@ -1,4 +1,4 @@
-"""Estimate the population-gravity distance-decay exponent beta.
+"""Pilot estimate of the population-gravity distance-decay exponent beta.
 
 The current v2 repository has a Brazil WorldPop grid wired into the graph
 builder, so this script estimates a Brazil-only beta from the unified case
@@ -12,10 +12,12 @@ sources. The held-out likelihood is a log-softmax over populated cells:
 
     log P(observed cell | pre-t sources, beta)
 
-This is a spatial calibration target, not a claim that the current Brazil panel
-strongly identifies beta. Most Brazil records in cases_panel_v1 are country-
-centroid GenBank records with low confidence, so the output JSON includes
-diagnostics and an identification warning when the spatial support is weak.
+This is now explicitly a pilot/smoke diagnostic. The main project objective is
+global exposed-population accounting from reported case evidence, not
+pinpointing origins from Brazil. Most Brazil records in cases_panel_v1 are
+country-centroid GenBank records with low confidence, so the output JSON
+includes diagnostics and an identification warning when the spatial support is
+weak.
 """
 from __future__ import annotations
 
@@ -573,6 +575,11 @@ def fit_beta(args: argparse.Namespace) -> dict[str, Any]:
 
     result = {
         "schema_version": "beta_fit_v1",
+        "status": "pilot_smoke_diagnostic",
+        "not_core_objective": (
+            "Brazil-only beta fitting is retained as a graph-calibration smoke test. "
+            "The core TEG v2 objective is global exposed-population accounting from reported cases."
+        ),
         "created_at_utc": _now_utc(),
         "beta_hat": beta_hat,
         "confidence_interval": ci_for_output,

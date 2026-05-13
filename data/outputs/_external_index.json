@@ -1,0 +1,13 @@
+{
+  "artifacts": [
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif",
+      "sha256": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e",
+      "size_bytes": 786185,
+      "description": "Global 1 km point-supported geodesic exposure mask within 100 km of high-confidence reported hantavirus case locations.",
+      "created_at_utc": "2026-05-13T23:09:36Z",
+      "source_script": "pipeline/exposure/exposed_population.py"
+    }
+  ],
+  "updated_at_utc": "2026-05-13T23:09:36Z"
+}

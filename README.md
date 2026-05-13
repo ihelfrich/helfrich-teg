@@ -29,8 +29,11 @@ TEG carries the heterogeneity:
 - **Layer 5** — socioeconomic detection capacity (gridded GDP, DHS wealth, healthcare-facility density)
 - **Layer 6** — admin-level healthcare load (HHS Protect, ECDC TESSy, KDCA, MSal)
 
-The output is an effective-distance surface from any outbreak origin that integrates over all six
-layers, against which observed case appearance can be calibrated and forward-predictions made.
+The core v2 output is an exposed-population accounting surface: given reported
+case evidence, how many people live in the granular population cells plausibly
+inside the reported exposure footprint? Effective distance remains one optional
+geometry for exposure decay, but the project is not trying to infer a single
+outbreak origin from reported cases.
 
 ## Paper series
 
@@ -87,10 +90,11 @@ Expected outputs:
 
 The script prints a one-line panel summary and the point-coordinate fraction.
 
-### Step 2: Brazil beta calibration
+### Step 2: Brazil beta calibration smoke diagnostic
 
-Fits the population-gravity distance-decay exponent on the currently available
-Brazil grid and writes a calibration diagnostic JSON.
+Runs a Brazil-only graph-calibration smoke diagnostic on the currently available
+Brazil grid. This is retained to test the graph machinery, not as the core
+epidemiological objective.
 
 ```bash
 python3 pipeline/calibration/fit_beta.py
@@ -109,6 +113,39 @@ weighted log-likelihood improvement of `19.588` over the v0.1 baseline
 `beta=1.5`. The JSON intentionally records weak-identification warnings because
 the Brazil subset has only four unique mapped case cells and three point-level
 events.
+
+### Step 3: global point-supported exposed population
+
+Builds a world-coverage exposed-population accounting output from high-confidence
+reported case coordinates and GHSL 2020 global 1 km population. Low-confidence
+country/admin centroid records are reported as unlocalizable evidence and are
+not turned into fake local hotspots.
+
+```bash
+python3 pipeline/exposure/exposed_population.py
+```
+
+Expected wall-time on Ian's Mac: 4-8 minutes on a cold GHSL cache, including
+the first GHSL download/extract; about 3 minutes on a warm cache because the
+script scans the global 1 km population raster for each exposure radius. The
+script keeps the per-radius geodesic mask in memory and only writes the final
+compressed 100 km surface to the external drive.
+
+Expected checked-in outputs:
+
+- `data/outputs/global_exposure_v1.json` (~4.5 KB)
+- `data/outputs/global_exposure_locations_v1.csv` (~28 KB)
+- `data/outputs/_external_index.json` (~550 B)
+
+Expected external output:
+
+- `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif` (~768 KB compressed)
+
+Current result: 217 unique point-supported locations from 882 high-confidence
+records across 26 countries. The 100 km geodesic footprint covers 358.8 million
+people, or 4.58% of the GHSL 2020 population raster. The remaining 8,157 records are
+reported as unlocalizable at this stage because they are country/admin centroids
+or otherwise too coarse for granular exposure mapping.
 
 ## Data Provenance
 

@@ -556,5 +556,7 @@
     "numpy": "1.26.4",
     "pandas": "2.2.2",
     "geopandas": "1.1.1"
-  }
+  },
+  "status": "pilot_smoke_diagnostic",
+  "not_core_objective": "Brazil-only beta fitting is retained as a graph-calibration smoke test. The core TEG v2 objective is global exposed-population accounting from reported cases."
 }
