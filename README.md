@@ -60,12 +60,40 @@ notebooks/     — exploratory analyses; one per paper
 site_layers/   — PMTiles, GeoJSON, and JSON metric files served to the Observatory dashboard
 ```
 
-## Replication
+## Reproduction
 
 ```bash
 pip install -e .
-python pipeline/outputs/P1_bariloche_v1.py
+python3 pipeline/layers/cases.py --refresh
 ```
+
+### Step 1: data-driven hantavirus case panel
+
+Builds `data/outputs/cases_panel_v1.parquet` from NCBI GenBank/BioSample
+metadata, CDC NNDSS Socrata tables, and WHO Disease Outbreak News.
+
+```bash
+python3 pipeline/layers/cases.py --refresh
+```
+
+Expected wall-time on Ian's Mac: 5-7 minutes on a cold cache, mostly NCBI
+GenBank flatfile fetches; under 1 minute when `/Volumes/HELFRICH-GD/TEG_data/`
+already has the caches.
+
+Expected outputs:
+
+- `data/outputs/cases_panel_v1.parquet` (~58 KB)
+- `data/outputs/cases_panel_v1_manifest.json` (~98 KB)
+
+The script prints a one-line panel summary and the point-coordinate fraction.
+
+## Data Provenance
+
+Case-panel source caches are stored outside git at
+`/Volumes/HELFRICH-GD/TEG_data/inputs/cases/`. The file-level provenance,
+including source URLs, pull time, SHA-256 hashes, licenses/terms, and citations,
+is checked in at `data_provenance.md`. The exact machine-readable manifest for
+the current panel is `data/outputs/cases_panel_v1_manifest.json`.
 
 ## Citation
 

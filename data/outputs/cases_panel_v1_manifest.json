@@ -1,0 +1,1702 @@
+{
+  "created_at_utc": "2026-05-13T19:29:19Z",
+  "output": {
+    "path": "data/outputs/cases_panel_v1.parquet",
+    "sha256": "e56c94395e212c577036af0c3acea5e2b4c4c1b9b18cf35c56c534a38c612656",
+    "size_bytes": 59096,
+    "row_count": 9039,
+    "crs": "EPSG:4326"
+  },
+  "inputs": [
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/boundaries/CenPop2020_Mean_ST.txt",
+      "source_url": "https://www2.census.gov/geo/docs/reference/cenpop2020/CenPop2020_Mean_ST.txt",
+      "pulled_at_utc": "2026-05-13T19:20:30Z",
+      "sha256": "1d40a35cd03be129d5e210582f1a70e0e0663e6449fdee4fd7673324730dfff2",
+      "size_bytes": 2327,
+      "license": "U.S. federal public domain",
+      "citation": "U.S. Census Bureau. 2020 Centers of Population by State.",
+      "description": "Population-weighted state centroids for NNDSS disaggregation."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/boundaries/ne_110m_admin_0_countries.zip",
+      "source_url": "https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_countries.zip",
+      "pulled_at_utc": "2026-05-13T19:20:30Z",
+      "sha256": "0f243aeac8ac6cf26f0417285b0bd33ac47f1b5bdb719fd3e0df37d03ea37110",
+      "size_bytes": 214976,
+      "license": "Public domain",
+      "citation": "Natural Earth. 1:110m Cultural Vectors, Admin 0 Countries.",
+      "description": "Country polygons used to assign country-level centroids."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/cdc_nndss/a9xa-yrhn.json",
+      "source_url": "https://data.cdc.gov/resource/a9xa-yrhn.json",
+      "pulled_at_utc": "2026-05-13T19:25:40Z",
+      "sha256": "0e67bb88ee27adc7c042d6ee17959f55d451e5d606fcc6231a337de142fbe925",
+      "size_bytes": 2424413,
+      "license": "Public domain unless otherwise noted by data.cdc.gov",
+      "citation": "CDC NNDSS Socrata dataset a9xa-yrhn.",
+      "description": "Hantavirus pulmonary syndrome cumulative state-week rows."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/cdc_nndss/azpx-5hzx.json",
+      "source_url": "https://data.cdc.gov/resource/azpx-5hzx.json",
+      "pulled_at_utc": "2026-05-13T19:25:38Z",
+      "sha256": "047f9ea698bc4d803b06f8501cf8449d1fcb3da7555390a960f432b4782fb223",
+      "size_bytes": 3397725,
+      "license": "Public domain unless otherwise noted by data.cdc.gov",
+      "citation": "CDC NNDSS Socrata dataset azpx-5hzx.",
+      "description": "Hantavirus pulmonary syndrome cumulative state-week rows."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/cdc_nndss/bhxw-k5sb.json",
+      "source_url": "https://data.cdc.gov/resource/bhxw-k5sb.json",
+      "pulled_at_utc": "2026-05-13T19:25:34Z",
+      "sha256": "fb9a4012751421a0e2e5d4dcabbeafb939fe0c6c572226440e66e053123b49eb",
+      "size_bytes": 1322923,
+      "license": "Public domain unless otherwise noted by data.cdc.gov",
+      "citation": "CDC NNDSS Socrata dataset bhxw-k5sb.",
+      "description": "Hantavirus pulmonary syndrome cumulative state-week rows."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/cdc_nndss/chmz-4uae.json",
+      "source_url": "https://data.cdc.gov/resource/chmz-4uae.json",
+      "pulled_at_utc": "2026-05-13T19:25:42Z",
+      "sha256": "f4cbeb193e1483cde0927d4a0907521e0b1771ab2cd85bab5e9791f3b42cab05",
+      "size_bytes": 2361493,
+      "license": "Public domain unless otherwise noted by data.cdc.gov",
+      "citation": "CDC NNDSS Socrata dataset chmz-4uae.",
+      "description": "Hantavirus pulmonary syndrome cumulative state-week rows."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/cdc_nndss/tfcp-ufzp.json",
+      "source_url": "https://data.cdc.gov/resource/tfcp-ufzp.json",
+      "pulled_at_utc": "2026-05-13T19:25:34Z",
+      "sha256": "e7e6ca7d2d8ee7bcf0e8521c74e63bd1f5504ecb301c55159f94e7315bf4c688",
+      "size_bytes": 272545,
+      "license": "Public domain unless otherwise noted by data.cdc.gov",
+      "citation": "CDC NNDSS Socrata dataset tfcp-ufzp.",
+      "description": "Hantavirus pulmonary syndrome cumulative state-week rows."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/biosample_hantavirus_esearch.json",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=biosample&term=hantavirus&retmode=json",
+      "pulled_at_utc": "2026-05-13T19:25:26Z",
+      "sha256": "c5b50e6e1e054032ba6d200f3023253496ae902de86489393310dfd6afd9ff10",
+      "size_bytes": 5428,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI BioSample database, E-utilities esearch for hantavirus.",
+      "description": "BioSample UID list used for sample metadata extraction."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/biosample_xml/biosample_000000.xml",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=biosample&retmode=xml",
+      "pulled_at_utc": "2026-05-13T19:25:28Z",
+      "sha256": "1769fceb5d3c8f2b73355078c6fe17a9eae66a3ac4ca91e125fa1058e05ae18f",
+      "size_bytes": 440999,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI BioSample database, XML sample attributes.",
+      "description": "BioSample XML batch 1."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/biosample_xml/biosample_000200.xml",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=biosample&retmode=xml",
+      "pulled_at_utc": "2026-05-13T19:25:28Z",
+      "sha256": "309821e212e8e0b55e9d9536a29206994b4e1d52ccd4363662cc54a50cb74fd7",
+      "size_bytes": 481905,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI BioSample database, XML sample attributes.",
+      "description": "BioSample XML batch 2."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/biosample_xml/biosample_000400.xml",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=biosample&retmode=xml",
+      "pulled_at_utc": "2026-05-13T19:25:32Z",
+      "sha256": "4fe1bdb37a3a5cb93a2ca2080b0f6b77a169112cd2f3065c5580be5fee75ca43",
+      "size_bytes": 119427,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI BioSample database, XML sample attributes.",
+      "description": "BioSample XML batch 3."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_000000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:32Z",
+      "sha256": "41cc521276e186552f6598d31d1956e9623f56e7c510897cbe67c1529b5ca9f9",
+      "size_bytes": 549381,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 1."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_000100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:34Z",
+      "sha256": "8bc8886503fdb24d802a248dea0fb7bca81544f0540aa357b89a08996421d777",
+      "size_bytes": 737225,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 2."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_000200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:36Z",
+      "sha256": "ecbd0e1b9162dd2b4c9926557b0a9914e2d3128c821d006348f5323240e0330a",
+      "size_bytes": 652902,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 3."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_000300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:36Z",
+      "sha256": "f61a5853de180bf78e25a183caa5cbf4f0119f53945baf47c63ce178d10a79ec",
+      "size_bytes": 672599,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 4."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_000400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:38Z",
+      "sha256": "5004612de9d7a1135238313cea2a9a0d681f5cf96c88f8e40d905397798dc34a",
+      "size_bytes": 684507,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 5."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_000500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:40Z",
+      "sha256": "7f1bdce1ceb9b6c5eead6bc4084b104e8de6ec3b663e4993a67f220e079f821e",
+      "size_bytes": 950459,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 6."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_000600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:42Z",
+      "sha256": "cea82dbf36a9b60ac33d16dff57e5cc7de7fd0759032ef216ec6c1421c280559",
+      "size_bytes": 661614,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 7."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_000700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:44Z",
+      "sha256": "41dd5e53335f266a7070815bebe8621e79b376f475b76c16eb48fff558c4ffb5",
+      "size_bytes": 812507,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 8."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_000800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:44Z",
+      "sha256": "a5caee1c9dee27b06f82f7815b90ddc5aca805b12841e177ea8f34c39be18568",
+      "size_bytes": 484517,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 9."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_000900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:48Z",
+      "sha256": "a504d9f1f401782e49d6b0790d3c6c8b46aa86dbb9f669d62b8bcae1c1bdf9eb",
+      "size_bytes": 668423,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 10."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_001000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:50Z",
+      "sha256": "ba477fd50256cd20456fd66040303ccdf5182ef47e47c4067039d45b5d0ecd9e",
+      "size_bytes": 574297,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 11."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_001100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:52Z",
+      "sha256": "62eba86c27ca8f0b53f5f7edef8efab6264e81928a5b557a7702cc93c4d8827b",
+      "size_bytes": 409342,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 12."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_001200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:54Z",
+      "sha256": "419939d26ead2af0c27c5d426fa3e5818f6cd7c62c440c7498bf0409ae050b94",
+      "size_bytes": 756071,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 13."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_001300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:20:54Z",
+      "sha256": "6de1d9f30710b59b9f95f1952298a4388b301f0a56b5acb71894a347a87ea1dc",
+      "size_bytes": 584414,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 14."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_001400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:00Z",
+      "sha256": "4efae6ecd41b07fa132b8a6e129a3309e9ac8c76e23ea06521ea5e4e741916bb",
+      "size_bytes": 208659,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 15."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_001500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:02Z",
+      "sha256": "5dbea95546a02f21fd00a718a7089acc1066d5ecf6820e496be522b172b4220f",
+      "size_bytes": 878976,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 16."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_001600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:02Z",
+      "sha256": "d7da2f00e5611345a9cedb69e1e62fed5120c5e7843b57e1fa3940d8b0e6ae2a",
+      "size_bytes": 377093,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 17."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_001700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:04Z",
+      "sha256": "d7a0380bf966c0be4085681ef3620f7d965a94c69843512e9949f122bdfe8985",
+      "size_bytes": 854711,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 18."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_001800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:06Z",
+      "sha256": "11cb4b730e7f5ede5a111465a79b36e4c262695f0168e9c40b6afbdc8fe31cdd",
+      "size_bytes": 461131,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 19."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_001900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:08Z",
+      "sha256": "f1d02c7c60a5274ddcbbd882c993357a3f77afd84f065b74aafb89c3a81bacc7",
+      "size_bytes": 501563,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 20."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_002000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:08Z",
+      "sha256": "d759f587b1a236b7dd840439dbcf71bccfb8613148d1f26298f27b4cdbca9d59",
+      "size_bytes": 663108,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 21."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_002100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:10Z",
+      "sha256": "bc183407916ac2ae8496af37c03ca51336c313981a404b13a142faeb45dc5ac7",
+      "size_bytes": 526088,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 22."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_002200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:14Z",
+      "sha256": "f7a66b67bbe482479b4cba0ea76eeffd185db4b48f30d6a6e109481ab4d71ad4",
+      "size_bytes": 730023,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 23."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_002300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:22Z",
+      "sha256": "1b06177a0f342bda8a77cbe5211a8d03c40096b00f78ddd6defdbded416477f1",
+      "size_bytes": 325794,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 24."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_002400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:26Z",
+      "sha256": "0861a5a0e25be426a70b705c51af9e5209331dbf00b3c3b75fd4cde9d924f293",
+      "size_bytes": 353364,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 25."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_002500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:28Z",
+      "sha256": "9c5c3fd24e3072d8bae7c37a4de8aee795d0a902ec76cd61e6ff147c04a51637",
+      "size_bytes": 467307,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 26."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_002600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:30Z",
+      "sha256": "d9577e687cec6f34f8e2fd4ce895404fc1c9d8e2ebaeb13a21c4ca3e7adb3ef9",
+      "size_bytes": 610036,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 27."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_002700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:32Z",
+      "sha256": "9677ab77133791fe3733f2f83c77abaaa1baf25446c86b4b111fdb86caa9d306",
+      "size_bytes": 847472,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 28."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_002800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:36Z",
+      "sha256": "0545b611a6c7ccfe67a7f12358bf634eae1a709929337c24a41aed3e5f858eac",
+      "size_bytes": 793255,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 29."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_002900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:38Z",
+      "sha256": "33f10ca4e3ac517016070f20a3160b75a65dfb4ea535a7d36d86c87eace54b0e",
+      "size_bytes": 509583,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 30."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_003000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:40Z",
+      "sha256": "4f858bf8b2a70f48b57e42ac599ec0ddeafe9ffe18f346c9ff6af1ecf8c48698",
+      "size_bytes": 402200,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 31."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_003100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:42Z",
+      "sha256": "864457d41564e650fcff6908fbe8154d01091682d0a90590715af9a495de46fd",
+      "size_bytes": 465603,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 32."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_003200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:42Z",
+      "sha256": "046e7af5131d3478346f2ccf5f2bce0f319e3fc61086e892a904e3bc78af1272",
+      "size_bytes": 391523,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 33."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_003300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:44Z",
+      "sha256": "7eb8b797f8c0874183e94e034460089fbc1ff3216a795ad8b03cf630bb896c1f",
+      "size_bytes": 475557,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 34."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_003400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:46Z",
+      "sha256": "1c8e4a4b444340d90ee378e820d81acedf874951ea0a1aa3e1adabc925031781",
+      "size_bytes": 261938,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 35."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_003500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:48Z",
+      "sha256": "2939f64a3e19d712ac9359b00108f3e143ce3bd311a243c8595bbd55bfdb1e67",
+      "size_bytes": 390104,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 36."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_003600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:50Z",
+      "sha256": "a13943ec2283578ca371cebe346962a28fb97fff688021933da1c3732b6524e0",
+      "size_bytes": 633842,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 37."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_003700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:52Z",
+      "sha256": "f0a517d6306d4a80773e2d5b483290e97eac9a2472d5876045c911c84c5d9f23",
+      "size_bytes": 668211,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 38."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_003800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:52Z",
+      "sha256": "db924463b6e19c3e72b0bce4d1d2c94f92576fc80e5312f619ad81c617408d47",
+      "size_bytes": 338077,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 39."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_003900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:54Z",
+      "sha256": "d8f911ab4ee5d525a1d48e4bd51348f1f6ebb529172c3152382c4ab2337fb2cd",
+      "size_bytes": 549333,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 40."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_004000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:56Z",
+      "sha256": "ec6c779d33eb8ccc3a4b9aab425126eff22d7d378bffdc9bb091fa882c615c76",
+      "size_bytes": 344026,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 41."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_004100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:21:58Z",
+      "sha256": "6b7efadcea9910e65f9ceb520d8e5150027df50e911fe2d310387e84fe9f99c7",
+      "size_bytes": 379710,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 42."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_004200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:00Z",
+      "sha256": "753b822aa9dc327754ebba2208ba267b7f0f2d6215b468b99dee8d347361fd84",
+      "size_bytes": 528278,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 43."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_004300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:02Z",
+      "sha256": "2c8679a368e2ffe9842e7025821b8f64c6699d7ac2bcb7456d656d11aaf05fb5",
+      "size_bytes": 514441,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 44."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_004400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:04Z",
+      "sha256": "2a19248ed400ddc777dc89087f31e77d7780e3d6e5897f7f99e5cc3aab665287",
+      "size_bytes": 433632,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 45."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_004500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:06Z",
+      "sha256": "86b4a69bb7c492d23f04fab836c9acabb194bf187bc12b8825dc1c0147345f97",
+      "size_bytes": 560977,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 46."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_004600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:08Z",
+      "sha256": "1d74b81a6fb395e7a33b1b2cec1902ab35bac1c723cd8b9f6976cafd9ab913e8",
+      "size_bytes": 420940,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 47."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_004700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:08Z",
+      "sha256": "59454a463c60957773e4b2a2b105498348fda57a908d0f004d099d2ea9c5a3dc",
+      "size_bytes": 774398,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 48."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_004800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:10Z",
+      "sha256": "62f22e3ca037966ceb24131088fe954c70d399f94fc57c642a60f525460c24fa",
+      "size_bytes": 330452,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 49."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_004900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:14Z",
+      "sha256": "559e6e52321ad1fbfdfd2d0154cd7db6deb33049b686db0251271cd658541be5",
+      "size_bytes": 390838,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 50."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_005000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:20Z",
+      "sha256": "c111c87486b5b1f8143188d4df981ea638e1512c020d81fc91259ffaf5b86ccd",
+      "size_bytes": 391264,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 51."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_005100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:22Z",
+      "sha256": "920a51e10a941a6d6e72fc97ea68b6f2707b6165d9bc70f7b5ec98e92e9e473e",
+      "size_bytes": 401829,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 52."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_005200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:24Z",
+      "sha256": "ff614078860fb2fb10efa7a6c8e05fc71327bab5a08e0cbd5dfb2dc5c9eb06e9",
+      "size_bytes": 317085,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 53."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_005300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:26Z",
+      "sha256": "ecc5dcf14b6329ae5102895f7fc3797e26e1fdac61b35ae251d9d4d9449c40bb",
+      "size_bytes": 330464,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 54."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_005400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:28Z",
+      "sha256": "f762653453672a33323926a71e353c714b4c024b597aa37ba4ff793d077e9bf0",
+      "size_bytes": 342629,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 55."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_005500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:28Z",
+      "sha256": "c4255d89c81ac0011f270b5ba6b66d71312f96a7dec3d838fba07eff06bbef26",
+      "size_bytes": 483067,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 56."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_005600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:30Z",
+      "sha256": "13ac35e47a30455540eedca6a728a33f2c5a587d09c41fb5c3669197502e2f3d",
+      "size_bytes": 831286,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 57."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_005700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:32Z",
+      "sha256": "ecdabdec512dbd06885b56f8e91b10784121f255026c76d9ea161144fc42863c",
+      "size_bytes": 727850,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 58."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_005800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:34Z",
+      "sha256": "7734cd2ff338f885ee0276d3cfd9e7166656a96228cac023726ffe9d200d8ca2",
+      "size_bytes": 355857,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 59."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_005900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:36Z",
+      "sha256": "92ae40d5b103a39429b76e5f1786accad85bfa00273bb678ba8fee5a101344d1",
+      "size_bytes": 558668,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 60."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_006000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:36Z",
+      "sha256": "857fe000890cf1c88b2ddd72715f458b3706a712ee9367f9cd1208de37dda5a2",
+      "size_bytes": 611897,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 61."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_006100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:38Z",
+      "sha256": "f22ca5362d8a2ba7414668b3f44b4b95a32dd8d085aef4afb8aa8fa8a80969cb",
+      "size_bytes": 588799,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 62."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_006200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:40Z",
+      "sha256": "596f5ef72cf0cf6c31588cc72faa8a26b37452605d3111319eb4f7b083efb88d",
+      "size_bytes": 777726,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 63."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_006300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:40Z",
+      "sha256": "3bc673373742c93d0f1b69b25fb67a5e32b70c6e5829a9b09fd2374a23f98368",
+      "size_bytes": 514436,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 64."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_006400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:42Z",
+      "sha256": "7453dad6f7a6e7aa08a445e3da5b9f615b3d8a6cb6270ba9332c7a0229e14918",
+      "size_bytes": 307687,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 65."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_006500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:44Z",
+      "sha256": "7777574c679a5ad78cad55ee22f2ac22f4336e396d24e82495e193d8828dc341",
+      "size_bytes": 445071,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 66."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_006600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:46Z",
+      "sha256": "d87d40c0df1a081bb50b41a2220472fa0305f238499e3bacdcee27841274707d",
+      "size_bytes": 310320,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 67."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_006700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:48Z",
+      "sha256": "eeef29d982ee8b0c689ebb06959392dbb6f0344c0adf379d4159657210a919bf",
+      "size_bytes": 297240,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 68."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_006800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:50Z",
+      "sha256": "29d4fb6cf3d0308e63aa7c734ae624b17d5c71436b60bee2b2e13d60190bc042",
+      "size_bytes": 313172,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 69."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_006900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:52Z",
+      "sha256": "023cdc559305e0976ebb4906820ce19c258bfa589aff857fb8a4e5b089d18487",
+      "size_bytes": 303512,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 70."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_007000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:54Z",
+      "sha256": "b7aeb088d3c785ae63d184e79bc889931c95338777c6558489f10e3f154723a6",
+      "size_bytes": 577075,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 71."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_007100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:22:56Z",
+      "sha256": "0c6575575b652f4eebb5bf7bb672af93def81710280e1b877d98d26d0aa0b43d",
+      "size_bytes": 499504,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 72."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_007200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:00Z",
+      "sha256": "301f15f4c91bef869ec426b94e786e858eee0201b26ac3f6316df87644e95adf",
+      "size_bytes": 565744,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 73."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_007300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:04Z",
+      "sha256": "62ff0afdc73c0d7967e52670de3ac04f99e8e561a42caef42272c73ae3e35540",
+      "size_bytes": 283895,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 74."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_007400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:08Z",
+      "sha256": "287c2910b155b3ddffc73764b38ef8d946839c7900422c03865f043bdad8ad3f",
+      "size_bytes": 283847,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 75."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_007500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:12Z",
+      "sha256": "cf426dba6ae7a417e92486320a2daf226e9eca9e931b996e08f39e8f04fe39d2",
+      "size_bytes": 270347,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 76."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_007600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:14Z",
+      "sha256": "b3f09cab91d3ef16354ae14e282692c8a2fec6980999406ba3049803e1157ca9",
+      "size_bytes": 290446,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 77."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_007700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:16Z",
+      "sha256": "ca1df42d9b03192bdb2fdb505881681a4712a8fb82cbabe961b62b6f27808a31",
+      "size_bytes": 455586,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 78."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_007800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:18Z",
+      "sha256": "cfc63a5be85258aebd0e8b600aa9b0777622cc28dc4c7c12f2ecc3aea519041e",
+      "size_bytes": 505131,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 79."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_007900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:18Z",
+      "sha256": "ea28418e0a7252cceebd2b1dc7b55810abdcc126fad292a9ed80c72dfedb27af",
+      "size_bytes": 538923,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 80."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_008000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:20Z",
+      "sha256": "2f4f4d0ea1a9d689fd4a588a7915d3c0a5d12e56aacac9110f8896704e06bd95",
+      "size_bytes": 605410,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 81."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_008100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:22Z",
+      "sha256": "2fe7ad335d38d94115db69d7cc2baad9a7c318d27e4bb009512805919a2f28b2",
+      "size_bytes": 279156,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 82."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_008200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:24Z",
+      "sha256": "c0844e1f60e53488b499c2bc740df73bfdcb07a298d41052355f4c43e28e9aab",
+      "size_bytes": 252290,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 83."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_008300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:28Z",
+      "sha256": "1de5822b7c9d04399eba9b5db29083fe91c02ce6aadac1e810114269b1f7399a",
+      "size_bytes": 390305,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 84."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_008400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:30Z",
+      "sha256": "6f9466cfd2860aac31b4e80c1f0d084714143baadeeb837569cb52d841b47161",
+      "size_bytes": 732719,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 85."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_008500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:32Z",
+      "sha256": "85c456858f9736ac677877c083cde372d5594fb0d2a113bd6933ebad201cc5a5",
+      "size_bytes": 446682,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 86."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_008600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:34Z",
+      "sha256": "a16752e5782b95159428417d3243262cd313df430275d8c1cef342baef1204e5",
+      "size_bytes": 346615,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 87."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_008700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:34Z",
+      "sha256": "29dcd91f01c3359467d001b53adcb3003f405c4113492b49a83081e0df9c6af6",
+      "size_bytes": 338460,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 88."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_008800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:36Z",
+      "sha256": "15793a0ae828f283e26605b4b1468a11333ae82cde8cfe153e1466de9163d6c2",
+      "size_bytes": 363014,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 89."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_008900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:38Z",
+      "sha256": "808ec1598b9b147c5348993efc53cf593eb865f38f64e4614362856d4e51f7da",
+      "size_bytes": 250356,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 90."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_009000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:38Z",
+      "sha256": "1aa5adbad5357c28f09b5cc608f41db7e415d5ece5ef9db7c4f8612e86944fb0",
+      "size_bytes": 327937,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 91."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_009100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:40Z",
+      "sha256": "4f7fa69019ba5e906609fbca0be0c7df88fa5ff399983de648327aecd7efdd03",
+      "size_bytes": 525860,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 92."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_009200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:44Z",
+      "sha256": "83a771645881b9323617c98191c3b0cdca81962b87325f87c0fa606d59f9f5cb",
+      "size_bytes": 368570,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 93."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_009300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:50Z",
+      "sha256": "5dc4834f21458954629bcebf83664b66022905ee79aeedb4d7312fb7e55f1ab8",
+      "size_bytes": 251697,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 94."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_009400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:52Z",
+      "sha256": "95722b313c8ac44d4baad380e5b4985bf169581f6dc91707db3c10bd6c85a281",
+      "size_bytes": 270314,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 95."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_009500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:54Z",
+      "sha256": "61b2b8a2dbe0f219471d03ac4641c3dbf349b9a7a1c24f44680b0942ed1500f2",
+      "size_bytes": 273022,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 96."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_009600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:54Z",
+      "sha256": "4d90127fba6039229e5ec62ad0e6bb8f078751b9fafb540ef65e696c916594e6",
+      "size_bytes": 316000,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 97."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_009700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:58Z",
+      "sha256": "4d261d4865e7b5c07e9d0d5cd86aa7d39a8706d5de3238913a6bd6ee63d74038",
+      "size_bytes": 294993,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 98."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_009800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:23:58Z",
+      "sha256": "ee4692c33a1b63b4fa1c8a8851ca11a6d41a766a0e9bcc52fc3ebd0e956df670",
+      "size_bytes": 298899,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 99."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_009900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:00Z",
+      "sha256": "4a28a3972c6a71933c0cab03357178df2ec26981804162a57fe657533738f5a8",
+      "size_bytes": 257596,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 100."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_010000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:02Z",
+      "sha256": "f46da9c46752285972c17a3627d012ae650924f7e69d561e37504c3e5a0cc9ca",
+      "size_bytes": 258043,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 101."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_010100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:02Z",
+      "sha256": "52dff390ff2446f38c45cd6979695a5f5a7e1b18614b3e715b1e31c4219e3153",
+      "size_bytes": 279572,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 102."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_010200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:04Z",
+      "sha256": "bd46adde765f53da99e8f3410ae5c7c875ca04ecb477667c79bdde4644a8dff6",
+      "size_bytes": 305195,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 103."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_010300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:06Z",
+      "sha256": "9b6c865d3854019a3cc3763f95a742ca136d9843334fd3b632347c9584a85d8b",
+      "size_bytes": 246396,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 104."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_010400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:08Z",
+      "sha256": "3f98a4625b3c0ae9d46af5826a84ccb9c232b41d8c08c0b1852fb81127d1a447",
+      "size_bytes": 268163,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 105."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_010500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:10Z",
+      "sha256": "bd9895afa4f86297bb69fddc0913dcdf91a6fbe5653a53f8f3eabe30c2824737",
+      "size_bytes": 287121,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 106."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_010600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:12Z",
+      "sha256": "65b555d1b36547ef2e8d609bece31e0e356b68b2b50ff402eaf7e11ceddcea6e",
+      "size_bytes": 262472,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 107."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_010700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:14Z",
+      "sha256": "2bc28d7035ea2daa14928b876bc649fba79575dd4baf4034361ad53f31e44dca",
+      "size_bytes": 276781,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 108."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_010800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:14Z",
+      "sha256": "6b581013e093b6d39eaf29c872c8c3f28dfbe70a3549dacd9314044366e7c6f9",
+      "size_bytes": 261139,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 109."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_010900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:16Z",
+      "sha256": "f3ad7aad35009a30709c0e0a6134b105193f40e416a2c135aa6673652ac1b659",
+      "size_bytes": 235192,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 110."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_011000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:18Z",
+      "sha256": "941fc1da4b6573243af728209cef165540ceb6cd8193701901e489812a029e71",
+      "size_bytes": 614691,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 111."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_011100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:18Z",
+      "sha256": "fcfefb828fd04562f5aae289613ed9232a2e2189d1d66333cefc5d0cf0ea9bd1",
+      "size_bytes": 779427,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 112."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_011200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:20Z",
+      "sha256": "1b370bc6f69072f2635dc4781a89b00ea1b0243f5886e4a35851cabbb7d8a02e",
+      "size_bytes": 482008,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 113."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_011300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:22Z",
+      "sha256": "56e8642602da26bcc3a859245fa2b13a59935f7a599f1d52bd035b3ec3f1ab00",
+      "size_bytes": 407387,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 114."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_011400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:22Z",
+      "sha256": "0180c4f42f64e664709fa3d9e3c521bb13a6a9c06a1ba215fa08dcf420d2811a",
+      "size_bytes": 514046,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 115."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_011500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:26Z",
+      "sha256": "7d9a702a26673124b284da6960cb3b630cb43b531418eb824a18e02171001e85",
+      "size_bytes": 251643,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 116."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_011600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:28Z",
+      "sha256": "e586ee96915e8a243a501ea0a8063376e06b462ebe65a171ad81712b05935442",
+      "size_bytes": 286675,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 117."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_011700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:32Z",
+      "sha256": "cb644df5329796863efb00a1dbe48ad3ea5c1bd194c941cb539d6366fe103820",
+      "size_bytes": 299900,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 118."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_011800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:34Z",
+      "sha256": "daac6ef5031a1a6f24caa71e6f336e95a5882733d059e2f3bcb7d04aa1ad8de4",
+      "size_bytes": 333219,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 119."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_011900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:34Z",
+      "sha256": "f8d9707316897e2699ba7cbcc6a86c511e5c2a9c0c15a7ceaa3449312f4b2ef5",
+      "size_bytes": 369433,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 120."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_012000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:36Z",
+      "sha256": "8d6a09e76d750f6168f1266746337df62681f85518f553a54b835507c56e478e",
+      "size_bytes": 308720,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 121."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_012100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:38Z",
+      "sha256": "c45295e724f7264388d066fa597ba0c902a6b0b5627cc006cf014a3398c71c5d",
+      "size_bytes": 568266,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 122."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_012200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:40Z",
+      "sha256": "751687921fe282f89613368766d8d76d13a9a6138bac90de1e910d83d3241b20",
+      "size_bytes": 357679,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 123."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_012300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:42Z",
+      "sha256": "3cacdfeb4e39bc6f3e3d6ab4d413d3158be3710fe1b4481be4d124803d3b5da3",
+      "size_bytes": 257869,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 124."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_012400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:46Z",
+      "sha256": "a3f81f1b217cb32c99a304818b00253111c77f9b173d619e3b0bc70477e16802",
+      "size_bytes": 247105,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 125."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_012500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:48Z",
+      "sha256": "64eb222ea5a881d4b0b6990d5e0b20dddae68dbb2d2228e722afd3d9d1a99237",
+      "size_bytes": 412320,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 126."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_012600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:48Z",
+      "sha256": "a8626f5e0e4bc2e9229c275153f2cafa0d6a6c2ab6bf74663181a21ffc8f8357",
+      "size_bytes": 369462,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 127."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_012700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:50Z",
+      "sha256": "37892de3caf186a32f3270298b3ba1277fa241b1b926134f4826c99b0b44bff3",
+      "size_bytes": 386734,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 128."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_012800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:52Z",
+      "sha256": "4b11829b32f5f44105b3baeec8e7bc0263c297d6fb42532943433e08aa9b5763",
+      "size_bytes": 418452,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 129."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_012900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:52Z",
+      "sha256": "e5f35d579afd7218da9130e495755a4f19f2462757dce0de54d66cd4cf1d2c19",
+      "size_bytes": 701381,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 130."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_013000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:54Z",
+      "sha256": "7b33eca3e7bdeeb8ee1a5a815778f91bd74201367622ece04c730f6945dd7eea",
+      "size_bytes": 514904,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 131."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_013100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:56Z",
+      "sha256": "aaded16feab32d459d7cf2d56ec88ecbb48be6ae534a6d0de87263e26cf904f1",
+      "size_bytes": 383171,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 132."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_013200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:56Z",
+      "sha256": "4d901a730d875aae9e96b1e839f9ea3a517b075f6b5087616fdf01b6038e9f9c",
+      "size_bytes": 283193,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 133."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_013300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:24:58Z",
+      "sha256": "f7bf60b363d5b43247fefc2fb8f4d1fa140d3a78a396b212f4d378fa53672109",
+      "size_bytes": 386630,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 134."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_013400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:00Z",
+      "sha256": "aec49d224ea7a0f247d218bf22e228deda47898f7911afb5ed5612e3da6a38d5",
+      "size_bytes": 599878,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 135."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_013500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:00Z",
+      "sha256": "dae812e760af83355affdde6289105b421e4bf5bf989f29d015c8c16cf79390d",
+      "size_bytes": 400925,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 136."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_013600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:02Z",
+      "sha256": "c9e3db3715377c035879e0e6f0c4f6b58760613b63f16bf3a41c988537bc5896",
+      "size_bytes": 526915,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 137."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_013700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:04Z",
+      "sha256": "8f7ca17bab9fbe7e8361c4d38565aaef1149105a52bd72eb77f8504ca91eb289",
+      "size_bytes": 301068,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 138."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_013800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:06Z",
+      "sha256": "17e798a6fcdbe4855c381e0eac29131a8fa1efc6a52299373c27a2a8470e0461",
+      "size_bytes": 507631,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 139."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_013900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:08Z",
+      "sha256": "d68eff92ef8cd375cb894b5c9d7a9e7df6fc8b9980cdad25bd146940b663a54b",
+      "size_bytes": 383747,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 140."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_014000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:08Z",
+      "sha256": "f2a367ba79152550909e2d96e872f72dce17fdb988c8697211a45af70806b04c",
+      "size_bytes": 325307,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 141."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_014100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:10Z",
+      "sha256": "e93db46ed0ad0e9dc0296ec3b9787e56148e07607b5178702b2826d43a107956",
+      "size_bytes": 237517,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 142."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_014200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:10Z",
+      "sha256": "c80563484f6f40c8ee5bab515dbcef86d334384dabeff76eedc0c611060a7596",
+      "size_bytes": 220781,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 143."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_014300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:12Z",
+      "sha256": "f5d7979fc2edf982779378f3ec0b9503f4dc2477966d0f5e2e1da758e9825c36",
+      "size_bytes": 235291,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 144."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_014400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:14Z",
+      "sha256": "3105a9d7abc0a04aec6aeacb8d5ff9a7642f3a41c469bd4b6a9a634145357b21",
+      "size_bytes": 401025,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 145."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_014500.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:14Z",
+      "sha256": "11f5b59b6aa1e79195a64ab7bfee7af0cfcc000685ba92fa9aa6f8ccc3fe8c70",
+      "size_bytes": 641933,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 146."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_014600.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:16Z",
+      "sha256": "27e3a36f1935b5cdf810c3e80f883b6f706f16c700b153d3ed58389a4d52c9d4",
+      "size_bytes": 624579,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 147."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_014700.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:16Z",
+      "sha256": "1313258d5405c751ed8d0eb17f134c8b54e884bf6aa7c953292905204e121b55",
+      "size_bytes": 618681,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 148."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_014800.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:18Z",
+      "sha256": "623f258d85d539eeb531bf5e227c81063b58865f7c6edb326f0f4e0f263b35ee",
+      "size_bytes": 584136,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 149."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_014900.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:20Z",
+      "sha256": "ed13b5afcf06d4bb64e496d4ab4727d87410c4b16a0135785dd7de1896b5f85a",
+      "size_bytes": 382821,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 150."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_015000.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:20Z",
+      "sha256": "d465f17794a03f9ff340bc66762785eafc539f6650356ef4dcf754fea5be3723",
+      "size_bytes": 381354,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 151."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_015100.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:22Z",
+      "sha256": "b637293c11e71c32624e180873ec39e8f2a64e244bf3a348c7d30a9316ff95f3",
+      "size_bytes": 425230,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 152."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_015200.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:24Z",
+      "sha256": "345cc4fe4a51ef9edac9e17fac5844e744dd8a5be920c77941276c24864491f9",
+      "size_bytes": 434461,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 153."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_015300.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:24Z",
+      "sha256": "a6431e47f741925ebf45b61ed16ca0fd4cfae142cebca9b02309ee3431ab982c",
+      "size_bytes": 393588,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 154."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_gb/gb_015400.txt",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=gb&retmode=text",
+      "pulled_at_utc": "2026-05-13T19:25:26Z",
+      "sha256": "aa0703f9a598a663ddb10c740e5cc1ed3667d0c7683d29b0e3848ff674c29787",
+      "size_bytes": 178409,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, GenBank flatfile source features.",
+      "description": "GenBank flatfile batch 155."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/ncbi/nuccore_hantavirus_esearch.json",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&term=hantavirus[organism]&retmode=json",
+      "pulled_at_utc": "2026-05-13T19:20:30Z",
+      "sha256": "9b4db8b69a2b1dfbd35d7dc9418648e9ae7546eea01b3b6b9163890d8e90f623",
+      "size_bytes": 192571,
+      "license": "NCBI public data; see NCBI disclaimer and data usage policies",
+      "citation": "NCBI Nucleotide database, E-utilities esearch for hantavirus[organism].",
+      "description": "Nuccore UID list used for GenBank source-feature extraction."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/who/diseaseoutbreaknews_hantavirus_summary.json",
+      "source_url": "https://www.who.int/api/news/diseaseoutbreaknews?$filter=contains(tolower(Summary),'hanta')&$top=50",
+      "pulled_at_utc": "2026-05-13T19:25:44Z",
+      "sha256": "5906887cf85a2868b0b03d3205599cb5e02a5c011f578cc27e807c006fb0d70f",
+      "size_bytes": 59601,
+      "license": "WHO website terms and conditions",
+      "citation": "World Health Organization. Disease Outbreak News API.",
+      "description": "Disease Outbreak News items with hantavirus text in Summary."
+    },
+    {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/cases/who/diseaseoutbreaknews_hantavirus_title.json",
+      "source_url": "https://www.who.int/api/news/diseaseoutbreaknews?$filter=contains(tolower(Title),'hanta')&$top=50",
+      "pulled_at_utc": "2026-05-13T19:25:44Z",
+      "sha256": "dbdf99c49022c5b3e4e5e568deffbcb0bb039564d0600541673307414f1e4f2e",
+      "size_bytes": 92351,
+      "license": "WHO website terms and conditions",
+      "citation": "World Health Organization. Disease Outbreak News API.",
+      "description": "Disease Outbreak News items with hantavirus text in Title."
+    }
+  ]
+}
