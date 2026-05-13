@@ -117,23 +117,22 @@ events.
 ### Step 3: global point-supported exposed population
 
 Builds a world-coverage exposed-population accounting output from high-confidence
-reported case coordinates and GHSL 2020 global 1 km population. Low-confidence
-country/admin centroid records are reported as unlocalizable evidence and are
-not turned into fake local hotspots.
+reported case coordinates, GHSL 2020 global 1 km population, and GHS-SMOD
+settlement classes. Low-confidence country/admin centroid records are reported
+as unlocalizable evidence and are not turned into fake local hotspots.
 
 ```bash
 python3 pipeline/exposure/exposed_population.py
 ```
 
-Expected wall-time on Ian's Mac: 4-8 minutes on a cold GHSL cache, including
-the first GHSL download/extract; about 3 minutes on a warm cache because the
-script scans the global 1 km population raster for each exposure radius. The
-script keeps the per-radius geodesic mask in memory and only writes the final
-compressed 100 km surface to the external drive.
+Expected wall-time on Ian's Mac: 12-15 minutes on a warm GHSL/GHS-SMOD cache.
+The script scans the global 1 km population and settlement rasters for each
+exposure radius, keeps the per-radius geodesic mask in memory, and only writes
+the final compressed 100 km surface to the external drive.
 
 Expected checked-in outputs:
 
-- `data/outputs/global_exposure_v1.json` (~4.5 KB)
+- `data/outputs/global_exposure_v1.json` (~17 KB)
 - `data/outputs/global_exposure_locations_v1.csv` (~28 KB)
 - `data/outputs/_external_index.json` (~550 B)
 
@@ -143,9 +142,11 @@ Expected external output:
 
 Current result: 217 unique point-supported locations from 882 high-confidence
 records across 26 countries. The 100 km geodesic footprint covers 358.8 million
-people, or 4.58% of the GHSL 2020 population raster. The remaining 8,157 records are
-reported as unlocalizable at this stage because they are country/admin centroids
-or otherwise too coarse for granular exposure mapping.
+people, or 4.58% of the GHSL 2020 population raster. Of that 100 km footprint,
+312.5 million people are in GHS-SMOD urban classes and 46.3 million are in rural
+classes. The remaining 8,157 records are reported as unlocalizable at this stage
+because they are country/admin centroids or otherwise too coarse for granular
+exposure mapping.
 
 ## Data Provenance
 

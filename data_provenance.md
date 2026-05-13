@@ -205,15 +205,15 @@ Input files:
 
 ## Global Exposure v1
 
-Generated at: `2026-05-13T23:09:36Z`
+Generated at: `2026-05-13T23:48:14Z`
 
 Output:
 
 | Path | Size | SHA-256 | Description |
 |---|---:|---|---|
-| `data/outputs/global_exposure_v1.json` | 4557 | `e1b024dd13a850d7797c29e38bc4c42f2ec122d5989d8a24ae1d7138ea144091` | Global exposed-population summary by 25, 50, and 100 km reported-case geodesic footprints. |
+| `data/outputs/global_exposure_v1.json` | 17321 | `5b5490fed7467d9bd6692f0aadd7813aa6ab26e3910e31f55f7abc96391f5792` | Global exposed-population summary by 25, 50, and 100 km reported-case geodesic footprints, stratified by GHS-SMOD settlement class. |
 | `data/outputs/global_exposure_locations_v1.csv` | 28439 | `157e568c1214c031894fa0cb1f540966b0bd59e4df9f629778a6bfd2e725ee09` | Unique high-confidence reported-case locations used for granular exposure accounting. |
-| `data/outputs/_external_index.json` | 550 | `f9a0c48f00c66d10783737a269a7c4feacd5276a7a61d58bb046549618f68ad8` | Pointer to the off-repo 100 km exposure mask. |
+| `data/outputs/_external_index.json` | 549 | `92f9ff067ff784247c30631dc8d7b3948ab9c31afddf53c81e4ebcfb7686736f` | Pointer to the off-repo 100 km exposure mask. |
 | `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif` | 786185 | `19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e` | External compressed GeoTIFF mask for cells within 100 km geodesic distance of point-supported reported case locations. |
 
 Input files:
@@ -223,3 +223,4 @@ Input files:
 | `data/outputs/cases_panel_v1.parquet` | derived from Case Panel v1 inputs above | 2026-05-13T19:27:59Z | 59096 | `e56c94395e212c577036af0c3acea5e2b4c4c1b9b18cf35c56c534a38c612656` | Mixed upstream terms; see Case Panel v1 | TEG case-panel loader output. | Unified hantavirus case panel; high-confidence point records were used for granular exposure footprints, with lower-confidence records reported as unlocalizable. |
 | `/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.zip` | https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_GLOBE_R2023A/GHS_POP_E2020_GLOBE_R2023A_54009_1000/V1-0/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.zip | 2026-05-13T22:43:32Z | 322293568 | `40ccf52af857a82cd327b882d1ebb901f84363b0e7e6806ccee56b0a85df6d2c` | European Commission reuse policy / GHSL terms | Schiavina, M., Freire, S., MacManus, K. et al. GHS-POP R2023A. | Downloaded GHSL 2020 global 1 km population archive. |
 | `/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.tif` | extracted from GHSL archive above | 2026-05-13T22:48:38Z | 261128685 | `db25d12ab0851446af467a56eb1651d383867dc3fbf4aa6348ec8e3372225196` | European Commission reuse policy / GHSL terms | Schiavina, M., Freire, S., MacManus, K. et al. GHS-POP R2023A. | Equal-area World Mollweide population denominator for exposure accounting. |
+| `/Volumes/HELFRICH-GD/KatiaBlendedFinance/raster_cache/ghs_smod/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V2_0.tif` | https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_SMOD_GLOBE_R2023A/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000/V2-0/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V2_0.zip | existing local cache, reused 2026-05-13 | 17958428 | `1e2d7d7a6994b0458fc5d6ff985fb872f27841162b1808a3d52e32ae1a4953a0` | European Commission reuse policy / GHSL terms | Pesaresi, M., Politis, P. et al. GHS-SMOD R2023A. | Settlement-class raster aligned to the GHSL population grid for exposure stratification. |

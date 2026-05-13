@@ -43,6 +43,12 @@ from pipeline.layers.ghs_pop import (
     GHS_POP_2020_1KM_ZIP,
     ensure_ghs_pop_2020_1km,
 )
+from pipeline.layers.ghs_smod import (
+    GHS_SMOD_2020_URL,
+    SMOD_CLASS_LABELS,
+    SMOD_GROUPS,
+    ensure_ghs_smod_2020_1km,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -53,6 +59,12 @@ EXTERNAL_INDEX = REPO_ROOT / "data" / "outputs" / "_external_index.json"
 EXTERNAL_OUTPUT_DIR = Path("/Volumes/HELFRICH-GD/TEG_data/outputs")
 DEFAULT_SURFACE = EXTERNAL_OUTPUT_DIR / "global_exposure_point_supported_100km_v1.tif"
 GEOD = pyproj.Geod(ellps="WGS84")
+SMOD_CLASS_KEYS = sorted(SMOD_CLASS_LABELS)
+SMOD_UNCLASSIFIED_INDEX = len(SMOD_CLASS_KEYS)
+SMOD_LOOKUP_OFFSET = 10000
+SMOD_LOOKUP = np.full(SMOD_LOOKUP_OFFSET + max(SMOD_CLASS_KEYS) + 1, SMOD_UNCLASSIFIED_INDEX, dtype=np.int16)
+for _smod_idx, _smod_cls in enumerate(SMOD_CLASS_KEYS):
+    SMOD_LOOKUP[SMOD_LOOKUP_OFFSET + _smod_cls] = _smod_idx
 
 
 @dataclass
@@ -102,6 +114,84 @@ def _write_external_index(entry: dict[str, Any]) -> None:
     payload["artifacts"] = sorted(artifacts, key=lambda item: item["path"])
     payload["updated_at_utc"] = _now_utc()
     EXTERNAL_INDEX.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+
+def _assert_same_grid(a, b, *, label_a: str, label_b: str) -> None:
+    if a.crs != b.crs:
+        raise ValueError(f"{label_a} CRS {a.crs} does not match {label_b} CRS {b.crs}")
+    if (a.width, a.height) != (b.width, b.height):
+        raise ValueError(
+            f"{label_a} shape {(a.width, a.height)} does not match "
+            f"{label_b} shape {(b.width, b.height)}"
+        )
+    if a.transform != b.transform:
+        raise ValueError(f"{label_a} transform does not match {label_b} transform")
+
+
+def _empty_settlement_accumulator() -> dict[str, dict[str, Any]]:
+    out: dict[str, dict[str, Any]] = {
+        str(cls): {
+            "label": label,
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "total_cells": 0,
+            "exposed_cells": 0,
+        }
+        for cls, label in sorted(SMOD_CLASS_LABELS.items())
+    }
+    out["unclassified"] = {
+        "label": "no_data_or_unclassified",
+        "total_population": 0.0,
+        "exposed_population": 0.0,
+        "total_cells": 0,
+        "exposed_cells": 0,
+    }
+    return out
+
+
+def _smod_class_indices(smod: np.ndarray) -> np.ndarray:
+    lookup_idx = smod.astype(np.int32, copy=False) + SMOD_LOOKUP_OFFSET
+    valid = (lookup_idx >= 0) & (lookup_idx < len(SMOD_LOOKUP))
+    out = np.full(smod.shape, SMOD_UNCLASSIFIED_INDEX, dtype=np.int16)
+    out[valid] = SMOD_LOOKUP[lookup_idx[valid]]
+    return out
+
+
+def _finalize_settlement_summary(class_acc: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    by_class = {}
+    for key, item in class_acc.items():
+        total_population = float(item["total_population"])
+        exposed_population = float(item["exposed_population"])
+        by_class[key] = {
+            "label": item["label"],
+            "total_population": total_population,
+            "exposed_population": exposed_population,
+            "share_of_class_population": (
+                exposed_population / total_population if total_population else None
+            ),
+            "total_cells": int(item["total_cells"]),
+            "exposed_cells": int(item["exposed_cells"]),
+        }
+
+    by_group = {}
+    for group, classes in SMOD_GROUPS.items():
+        keys = [str(cls) for cls in classes]
+        total_population = sum(by_class[key]["total_population"] for key in keys)
+        exposed_population = sum(by_class[key]["exposed_population"] for key in keys)
+        total_cells = sum(by_class[key]["total_cells"] for key in keys)
+        exposed_cells = sum(by_class[key]["exposed_cells"] for key in keys)
+        by_group[group] = {
+            "classes": classes,
+            "total_population": total_population,
+            "exposed_population": exposed_population,
+            "share_of_class_population": (
+                exposed_population / total_population if total_population else None
+            ),
+            "total_cells": int(total_cells),
+            "exposed_cells": int(exposed_cells),
+        }
+
+    return {"by_class": by_class, "by_group": by_group}
 
 
 def _load_point_supported_locations(
@@ -261,10 +351,12 @@ def _sum_population_and_write_surface(
     mask: np.ndarray,
     *,
     surface_path: Path | None,
-) -> tuple[float, float, int]:
+    smod_src=None,
+) -> tuple[float, float, int, dict[str, Any] | None]:
     exposed_population = 0.0
     total_population = 0.0
     exposed_cells = 0
+    settlement = _empty_settlement_accumulator() if smod_src is not None else None
     dst = None
     if surface_path is not None:
         surface_path.parent.mkdir(parents=True, exist_ok=True)
@@ -295,12 +387,37 @@ def _sum_population_and_write_surface(
             total_population += float(pop.sum())
             exposed_cells += int(local_mask.sum())
             exposed_population += float(pop[local_mask == 1].sum())
+            if smod_src is not None and settlement is not None:
+                smod = smod_src.read(1, window=window, masked=True).filled(-9999).astype(np.int16)
+                class_idx = _smod_class_indices(smod).ravel()
+                pop_flat = pop.ravel()
+                exposed_flat = local_mask.ravel() == 1
+                minlength = SMOD_UNCLASSIFIED_INDEX + 1
+                total_pop_by_class = np.bincount(class_idx, weights=pop_flat, minlength=minlength)
+                exposed_pop_by_class = np.bincount(
+                    class_idx[exposed_flat],
+                    weights=pop_flat[exposed_flat],
+                    minlength=minlength,
+                )
+                total_cells_by_class = np.bincount(class_idx, minlength=minlength)
+                exposed_cells_by_class = np.bincount(class_idx[exposed_flat], minlength=minlength)
+                for idx, cls in enumerate(SMOD_CLASS_KEYS):
+                    key = str(cls)
+                    settlement[key]["total_population"] += float(total_pop_by_class[idx])
+                    settlement[key]["exposed_population"] += float(exposed_pop_by_class[idx])
+                    settlement[key]["total_cells"] += int(total_cells_by_class[idx])
+                    settlement[key]["exposed_cells"] += int(exposed_cells_by_class[idx])
+                settlement["unclassified"]["total_population"] += float(total_pop_by_class[SMOD_UNCLASSIFIED_INDEX])
+                settlement["unclassified"]["exposed_population"] += float(exposed_pop_by_class[SMOD_UNCLASSIFIED_INDEX])
+                settlement["unclassified"]["total_cells"] += int(total_cells_by_class[SMOD_UNCLASSIFIED_INDEX])
+                settlement["unclassified"]["exposed_cells"] += int(exposed_cells_by_class[SMOD_UNCLASSIFIED_INDEX])
             if dst is not None:
                 dst.write(local_mask, 1, window=window)
     finally:
         if dst is not None:
             dst.close()
-    return exposed_population, total_population, exposed_cells
+    settlement_summary = _finalize_settlement_summary(settlement) if settlement is not None else None
+    return exposed_population, total_population, exposed_cells, settlement_summary
 
 
 def _iter_windows(height: int, width: int, *, block_size: int) -> list[Window]:
@@ -325,6 +442,7 @@ def _radius_exposure(
     radius_km: float,
     surface_path: Path | None,
     geodesic_vertices: int,
+    smod_src=None,
 ) -> dict[str, Any]:
     height, width = src.height, src.width
     radius_m = float(radius_km) * 1000.0
@@ -343,10 +461,11 @@ def _radius_exposure(
 
     t1 = time.perf_counter()
     print(f"scanning population raster for {radius_km:g} km footprint", flush=True)
-    exposed_population, total_population, exposed_cells = _sum_population_and_write_surface(
+    exposed_population, total_population, exposed_cells, settlement_summary = _sum_population_and_write_surface(
         src,
         mask,
         surface_path=surface_path,
+        smod_src=smod_src,
     )
     scan_seconds = time.perf_counter() - t1
     del mask
@@ -369,11 +488,14 @@ def _radius_exposure(
             "sha256": _sha256(surface_path),
             "size_bytes": surface_path.stat().st_size,
         }
+    if settlement_summary is not None:
+        out["settlement"] = settlement_summary
     return out
 
 
 def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
     pop_path = ensure_ghs_pop_2020_1km(download=not args.no_download)
+    smod_path = None if args.no_smod else ensure_ghs_smod_2020_1km(download=not args.no_download)
     radii = sorted({float(radius) for radius in args.radii_km})
     surface_radius = float(args.surface_radius_km)
     if surface_radius not in radii:
@@ -381,6 +503,9 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
         radii = sorted(radii)
 
     with rasterio.open(pop_path) as src:
+        smod_src = rasterio.open(smod_path) if smod_path is not None else None
+        if smod_src is not None:
+            _assert_same_grid(src, smod_src, label_a="GHSL population", label_b="GHS-SMOD")
         locations, case_diagnostics, grouped = _load_point_supported_locations(
             CASES_PATH,
             min_confidence=args.min_confidence,
@@ -406,8 +531,11 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
                     radius_km=radius,
                     surface_path=surface_path,
                     geodesic_vertices=args.geodesic_vertices,
+                    smod_src=smod_src,
                 )
             )
+        if smod_src is not None:
+            smod_src.close()
 
     surface_result = next(
         (result for result in radius_results if math.isclose(result["radius_km"], surface_radius)),
@@ -455,6 +583,20 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
             "license": "European Commission reuse policy / GHSL terms",
             "citation": "Schiavina, M., Freire, S., MacManus, K. et al. GHS-POP R2023A.",
         },
+        "settlement_raster": (
+            {
+                "path": str(smod_path),
+                "source_url": GHS_SMOD_2020_URL,
+                "sha256": _sha256(smod_path),
+                "size_bytes": smod_path.stat().st_size,
+                "license": "European Commission reuse policy / GHSL terms",
+                "citation": "Pesaresi, M., Politis, P. et al. GHS-SMOD R2023A.",
+                "class_labels": {str(k): v for k, v in sorted(SMOD_CLASS_LABELS.items())},
+                "groups": SMOD_GROUPS,
+            }
+            if smod_path is not None
+            else None
+        ),
         "outputs": {
             "locations_csv": {
                 "path": str(OUTPUT_LOCATIONS.relative_to(REPO_ROOT)),
@@ -468,6 +610,7 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
             "Point-supported exposure is a lower-bound local footprint because low-confidence records are not locally mapped.",
             "Distance footprints are evidence footprints, not transmission probabilities.",
             "Rasterized geodesic footprints assign whole 1 km cells by the rasterization rule rather than sub-cell population fractions.",
+            "SMOD settlement strata describe where exposed population lives; they are not a reservoir-habitat model.",
             "GHSL 2020 population is used for all case years, so historical exposure is not population-year specific.",
         ],
     }
@@ -484,6 +627,7 @@ def main() -> None:
     parser.add_argument("--coordinate-precision", type=int, default=5)
     parser.add_argument("--geodesic-vertices", type=int, default=96)
     parser.add_argument("--surface-path", type=Path, default=DEFAULT_SURFACE)
+    parser.add_argument("--no-smod", action="store_true")
     parser.add_argument("--no-download", action="store_true")
     args = parser.parse_args()
 

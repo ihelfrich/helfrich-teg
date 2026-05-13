@@ -5,9 +5,9 @@
       "sha256": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e",
       "size_bytes": 786185,
       "description": "Global 1 km point-supported geodesic exposure mask within 100 km of high-confidence reported hantavirus case locations.",
-      "created_at_utc": "2026-05-13T23:09:36Z",
+      "created_at_utc": "2026-05-13T23:48:14Z",
       "source_script": "pipeline/exposure/exposed_population.py"
     }
   ],
-  "updated_at_utc": "2026-05-13T23:09:36Z"
+  "updated_at_utc": "2026-05-13T23:48:14Z"
 }

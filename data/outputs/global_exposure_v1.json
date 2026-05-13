@@ -1,6 +1,6 @@
 {
   "schema_version": "global_exposure_v1",
-  "created_at_utc": "2026-05-13T23:09:36Z",
+  "created_at_utc": "2026-05-13T23:48:14Z",
   "interpretation": "Population residing within distance footprints of high-confidence reported case locations. This is exposure accounting from reported evidence, not origin inference.",
   "case_evidence": {
     "case_records_total": 9039,
@@ -63,6 +63,40 @@
     "license": "European Commission reuse policy / GHSL terms",
     "citation": "Schiavina, M., Freire, S., MacManus, K. et al. GHS-POP R2023A."
   },
+  "settlement_raster": {
+    "path": "/Volumes/HELFRICH-GD/KatiaBlendedFinance/raster_cache/ghs_smod/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V2_0.tif",
+    "source_url": "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_SMOD_GLOBE_R2023A/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000/V2-0/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V2_0.zip",
+    "sha256": "1e2d7d7a6994b0458fc5d6ff985fb872f27841162b1808a3d52e32ae1a4953a0",
+    "size_bytes": 17958428,
+    "license": "European Commission reuse policy / GHSL terms",
+    "citation": "Pesaresi, M., Politis, P. et al. GHS-SMOD R2023A.",
+    "class_labels": {
+      "10": "water",
+      "11": "very_low_density_rural",
+      "12": "low_density_rural",
+      "13": "rural_cluster",
+      "21": "suburban_or_peri_urban",
+      "22": "semi_dense_urban_cluster",
+      "23": "dense_urban_cluster",
+      "30": "urban_centre"
+    },
+    "groups": {
+      "urban": [
+        21,
+        22,
+        23,
+        30
+      ],
+      "rural": [
+        11,
+        12,
+        13
+      ],
+      "water": [
+        10
+      ]
+    }
+  },
   "outputs": {
     "locations_csv": {
       "path": "data/outputs/global_exposure_locations_v1.csv",
@@ -80,8 +114,121 @@
       "exposed_cells": 180353,
       "skipped_footprints": 0,
       "timing_seconds": {
-        "mark": 1.7942579078953713,
-        "scan_and_write": 39.403396209003404
+        "mark": 4.623511087964289,
+        "scan_and_write": 156.23520775092766
+      },
+      "settlement": {
+        "by_class": {
+          "10": {
+            "label": "water",
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "share_of_class_population": null,
+            "total_cells": 365190496,
+            "exposed_cells": 10856
+          },
+          "11": {
+            "label": "very_low_density_rural",
+            "total_population": 193210422.69075468,
+            "exposed_population": 587134.5865255033,
+            "share_of_class_population": 0.0030388349569797734,
+            "total_cells": 135907204,
+            "exposed_cells": 134717
+          },
+          "12": {
+            "label": "low_density_rural",
+            "total_population": 851203676.5010954,
+            "exposed_population": 2444804.789690939,
+            "share_of_class_population": 0.0028721736726283896,
+            "total_cells": 6166097,
+            "exposed_cells": 18896
+          },
+          "13": {
+            "label": "rural_cluster",
+            "total_population": 539994014.0406243,
+            "exposed_population": 1303994.3025368953,
+            "share_of_class_population": 0.002414831032624733,
+            "total_cells": 767150,
+            "exposed_cells": 1950
+          },
+          "21": {
+            "label": "suburban_or_peri_urban",
+            "total_population": 1430017613.8779738,
+            "exposed_population": 3674887.071693208,
+            "share_of_class_population": 0.0025698194455993557,
+            "total_cells": 2047041,
+            "exposed_cells": 5299
+          },
+          "22": {
+            "label": "semi_dense_urban_cluster",
+            "total_population": 284435528.36004525,
+            "exposed_population": 706782.4612917383,
+            "share_of_class_population": 0.0024848599799286546,
+            "total_cells": 175791,
+            "exposed_cells": 467
+          },
+          "23": {
+            "label": "dense_urban_cluster",
+            "total_population": 1046937208.3197956,
+            "exposed_population": 3037994.4986207723,
+            "share_of_class_population": 0.002901792461361056,
+            "total_cells": 304998,
+            "exposed_cells": 993
+          },
+          "30": {
+            "label": "urban_centre",
+            "total_population": 3495154483.223356,
+            "exposed_population": 54575343.602392174,
+            "share_of_class_population": 0.015614572650322699,
+            "total_cells": 621699,
+            "exposed_cells": 7175
+          },
+          "unclassified": {
+            "label": "no_data_or_unclassified",
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "share_of_class_population": null,
+            "total_cells": 138295524,
+            "exposed_cells": 0
+          }
+        },
+        "by_group": {
+          "urban": {
+            "classes": [
+              21,
+              22,
+              23,
+              30
+            ],
+            "total_population": 6256544833.781171,
+            "exposed_population": 61995007.633997895,
+            "share_of_class_population": 0.00990882496346325,
+            "total_cells": 3149529,
+            "exposed_cells": 13934
+          },
+          "rural": {
+            "classes": [
+              11,
+              12,
+              13
+            ],
+            "total_population": 1584408113.2324743,
+            "exposed_population": 4335933.678753337,
+            "share_of_class_population": 0.002736626783554687,
+            "total_cells": 142840451,
+            "exposed_cells": 155563
+          },
+          "water": {
+            "classes": [
+              10
+            ],
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "share_of_class_population": null,
+            "total_cells": 365190496,
+            "exposed_cells": 10856
+          }
+        }
       }
     },
     {
@@ -92,8 +239,121 @@
       "exposed_cells": 627852,
       "skipped_footprints": 0,
       "timing_seconds": {
-        "mark": 2.206352050998248,
-        "scan_and_write": 46.5582738959929
+        "mark": 6.077389545040205,
+        "scan_and_write": 231.98209931701422
+      },
+      "settlement": {
+        "by_class": {
+          "10": {
+            "label": "water",
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "share_of_class_population": null,
+            "total_cells": 365190496,
+            "exposed_cells": 45106
+          },
+          "11": {
+            "label": "very_low_density_rural",
+            "total_population": 193210422.69075468,
+            "exposed_population": 1885866.789978223,
+            "share_of_class_population": 0.009760688702579312,
+            "total_cells": 135907204,
+            "exposed_cells": 473956
+          },
+          "12": {
+            "label": "low_density_rural",
+            "total_population": 851203676.5010954,
+            "exposed_population": 8111412.412292883,
+            "share_of_class_population": 0.009529343723743238,
+            "total_cells": 6166097,
+            "exposed_cells": 60853
+          },
+          "13": {
+            "label": "rural_cluster",
+            "total_population": 539994014.0406243,
+            "exposed_population": 4324970.576016272,
+            "share_of_class_population": 0.008009293554300216,
+            "total_cells": 767150,
+            "exposed_cells": 6542
+          },
+          "21": {
+            "label": "suburban_or_peri_urban",
+            "total_population": 1430017613.8779738,
+            "exposed_population": 14018051.359361244,
+            "share_of_class_population": 0.009802712374532634,
+            "total_cells": 2047041,
+            "exposed_cells": 20629
+          },
+          "22": {
+            "label": "semi_dense_urban_cluster",
+            "total_population": 284435528.36004525,
+            "exposed_population": 2527664.179808423,
+            "share_of_class_population": 0.008886597937965209,
+            "total_cells": 175791,
+            "exposed_cells": 1642
+          },
+          "23": {
+            "label": "dense_urban_cluster",
+            "total_population": 1046937208.3197956,
+            "exposed_population": 9717996.534223113,
+            "share_of_class_population": 0.009282310779477684,
+            "total_cells": 304998,
+            "exposed_cells": 3165
+          },
+          "30": {
+            "label": "urban_centre",
+            "total_population": 3495154483.223356,
+            "exposed_population": 103769253.00577693,
+            "share_of_class_population": 0.029689461082154294,
+            "total_cells": 621699,
+            "exposed_cells": 15959
+          },
+          "unclassified": {
+            "label": "no_data_or_unclassified",
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "share_of_class_population": null,
+            "total_cells": 138295524,
+            "exposed_cells": 0
+          }
+        },
+        "by_group": {
+          "urban": {
+            "classes": [
+              21,
+              22,
+              23,
+              30
+            ],
+            "total_population": 6256544833.781171,
+            "exposed_population": 130032965.0791697,
+            "share_of_class_population": 0.0207835104732373,
+            "total_cells": 3149529,
+            "exposed_cells": 41395
+          },
+          "rural": {
+            "classes": [
+              11,
+              12,
+              13
+            ],
+            "total_population": 1584408113.2324743,
+            "exposed_population": 14322249.778287377,
+            "share_of_class_population": 0.009039495353925852,
+            "total_cells": 142840451,
+            "exposed_cells": 541351
+          },
+          "water": {
+            "classes": [
+              10
+            ],
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "share_of_class_population": null,
+            "total_cells": 365190496,
+            "exposed_cells": 45106
+          }
+        }
       }
     },
     {
@@ -104,13 +364,126 @@
       "exposed_cells": 2178451,
       "skipped_footprints": 0,
       "timing_seconds": {
-        "mark": 1.936487813014537,
-        "scan_and_write": 55.53983981197234
+        "mark": 9.302686145994812,
+        "scan_and_write": 369.5150898610009
       },
       "surface": {
         "path": "/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif",
         "sha256": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e",
         "size_bytes": 786185
+      },
+      "settlement": {
+        "by_class": {
+          "10": {
+            "label": "water",
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "share_of_class_population": null,
+            "total_cells": 365190496,
+            "exposed_cells": 217662
+          },
+          "11": {
+            "label": "very_low_density_rural",
+            "total_population": 193210422.69075468,
+            "exposed_population": 5807539.289095443,
+            "share_of_class_population": 0.03005810560432742,
+            "total_cells": 135907204,
+            "exposed_cells": 1622642
+          },
+          "12": {
+            "label": "low_density_rural",
+            "total_population": 851203676.5010954,
+            "exposed_population": 26475642.01549452,
+            "share_of_class_population": 0.031103768400441642,
+            "total_cells": 6166097,
+            "exposed_cells": 195577
+          },
+          "13": {
+            "label": "rural_cluster",
+            "total_population": 539994014.0406243,
+            "exposed_population": 14043347.100582859,
+            "share_of_class_population": 0.02600648661917642,
+            "total_cells": 767150,
+            "exposed_cells": 21372
+          },
+          "21": {
+            "label": "suburban_or_peri_urban",
+            "total_population": 1430017613.8779738,
+            "exposed_population": 47266429.83673167,
+            "share_of_class_population": 0.033053040310848235,
+            "total_cells": 2047041,
+            "exposed_cells": 68408
+          },
+          "22": {
+            "label": "semi_dense_urban_cluster",
+            "total_population": 284435528.36004525,
+            "exposed_population": 8079871.98708038,
+            "share_of_class_population": 0.028406690379595218,
+            "total_cells": 175791,
+            "exposed_cells": 5127
+          },
+          "23": {
+            "label": "dense_urban_cluster",
+            "total_population": 1046937208.3197956,
+            "exposed_population": 33622851.32241467,
+            "share_of_class_population": 0.03211544212510622,
+            "total_cells": 304998,
+            "exposed_cells": 10824
+          },
+          "30": {
+            "label": "urban_centre",
+            "total_population": 3495154483.223356,
+            "exposed_population": 223548686.5736795,
+            "share_of_class_population": 0.06395960111254223,
+            "total_cells": 621699,
+            "exposed_cells": 36839
+          },
+          "unclassified": {
+            "label": "no_data_or_unclassified",
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "share_of_class_population": null,
+            "total_cells": 138295524,
+            "exposed_cells": 0
+          }
+        },
+        "by_group": {
+          "urban": {
+            "classes": [
+              21,
+              22,
+              23,
+              30
+            ],
+            "total_population": 6256544833.781171,
+            "exposed_population": 312517839.7199062,
+            "share_of_class_population": 0.049950547470309525,
+            "total_cells": 3149529,
+            "exposed_cells": 121198
+          },
+          "rural": {
+            "classes": [
+              11,
+              12,
+              13
+            ],
+            "total_population": 1584408113.2324743,
+            "exposed_population": 46326528.405172825,
+            "share_of_class_population": 0.02923901235942201,
+            "total_cells": 142840451,
+            "exposed_cells": 1839591
+          },
+          "water": {
+            "classes": [
+              10
+            ],
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "share_of_class_population": null,
+            "total_cells": 365190496,
+            "exposed_cells": 217662
+          }
+        }
       }
     }
   ],
@@ -118,6 +491,7 @@
     "Point-supported exposure is a lower-bound local footprint because low-confidence records are not locally mapped.",
     "Distance footprints are evidence footprints, not transmission probabilities.",
     "Rasterized geodesic footprints assign whole 1 km cells by the rasterization rule rather than sub-cell population fractions.",
+    "SMOD settlement strata describe where exposed population lives; they are not a reservoir-habitat model.",
     "GHSL 2020 population is used for all case years, so historical exposure is not population-year specific."
   ]
 }
