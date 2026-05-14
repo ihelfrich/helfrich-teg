@@ -55,6 +55,7 @@ pipeline/
   suitability/ — reservoir habitat-suitability models (random forest, MaxEnt)
   distance/    — effective-distance computation on gridded heterogeneous networks
   outputs/     — runnable scripts that produce paper figures and dashboard tiles
+  _demos/      — deprecated smoke tests retained outside the main reproduction path
 papers/        — Quarto sources for each paper in the series
 data/
   inputs/      — gitignored; pulled from HELFRICH-GD or upstream APIs
@@ -152,6 +153,30 @@ people, or 4.58% of the GHSL 2020 population raster. Of that 100 km footprint,
 classes. The admin-supported tier matched 1,779 lower-confidence records to 110
 unique admin1 units, covering 1.46 billion people as a broad areal evidence tier.
 This tier is not additive with the point-supported footprint.
+
+### Step 4: P1 v2 exposure figures and dashboard arrays
+
+Renders the checked-in P1 v2 figures and compact NPZ from the global exposure
+summary and the off-repo point/admin masks. This is a visualization and export
+step only; it does not re-estimate exposure.
+
+```bash
+python3 pipeline/outputs/P1_v2_exposure.py
+```
+
+Expected wall-time on Ian's Mac: under 30 seconds on a warm cache. The script
+reads the two external GeoTIFF masks at preview resolution, overlays Natural
+Earth country outlines, and writes small checked-in artifacts.
+
+Expected outputs:
+
+- `data/outputs/P1_v2_exposure_surfaces.png` (~283 KB)
+- `data/outputs/P1_v2_exposure_summary.png` (~157 KB)
+- `data/outputs/P1_v2_exposure_v1.npz` (~18 KB)
+
+The older hardcoded Brazil first run is retained at
+`pipeline/_demos/P1_first_run.py` as a smoke test, but it is no longer part of
+the main P1 reproduction path.
 
 ## Data Provenance
 

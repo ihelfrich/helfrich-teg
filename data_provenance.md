@@ -227,3 +227,25 @@ Input files:
 | `/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.tif` | extracted from GHSL archive above | 2026-05-13T22:48:38Z | 261128685 | `db25d12ab0851446af467a56eb1651d383867dc3fbf4aa6348ec8e3372225196` | European Commission reuse policy / GHSL terms | Schiavina, M., Freire, S., MacManus, K. et al. GHS-POP R2023A. | Equal-area World Mollweide population denominator for exposure accounting. |
 | `/Volumes/HELFRICH-GD/KatiaBlendedFinance/raster_cache/ghs_smod/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V2_0.tif` | https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_SMOD_GLOBE_R2023A/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000/V2-0/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V2_0.zip | existing local cache, reused 2026-05-13 | 17958428 | `1e2d7d7a6994b0458fc5d6ff985fb872f27841162b1808a3d52e32ae1a4953a0` | European Commission reuse policy / GHSL terms | Pesaresi, M., Politis, P. et al. GHS-SMOD R2023A. | Settlement-class raster aligned to the GHSL population grid for exposure stratification. |
 | `/Volumes/HELFRICH-GD/TEG_data/inputs/boundaries/ne_10m_admin_1_states_provinces.zip` | https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_admin_1_states_provinces.zip | 2026-05-14T04:07:58Z | 14909524 | `efc59726337323058f9446210adc96673179cd344e053666ee3d28cb58ba2b05` | Public domain | Natural Earth. 1:10m Cultural Vectors, Admin 1 States and Provinces. | Administrative boundaries used for the separate admin-supported areal exposure tier. |
+
+## P1 v2 Exposure Outputs
+
+Generated at: `2026-05-14T04:50:09Z`
+
+Output:
+
+| Path | Size | SHA-256 | Description |
+|---|---:|---|---|
+| `data/outputs/P1_v2_exposure_surfaces.png` | 290001 | `14d5b6b86b97b9f70bcde164075f02dd9f39c302d9da6ea8b4d09882e1767a6d` | Two-panel map of the point-supported 100 km mask and the separate admin-supported areal mask. |
+| `data/outputs/P1_v2_exposure_summary.png` | 160757 | `04f100c9c28421f4b56e085b0ec9427027624871dea5b606ea2a108008369187` | Summary panels for radius sensitivity, settlement composition, evidence accounting, and admin label matching. |
+| `data/outputs/P1_v2_exposure_v1.npz` | 18754 | `97cecd32fd30e331076badb40c23d85350f48048af8a5356b50a7a0627c7fc52` | Compact dashboard preview arrays with downsampled masks, summary metrics, source hashes, and creation timestamp. |
+
+Input files:
+
+| Path | Source URL | Pulled at UTC | Size | SHA-256 | License/terms | Citation | Description |
+|---|---|---:|---:|---|---|---|---|
+| `data/outputs/global_exposure_v1.json` | derived from Global Exposure v1 inputs above | 2026-05-14T04:39:40Z | 26710 | `6072fae6ba89fcd284b82b553d5ba7827c887c17e182daca714de391bcf31cf4` | Mixed upstream terms; see Global Exposure v1 | TEG global exposure output. | Authoritative exposure totals and metadata rendered into P1 v2 figures and NPZ. |
+| `data/outputs/global_exposure_admin_v1.csv` | derived from Global Exposure v1 inputs above | 2026-05-14T04:37:17Z | 45971 | `7599fd9b747484d48a7d6a5d7c770a93aff83e95a7f4f864af32559c7441492f` | Mixed upstream terms; see Global Exposure v1 | TEG admin-label matching audit. | Admin match-status table used in the P1 v2 summary figure. |
+| `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif` | derived from Global Exposure v1 inputs above | 2026-05-14T04:37:12Z | 786185 | `19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e` | Mixed upstream terms; see Global Exposure v1 | TEG point-supported 100 km exposure mask. | External mask rendered at preview resolution for the P1 v2 surface figure and NPZ. |
+| `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_admin_supported_v1.tif` | derived from Global Exposure v1 inputs above | 2026-05-14T04:38:20Z | 1005503 | `47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d` | Mixed upstream terms; see Global Exposure v1 | TEG admin-supported exposure mask. | External mask rendered at preview resolution for the P1 v2 surface figure and NPZ. |
+| `/Volumes/HELFRICH-GD/TEG_data/inputs/cases/boundaries/ne_110m_admin_0_countries.zip` | https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_countries.zip | 2026-05-13T19:20:30Z | 214976 | `0f243aeac8ac6cf26f0417285b0bd33ac47f1b5bdb719fd3e0df37d03ea37110` | Public domain | Natural Earth. 1:110m Cultural Vectors, Admin 0 Countries. | Country outlines used as map context in the P1 v2 surface figure. |

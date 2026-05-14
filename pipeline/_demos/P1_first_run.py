@@ -1,4 +1,9 @@
-"""First end-to-end TEG run: SES-weighted effective distance for Brazil.
+"""Deprecated v0.1 smoke test: SES-weighted effective distance for Brazil.
+
+This script is intentionally kept out of `pipeline/outputs/` because it uses a
+hardcoded source point and arbitrary parameters. It is useful only for checking
+that the old graph machinery still runs; it is not part of the data-driven
+global exposure accounting pipeline.
 
 Source point: Foz do Iguaçu, Paraná (BR) — the seeded ARAV (Araraquara virus)
 cluster region. We compute the effective distance from this point to every
