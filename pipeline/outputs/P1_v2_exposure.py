@@ -10,10 +10,10 @@ Assumptions:
     * The GHSL 1 km raster grid remains the accounting denominator.
     * The point-supported 100 km mask and admin-supported mask are separate
       evidence tiers and are not additive.
-    * Raster masks are downsampled with max resampling for display and dashboard
-      preview arrays. Average resampling is thresholded at > 0 so any exposed
-      source cell in a preview block is retained. The authoritative
-      exposed-population totals remain in `data/outputs/global_exposure_v1.json`.
+    * Raster masks are downsampled with average resampling for display and
+      dashboard preview arrays, then thresholded at > 0 so any exposed source
+      cell in a preview block is retained. The authoritative exposed-population
+      totals remain in `data/outputs/global_exposure_v1.json`.
 """
 from __future__ import annotations
 

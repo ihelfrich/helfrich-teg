@@ -178,7 +178,35 @@ The older hardcoded Brazil first run is retained at
 `pipeline/_demos/P1_first_run.py` as a smoke test, but it is no longer part of
 the main P1 reproduction path.
 
-### Step 5: P0 method-paper skeleton
+### Step 5: P1 v2 country audit
+
+Builds a country-level audit table by overlaying the point-supported and
+admin-supported masks on Natural Earth Admin 0 countries and summing GHSL 2020
+population by country. The table also joins case-panel evidence counts, surfaced
+records, admin-label match counts, records not used in either surface, and the
+non-additive union of point/admin exposure.
+
+```bash
+python3 pipeline/outputs/P1_v2_country_audit.py
+```
+
+Expected wall-time on Ian's Mac: about 1 minute on a warm cache. The script
+rasterizes country IDs on the GHSL grid and scans the population, point mask,
+and admin mask once in windows.
+
+Expected output:
+
+- `data/outputs/P1_v2_country_audit_v1.csv` (~114 KB)
+
+Current result: 179 audit rows. Country-assigned point-supported exposure sums
+to 358.8 million people and country-assigned admin-supported exposure sums to
+1.46 billion people, matching `global_exposure_v1.json`. The table includes
+`union_exposed_population` so users do not sum overlapping evidence tiers. It
+also separates `__unassigned_geometry__` raster cells from
+`__missing_country__` case records so missing case metadata is not confused with
+boundary-overlay gaps.
+
+### Step 6: P0 method-paper skeleton
 
 Creates the Quarto source scaffold for the methods paper. The file contains
 section stubs and links to pipeline figures in `data/outputs/`; it does not yet

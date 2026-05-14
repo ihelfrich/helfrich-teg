@@ -249,3 +249,26 @@ Input files:
 | `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif` | derived from Global Exposure v1 inputs above | 2026-05-14T04:37:12Z | 786185 | `19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e` | Mixed upstream terms; see Global Exposure v1 | TEG point-supported 100 km exposure mask. | External mask rendered at preview resolution for the P1 v2 surface figure and NPZ. |
 | `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_admin_supported_v1.tif` | derived from Global Exposure v1 inputs above | 2026-05-14T04:38:20Z | 1005503 | `47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d` | Mixed upstream terms; see Global Exposure v1 | TEG admin-supported exposure mask. | External mask rendered at preview resolution for the P1 v2 surface figure and NPZ. |
 | `/Volumes/HELFRICH-GD/TEG_data/inputs/cases/boundaries/ne_110m_admin_0_countries.zip` | https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_countries.zip | 2026-05-13T19:20:30Z | 214976 | `0f243aeac8ac6cf26f0417285b0bd33ac47f1b5bdb719fd3e0df37d03ea37110` | Public domain | Natural Earth. 1:110m Cultural Vectors, Admin 0 Countries. | Country outlines used as map context in the P1 v2 surface figure. |
+
+## P1 v2 Country Audit
+
+Generated at: `2026-05-14T05:14:27Z`
+
+Output:
+
+| Path | Rows | Size | SHA-256 | Description |
+|---|---:|---:|---|---|
+| `data/outputs/P1_v2_country_audit_v1.csv` | 179 | 116313 | `29c8d077829fdb66d15f647292d85156ef19438b792a0766f3c79be0313921c0` | Country-level audit of GHSL population, point-supported exposure, admin-supported exposure, point/admin union exposure, case evidence, admin-label matching, and records not surfaced. |
+
+Input files:
+
+| Path | Source URL | Pulled at UTC | Size | SHA-256 | License/terms | Citation | Description |
+|---|---|---:|---:|---|---|---|---|
+| `data/outputs/global_exposure_v1.json` | derived from Global Exposure v1 inputs above | 2026-05-14T04:39:40Z | 26710 | `6072fae6ba89fcd284b82b553d5ba7827c887c17e182daca714de391bcf31cf4` | Mixed upstream terms; see Global Exposure v1 | TEG global exposure output. | Authoritative global exposure totals used for source mask paths and reconciliation. |
+| `data/outputs/cases_panel_v1.parquet` | derived from Case Panel v1 inputs above | 2026-05-13T19:27:59Z | 59096 | `e56c94395e212c577036af0c3acea5e2b4c4c1b9b18cf35c56c534a38c612656` | Mixed upstream terms; see Case Panel v1 | TEG case-panel loader output. | Case evidence grouped by country for audit counts. |
+| `data/outputs/global_exposure_locations_v1.csv` | derived from Global Exposure v1 inputs above | 2026-05-14T04:33:29Z | 28439 | `157e568c1214c031894fa0cb1f540966b0bd59e4df9f629778a6bfd2e725ee09` | Mixed upstream terms; see Global Exposure v1 | TEG point-supported location table. | Point-supported records grouped by country for audit counts. |
+| `data/outputs/global_exposure_admin_v1.csv` | derived from Global Exposure v1 inputs above | 2026-05-14T04:37:17Z | 45971 | `7599fd9b747484d48a7d6a5d7c770a93aff83e95a7f4f864af32559c7441492f` | Mixed upstream terms; see Global Exposure v1 | TEG admin-label matching audit. | Admin candidate, matched, unmatched, and ambiguous records grouped by country. |
+| `/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.tif` | extracted from GHSL archive above | 2026-05-13T22:48:38Z | 261128685 | `db25d12ab0851446af467a56eb1651d383867dc3fbf4aa6348ec8e3372225196` | European Commission reuse policy / GHSL terms | Schiavina, M., Freire, S., MacManus, K. et al. GHS-POP R2023A. | Population denominator scanned by Natural Earth Admin 0 country overlay. |
+| `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif` | derived from Global Exposure v1 inputs above | 2026-05-14T04:37:12Z | 786185 | `19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e` | Mixed upstream terms; see Global Exposure v1 | TEG point-supported 100 km exposure mask. | External mask scanned by country overlay. |
+| `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_admin_supported_v1.tif` | derived from Global Exposure v1 inputs above | 2026-05-14T04:38:20Z | 1005503 | `47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d` | Mixed upstream terms; see Global Exposure v1 | TEG admin-supported exposure mask. | External mask scanned by country overlay. |
+| `/Volumes/HELFRICH-GD/TEG_data/inputs/cases/boundaries/ne_110m_admin_0_countries.zip` | https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_countries.zip | 2026-05-13T19:20:30Z | 214976 | `0f243aeac8ac6cf26f0417285b0bd33ac47f1b5bdb719fd3e0df37d03ea37110` | Public domain | Natural Earth. 1:110m Cultural Vectors, Admin 0 Countries. | Country polygons used to aggregate GHSL population and exposure masks. |
