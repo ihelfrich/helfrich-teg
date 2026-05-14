@@ -1,17 +1,21 @@
-"""Estimate global population exposure footprints from reported case locations.
+"""Estimate global population exposure footprints from reported case evidence.
 
 This is not an outbreak-origin model. It takes the reported-case evidence panel,
-keeps only records that are local enough to support granular mapping, and asks:
-how many people live within specified distance footprints of reported cases?
+keeps point records local enough to support granular distance footprints, and
+asks: how many people live in population cells plausibly covered by the reported
+exposure evidence?
 
 Low-confidence country/admin centroid records are not converted into fake local
-hotspots. They are counted in the diagnostics as unlocalizable evidence until a
-better geocoding layer is available.
+hotspots. Country-only records stay unlocalizable. Admin1-supported records are
+rasterized as a separate broad areal tier when their country/admin1 labels match
+Natural Earth Admin 1 boundaries without ambiguity.
 
 Default output:
     * data/outputs/global_exposure_v1.json
     * data/outputs/global_exposure_locations_v1.csv
+    * data/outputs/global_exposure_admin_v1.csv
     * /Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif
+    * /Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_admin_supported_v1.tif
       with a pointer in data/outputs/_external_index.json
 """
 from __future__ import annotations
@@ -37,6 +41,14 @@ from shapely.geometry import Polygon
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
+from pipeline.layers.admin_boundaries import (
+    NE_ADMIN1_CACHE,
+    NE_ADMIN1_URL,
+    build_admin1_index,
+    load_admin1_boundaries,
+    match_admin1,
+    normalize_label,
+)
 from pipeline.layers.ghs_pop import (
     GHS_POP_2020_1KM_TIF,
     GHS_POP_2020_1KM_URL,
@@ -55,9 +67,31 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 CASES_PATH = REPO_ROOT / "data" / "outputs" / "cases_panel_v1.parquet"
 OUTPUT_JSON = REPO_ROOT / "data" / "outputs" / "global_exposure_v1.json"
 OUTPUT_LOCATIONS = REPO_ROOT / "data" / "outputs" / "global_exposure_locations_v1.csv"
+OUTPUT_ADMIN = REPO_ROOT / "data" / "outputs" / "global_exposure_admin_v1.csv"
 EXTERNAL_INDEX = REPO_ROOT / "data" / "outputs" / "_external_index.json"
 EXTERNAL_OUTPUT_DIR = Path("/Volumes/HELFRICH-GD/TEG_data/outputs")
 DEFAULT_SURFACE = EXTERNAL_OUTPUT_DIR / "global_exposure_point_supported_100km_v1.tif"
+DEFAULT_ADMIN_SURFACE = EXTERNAL_OUTPUT_DIR / "global_exposure_admin_supported_v1.tif"
+ADMIN_MATCH_COLUMNS = [
+    "country",
+    "admin1",
+    "normalized_country",
+    "normalized_admin1",
+    "records",
+    "count",
+    "evidence_weight",
+    "first_date",
+    "last_date",
+    "sources",
+    "matched",
+    "match_status",
+    "match_key",
+    "matched_name",
+    "matched_name_en",
+    "iso_3166_2",
+    "adm1_code",
+    "boundary_index",
+]
 GEOD = pyproj.Geod(ellps="WGS84")
 SMOD_CLASS_KEYS = sorted(SMOD_CLASS_LABELS)
 SMOD_UNCLASSIFIED_INDEX = len(SMOD_CLASS_KEYS)
@@ -205,13 +239,11 @@ def _load_point_supported_locations(
 ) -> tuple[list[EvidenceLocation], dict[str, Any], pd.DataFrame]:
     cases = gpd.read_parquet(cases_path)
     cases["date"] = pd.to_datetime(cases["date"], errors="coerce")
-    valid = cases.loc[
-        cases["date"].notna()
-        & cases["lon"].between(-180, 180)
-        & cases["lat"].between(-90, 90)
-    ].copy()
+    dated = cases.loc[cases["date"].notna()].copy()
+    valid_coords = dated["lon"].between(-180, 180) & dated["lat"].between(-90, 90)
+    valid = dated.loc[valid_coords].copy()
     point_supported = valid.loc[valid["confidence"] >= min_confidence].copy()
-    unlocalizable = valid.loc[valid["confidence"] < min_confidence].copy()
+    below_point_confidence = dated.loc[dated["confidence"] < min_confidence].copy()
 
     point_supported["lon_round"] = point_supported["lon"].round(coordinate_precision)
     point_supported["lat_round"] = point_supported["lat"].round(coordinate_precision)
@@ -264,22 +296,202 @@ def _load_point_supported_locations(
 
     diagnostics = {
         "case_records_total": int(len(cases)),
+        "case_records_with_valid_dates": int(len(dated)),
         "case_records_with_valid_coordinates": int(len(valid)),
         "point_supported_records": int(len(point_supported)),
-        "unlocalizable_records": int(len(unlocalizable)),
+        "point_surface_records": int(sum(location.records for location in locations)),
+        "below_point_confidence_records": int(len(below_point_confidence)),
+        "unlocalizable_records": int(len(below_point_confidence)),
         "point_supported_countries": int(point_supported["country"].nunique()),
-        "unlocalizable_countries": int(unlocalizable["country"].nunique()),
+        "below_point_confidence_countries": int(below_point_confidence["country"].nunique()),
         "unique_point_supported_locations": int(len(grouped)),
         "locations_inside_population_raster": int(len(locations)),
         "locations_outside_population_raster": int(outside_raster),
-        "unlocalizable_by_source": {
-            str(k): int(v) for k, v in unlocalizable["source"].value_counts().sort_index().items()
+        "below_point_confidence_by_source": {
+            str(k): int(v)
+            for k, v in below_point_confidence["source"].value_counts().sort_index().items()
         },
-        "top_unlocalizable_countries": {
-            str(k): int(v) for k, v in unlocalizable["country"].value_counts().head(20).items()
+        "top_below_point_confidence_countries": {
+            str(k): int(v)
+            for k, v in below_point_confidence["country"].value_counts().head(20).items()
         },
     }
     return locations, diagnostics, grouped
+
+
+def _load_admin_supported_evidence(
+    cases_path: Path,
+    *,
+    point_confidence: float,
+    admin_min_confidence: float,
+    download: bool,
+) -> tuple[gpd.GeoDataFrame, pd.DataFrame, dict[str, Any]]:
+    cases = gpd.read_parquet(cases_path)
+    cases["date"] = pd.to_datetime(cases["date"], errors="coerce")
+    has_point_coordinates = cases["lon"].between(-180, 180) & cases["lat"].between(-90, 90)
+    consumed_by_point_tier = has_point_coordinates & (cases["confidence"] >= point_confidence)
+    valid = cases.loc[
+        cases["date"].notna()
+        & cases["admin1"].notna()
+        & (cases["admin1"].astype(str).str.strip() != "")
+        & (cases["confidence"] >= admin_min_confidence)
+        & ~consumed_by_point_tier
+    ].copy()
+    if valid.empty:
+        empty = pd.DataFrame(columns=ADMIN_MATCH_COLUMNS)
+        OUTPUT_ADMIN.parent.mkdir(parents=True, exist_ok=True)
+        empty.to_csv(OUTPUT_ADMIN, index=False)
+        return gpd.GeoDataFrame(), empty, {
+            "candidate_records": 0,
+            "candidate_count": 0,
+            "candidate_countries": 0,
+            "unique_admin_labels": 0,
+            "matched_records": 0,
+            "matched_count": 0,
+            "matched_unique_admin_labels": 0,
+            "matched_unique_admin_units": 0,
+            "unmatched_records": 0,
+            "unmatched_count": 0,
+            "unmatched_unique_admin_labels": 0,
+            "top_unmatched_admin_labels": [],
+        }
+
+    valid["case_count"] = valid["count"].fillna(1).astype(int)
+    valid["evidence_weight"] = valid["case_count"] * valid["confidence"]
+    grouped = (
+        valid.groupby(["country", "admin1"], dropna=False)
+        .agg(
+            records=("source", "size"),
+            count=("case_count", "sum"),
+            evidence_weight=("evidence_weight", "sum"),
+            first_date=("date", "min"),
+            last_date=("date", "max"),
+            sources=("source", lambda x: ",".join(sorted(set(map(str, x))))),
+        )
+        .reset_index()
+        .sort_values(["country", "admin1"])
+        .reset_index(drop=True)
+    )
+
+    boundaries = load_admin1_boundaries(download=download)
+    index = build_admin1_index(boundaries)
+    rows = []
+    matched_indices: set[int] = set()
+    for _, row in grouped.iterrows():
+        match = match_admin1(row.country, row.admin1, boundaries, index)
+        matched = match.status == "matched" and match.index is not None
+        if matched:
+            matched_indices.add(int(match.index))
+        rows.append(
+            {
+                "country": str(row.country),
+                "admin1": str(row.admin1),
+                "normalized_country": normalize_label(row.country),
+                "normalized_admin1": normalize_label(row.admin1),
+                "records": int(row.records),
+                "count": int(row["count"]),
+                "evidence_weight": float(row.evidence_weight),
+                "first_date": pd.Timestamp(row.first_date).date().isoformat(),
+                "last_date": pd.Timestamp(row.last_date).date().isoformat(),
+                "sources": str(row.sources),
+                "matched": bool(matched),
+                "match_status": match.status,
+                "match_key": match.match_key,
+                "matched_name": match.matched_name,
+                "matched_name_en": match.matched_name_en,
+                "iso_3166_2": match.iso_3166_2,
+                "adm1_code": match.adm1_code,
+                "boundary_index": match.index,
+            }
+        )
+
+    match_frame = pd.DataFrame(rows)
+    OUTPUT_ADMIN.parent.mkdir(parents=True, exist_ok=True)
+    match_frame.to_csv(OUTPUT_ADMIN, index=False)
+    matched_boundaries = boundaries.loc[sorted(matched_indices)].copy()
+
+    diagnostics = {
+        "candidate_records": int(valid.shape[0]),
+        "candidate_count": int(valid["case_count"].sum()),
+        "candidate_countries": int(valid["country"].nunique()),
+        "unique_admin_labels": int(grouped.shape[0]),
+        "matched_records": int(match_frame.loc[match_frame["matched"], "records"].sum()),
+        "matched_count": int(match_frame.loc[match_frame["matched"], "count"].sum()),
+        "matched_unique_admin_labels": int(match_frame["matched"].sum()),
+        "matched_unique_admin_units": int(len(matched_indices)),
+        "unmatched_records": int(match_frame.loc[~match_frame["matched"], "records"].sum()),
+        "unmatched_count": int(match_frame.loc[~match_frame["matched"], "count"].sum()),
+        "unmatched_unique_admin_labels": int((~match_frame["matched"]).sum()),
+        "top_unmatched_admin_labels": match_frame.loc[
+            ~match_frame["matched"],
+            ["country", "admin1", "records"],
+        ]
+        .sort_values("records", ascending=False)
+        .head(25)
+        .to_dict(orient="records"),
+    }
+    return matched_boundaries, match_frame, diagnostics
+
+
+def _admin_supported_exposure(
+    src,
+    admin_boundaries: gpd.GeoDataFrame,
+    *,
+    surface_path: Path | None,
+    smod_src=None,
+) -> dict[str, Any] | None:
+    if admin_boundaries.empty:
+        return None
+    t0 = time.perf_counter()
+    projected = admin_boundaries.to_crs(src.crs)
+    shapes = [(geometry, 1) for geometry in projected.geometry if geometry is not None and not geometry.is_empty]
+    mask = np.zeros((src.height, src.width), dtype=np.uint8)
+    rasterize(
+        shapes,
+        out=mask,
+        transform=src.transform,
+        fill=0,
+        default_value=1,
+        dtype="uint8",
+        all_touched=False,
+    )
+    mark_seconds = time.perf_counter() - t0
+
+    t1 = time.perf_counter()
+    print(f"scanning population raster for {len(shapes)} matched admin polygons", flush=True)
+    exposed_population, total_population, exposed_cells, settlement_summary = _sum_population_and_write_surface(
+        src,
+        mask,
+        surface_path=surface_path,
+        smod_src=smod_src,
+    )
+    scan_seconds = time.perf_counter() - t1
+    del mask
+
+    out: dict[str, Any] = {
+        "interpretation": (
+            "Population inside matched admin-1 polygons for records with admin1 evidence. "
+            "This broad areal tier is reported separately from point-supported distance footprints."
+        ),
+        "exposed_population": exposed_population,
+        "total_population_in_raster": total_population,
+        "share_of_population": exposed_population / total_population if total_population else None,
+        "exposed_cells": exposed_cells,
+        "matched_admin_units": int(len(admin_boundaries)),
+        "timing_seconds": {
+            "rasterize": mark_seconds,
+            "scan_and_write": scan_seconds,
+        },
+    }
+    if settlement_summary is not None:
+        out["settlement"] = settlement_summary
+    if surface_path is not None:
+        out["surface"] = {
+            "path": str(surface_path),
+            "sha256": _sha256(surface_path),
+            "size_bytes": surface_path.stat().st_size,
+        }
+    return out
 
 
 def _geodesic_footprint_polygon(
@@ -533,9 +745,55 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
                     geodesic_vertices=args.geodesic_vertices,
                     smod_src=smod_src,
                 )
+        )
+
+        admin_boundaries = gpd.GeoDataFrame()
+        admin_diagnostics = {
+            "candidate_records": 0,
+            "candidate_count": 0,
+            "candidate_countries": 0,
+            "unique_admin_labels": 0,
+            "matched_records": 0,
+            "matched_count": 0,
+            "matched_unique_admin_labels": 0,
+            "matched_unique_admin_units": 0,
+            "unmatched_records": 0,
+            "unmatched_count": 0,
+            "unmatched_unique_admin_labels": 0,
+            "top_unmatched_admin_labels": [],
+            "disabled": bool(args.no_admin),
+        }
+        if not args.no_admin:
+            admin_boundaries, _, admin_diagnostics = _load_admin_supported_evidence(
+                CASES_PATH,
+                point_confidence=args.min_confidence,
+                admin_min_confidence=args.admin_min_confidence,
+                download=not args.no_download,
+            )
+        admin_result = None
+        if not args.no_admin and not admin_boundaries.empty:
+            admin_result = _admin_supported_exposure(
+                src,
+                admin_boundaries,
+                surface_path=args.admin_surface_path,
+                smod_src=smod_src,
             )
         if smod_src is not None:
             smod_src.close()
+
+    valid_dated_records = int(case_diagnostics.get("case_records_with_valid_dates", 0))
+    point_surface_records = int(case_diagnostics.get("point_surface_records", 0))
+    matched_admin_records = int(admin_diagnostics.get("matched_records", 0))
+    not_surface_records = max(0, valid_dated_records - point_surface_records - matched_admin_records)
+    case_diagnostics.update(
+        {
+            "admin_candidate_records": int(admin_diagnostics.get("candidate_records", 0)),
+            "admin_matched_records": matched_admin_records,
+            "admin_unmatched_records": int(admin_diagnostics.get("unmatched_records", 0)),
+            "records_not_used_in_any_surface": not_surface_records,
+            "unlocalizable_records": not_surface_records,
+        }
+    )
 
     surface_result = next(
         (result for result in radius_results if math.isclose(result["radius_km"], surface_radius)),
@@ -553,9 +811,36 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
                 "source_script": "pipeline/exposure/exposed_population.py",
             }
         )
+    if admin_result and "surface" in admin_result:
+        _write_external_index(
+            {
+                **admin_result["surface"],
+                "description": (
+                    "Global 1 km admin-supported areal exposure mask for matched "
+                    "Natural Earth Admin 1 reported-case evidence."
+                ),
+                "created_at_utc": _now_utc(),
+                "source_script": "pipeline/exposure/exposed_population.py",
+            }
+        )
+
+    output_entries = {
+        "locations_csv": {
+            "path": str(OUTPUT_LOCATIONS.relative_to(REPO_ROOT)),
+            "sha256": _sha256(OUTPUT_LOCATIONS),
+            "size_bytes": OUTPUT_LOCATIONS.stat().st_size,
+        },
+        "external_index": str(EXTERNAL_INDEX.relative_to(REPO_ROOT)),
+    }
+    if not args.no_admin and OUTPUT_ADMIN.exists():
+        output_entries["admin_matches_csv"] = {
+            "path": str(OUTPUT_ADMIN.relative_to(REPO_ROOT)),
+            "sha256": _sha256(OUTPUT_ADMIN),
+            "size_bytes": OUTPUT_ADMIN.stat().st_size,
+        }
 
     output = {
-        "schema_version": "global_exposure_v1",
+        "schema_version": "global_exposure_v1_1",
         "created_at_utc": _now_utc(),
         "interpretation": (
             "Population residing within distance footprints of high-confidence reported case "
@@ -569,9 +854,10 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
             "surface_radius_km": surface_radius,
             "distance_footprint": "geodesic circle rasterized to the GHSL World Mollweide grid",
             "geodesic_vertices": int(args.geodesic_vertices),
+            "admin_min_confidence": float(args.admin_min_confidence),
             "low_confidence_policy": (
-                "country/admin centroid records are reported as unlocalizable and excluded "
-                "from granular local exposure masks"
+                "country-only records remain unlocalizable; matched admin1 records are reported "
+                "as a separate broad areal exposure tier, not as point hotspots"
             ),
         },
         "population_raster": {
@@ -597,19 +883,27 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
             if smod_path is not None
             else None
         ),
-        "outputs": {
-            "locations_csv": {
-                "path": str(OUTPUT_LOCATIONS.relative_to(REPO_ROOT)),
-                "sha256": _sha256(OUTPUT_LOCATIONS),
-                "size_bytes": OUTPUT_LOCATIONS.stat().st_size,
-            },
-            "external_index": str(EXTERNAL_INDEX.relative_to(REPO_ROOT)),
+        "admin_boundaries": {
+            "path": str(NE_ADMIN1_CACHE),
+            "source_url": NE_ADMIN1_URL,
+            "sha256": _sha256(NE_ADMIN1_CACHE) if NE_ADMIN1_CACHE.exists() else None,
+            "size_bytes": NE_ADMIN1_CACHE.stat().st_size if NE_ADMIN1_CACHE.exists() else None,
+            "license": "Natural Earth public domain",
+            "citation": "Natural Earth. 1:10m Cultural Vectors, Admin 1 States and Provinces.",
         },
+        "outputs": output_entries,
         "exposure": radius_results,
+        "admin_supported": {
+            "diagnostics": admin_diagnostics,
+            "exposure": admin_result,
+        },
         "warnings": [
             "Point-supported exposure is a lower-bound local footprint because low-confidence records are not locally mapped.",
+            "Admin-supported exposure is a broad areal evidence tier and is not additive with the point-supported footprint.",
+            "Admin label matching is conservative; unmatched locality, county, and ambiguous labels stay out of the admin mask.",
             "Distance footprints are evidence footprints, not transmission probabilities.",
             "Rasterized geodesic footprints assign whole 1 km cells by the rasterization rule rather than sub-cell population fractions.",
+            "Admin polygons use center-cell rasterization at 1 km and can undercount very small boundary units.",
             "SMOD settlement strata describe where exposed population lives; they are not a reservoir-habitat model.",
             "GHSL 2020 population is used for all case years, so historical exposure is not population-year specific.",
         ],
@@ -627,6 +921,9 @@ def main() -> None:
     parser.add_argument("--coordinate-precision", type=int, default=5)
     parser.add_argument("--geodesic-vertices", type=int, default=96)
     parser.add_argument("--surface-path", type=Path, default=DEFAULT_SURFACE)
+    parser.add_argument("--admin-surface-path", type=Path, default=DEFAULT_ADMIN_SURFACE)
+    parser.add_argument("--admin-min-confidence", type=float, default=0.35)
+    parser.add_argument("--no-admin", action="store_true")
     parser.add_argument("--no-smod", action="store_true")
     parser.add_argument("--no-download", action="store_true")
     args = parser.parse_args()
@@ -647,6 +944,15 @@ def main() -> None:
                 pop=item["exposed_population"],
                 share=item["share_of_population"] or 0,
                 cells=item["exposed_cells"],
+            )
+        )
+    admin = result.get("admin_supported", {})
+    if admin.get("exposure"):
+        print(
+            "admin tier: matched_records={records}, exposed_population={pop:,.0f}, cells={cells:,}".format(
+                records=admin["diagnostics"]["matched_records"],
+                pop=admin["exposure"]["exposed_population"],
+                cells=admin["exposure"]["exposed_cells"],
             )
         )
     print(f"Saved: {OUTPUT_JSON}")

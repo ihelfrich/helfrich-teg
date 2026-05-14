@@ -114,39 +114,44 @@ weighted log-likelihood improvement of `19.588` over the v0.1 baseline
 the Brazil subset has only four unique mapped case cells and three point-level
 events.
 
-### Step 3: global point-supported exposed population
+### Step 3: global reported-evidence exposed population
 
 Builds a world-coverage exposed-population accounting output from high-confidence
 reported case coordinates, GHSL 2020 global 1 km population, and GHS-SMOD
-settlement classes. Low-confidence country/admin centroid records are reported
-as unlocalizable evidence and are not turned into fake local hotspots.
+settlement classes. Records with admin1 evidence that are not already consumed
+by the point-coordinate tier are matched conservatively to Natural Earth Admin 1
+boundaries and reported as a separate broad areal tier. Country-only records and
+unmatched or ambiguous admin labels remain unlocalizable evidence.
 
 ```bash
 python3 pipeline/exposure/exposed_population.py
 ```
 
-Expected wall-time on Ian's Mac: 12-15 minutes on a warm GHSL/GHS-SMOD cache.
-The script scans the global 1 km population and settlement rasters for each
-exposure radius, keeps the per-radius geodesic mask in memory, and only writes
-the final compressed 100 km surface to the external drive.
+Expected wall-time on Ian's Mac: 15-18 minutes on a warm GHSL/GHS-SMOD/Natural
+Earth cache. The script scans the global 1 km population and settlement rasters
+for each exposure radius, keeps the per-radius geodesic mask in memory, and
+writes the final compressed 100 km point-supported mask plus the admin-supported
+mask to the external drive.
 
 Expected checked-in outputs:
 
-- `data/outputs/global_exposure_v1.json` (~17 KB)
+- `data/outputs/global_exposure_v1.json` (~26 KB)
 - `data/outputs/global_exposure_locations_v1.csv` (~28 KB)
-- `data/outputs/_external_index.json` (~550 B)
+- `data/outputs/global_exposure_admin_v1.csv` (~46 KB)
+- `data/outputs/_external_index.json` (~1 KB)
 
 Expected external output:
 
 - `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif` (~768 KB compressed)
+- `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_admin_supported_v1.tif` (~983 KB compressed)
 
 Current result: 217 unique point-supported locations from 882 high-confidence
 records across 26 countries. The 100 km geodesic footprint covers 358.8 million
 people, or 4.58% of the GHSL 2020 population raster. Of that 100 km footprint,
 312.5 million people are in GHS-SMOD urban classes and 46.3 million are in rural
-classes. The remaining 8,157 records are reported as unlocalizable at this stage
-because they are country/admin centroids or otherwise too coarse for granular
-exposure mapping.
+classes. The admin-supported tier matched 1,779 lower-confidence records to 110
+unique admin1 units, covering 1.46 billion people as a broad areal evidence tier.
+This tier is not additive with the point-supported footprint.
 
 ## Data Provenance
 

@@ -1,24 +1,27 @@
 {
-  "schema_version": "global_exposure_v1",
-  "created_at_utc": "2026-05-13T23:48:14Z",
+  "schema_version": "global_exposure_v1_1",
+  "created_at_utc": "2026-05-14T04:38:20Z",
   "interpretation": "Population residing within distance footprints of high-confidence reported case locations. This is exposure accounting from reported evidence, not origin inference.",
   "case_evidence": {
     "case_records_total": 9039,
+    "case_records_with_valid_dates": 9039,
     "case_records_with_valid_coordinates": 9039,
     "point_supported_records": 882,
-    "unlocalizable_records": 8157,
+    "point_surface_records": 882,
+    "below_point_confidence_records": 8157,
+    "unlocalizable_records": 6378,
     "point_supported_countries": 26,
-    "unlocalizable_countries": 70,
+    "below_point_confidence_countries": 70,
     "unique_point_supported_locations": 217,
     "locations_inside_population_raster": 217,
     "locations_outside_population_raster": 0,
-    "unlocalizable_by_source": {
+    "below_point_confidence_by_source": {
       "cdc_nndss": 25,
       "genbank_biosample": 53,
       "genbank_nuccore": 8074,
       "who_don": 5
     },
-    "top_unlocalizable_countries": {
+    "top_below_point_confidence_countries": {
       "China": 2540,
       "Germany": 1365,
       "Russia": 844,
@@ -39,7 +42,11 @@
       "Vietnam": 53,
       "Hungary": 48,
       "Poland": 48
-    }
+    },
+    "admin_candidate_records": 2876,
+    "admin_matched_records": 1779,
+    "admin_unmatched_records": 1097,
+    "records_not_used_in_any_surface": 6378
   },
   "parameters": {
     "min_confidence_for_granular_surface": 0.95,
@@ -52,7 +59,8 @@
     "surface_radius_km": 100.0,
     "distance_footprint": "geodesic circle rasterized to the GHSL World Mollweide grid",
     "geodesic_vertices": 96,
-    "low_confidence_policy": "country/admin centroid records are reported as unlocalizable and excluded from granular local exposure masks"
+    "admin_min_confidence": 0.35,
+    "low_confidence_policy": "country-only records remain unlocalizable; matched admin1 records are reported as a separate broad areal exposure tier, not as point hotspots"
   },
   "population_raster": {
     "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.tif",
@@ -97,13 +105,26 @@
       ]
     }
   },
+  "admin_boundaries": {
+    "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/boundaries/ne_10m_admin_1_states_provinces.zip",
+    "source_url": "https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_admin_1_states_provinces.zip",
+    "sha256": "efc59726337323058f9446210adc96673179cd344e053666ee3d28cb58ba2b05",
+    "size_bytes": 14909524,
+    "license": "Natural Earth public domain",
+    "citation": "Natural Earth. 1:10m Cultural Vectors, Admin 1 States and Provinces."
+  },
   "outputs": {
     "locations_csv": {
       "path": "data/outputs/global_exposure_locations_v1.csv",
       "sha256": "157e568c1214c031894fa0cb1f540966b0bd59e4df9f629778a6bfd2e725ee09",
       "size_bytes": 28439
     },
-    "external_index": "data/outputs/_external_index.json"
+    "external_index": "data/outputs/_external_index.json",
+    "admin_matches_csv": {
+      "path": "data/outputs/global_exposure_admin_v1.csv",
+      "sha256": "7599fd9b747484d48a7d6a5d7c770a93aff83e95a7f4f864af32559c7441492f",
+      "size_bytes": 45971
+    }
   },
   "exposure": [
     {
@@ -114,8 +135,8 @@
       "exposed_cells": 180353,
       "skipped_footprints": 0,
       "timing_seconds": {
-        "mark": 4.623511087964289,
-        "scan_and_write": 156.23520775092766
+        "mark": 1.4896536309970543,
+        "scan_and_write": 66.9468660929706
       },
       "settlement": {
         "by_class": {
@@ -239,8 +260,8 @@
       "exposed_cells": 627852,
       "skipped_footprints": 0,
       "timing_seconds": {
-        "mark": 6.077389545040205,
-        "scan_and_write": 231.98209931701422
+        "mark": 2.2443908249260858,
+        "scan_and_write": 91.96152611006983
       },
       "settlement": {
         "by_class": {
@@ -364,8 +385,8 @@
       "exposed_cells": 2178451,
       "skipped_footprints": 0,
       "timing_seconds": {
-        "mark": 9.302686145994812,
-        "scan_and_write": 369.5150898610009
+        "mark": 1.7503376399399713,
+        "scan_and_write": 59.64215934090316
       },
       "surface": {
         "path": "/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif",
@@ -487,10 +508,285 @@
       }
     }
   ],
+  "admin_supported": {
+    "diagnostics": {
+      "candidate_records": 2876,
+      "candidate_count": 2878,
+      "candidate_countries": 37,
+      "unique_admin_labels": 332,
+      "matched_records": 1779,
+      "matched_count": 1781,
+      "matched_unique_admin_labels": 148,
+      "matched_unique_admin_units": 110,
+      "unmatched_records": 1097,
+      "unmatched_count": 1097,
+      "unmatched_unique_admin_labels": 184,
+      "top_unmatched_admin_labels": [
+        {
+          "country": "Germany",
+          "admin1": "Muehlhausen",
+          "records": 85
+        },
+        {
+          "country": "Madagascar",
+          "admin1": "Anjozorobe",
+          "records": 75
+        },
+        {
+          "country": "United States of America",
+          "admin1": "Benton County",
+          "records": 67
+        },
+        {
+          "country": "United States of America",
+          "admin1": "Death Valley National Park",
+          "records": 49
+        },
+        {
+          "country": "France",
+          "admin1": "Croix-Scaille",
+          "records": 41
+        },
+        {
+          "country": "China",
+          "admin1": "Yanbian",
+          "records": 33
+        },
+        {
+          "country": "Russia",
+          "admin1": "Altai Republic",
+          "records": 31
+        },
+        {
+          "country": "United States of America",
+          "admin1": "Washington State",
+          "records": 30
+        },
+        {
+          "country": "Russia",
+          "admin1": "Bashkiria",
+          "records": 29
+        },
+        {
+          "country": "Vietnam",
+          "admin1": "Saigon harbor",
+          "records": 25
+        },
+        {
+          "country": "Germany",
+          "admin1": "Weissach",
+          "records": 25
+        },
+        {
+          "country": "Indonesia",
+          "admin1": "Bogor",
+          "records": 24
+        },
+        {
+          "country": "Argentina",
+          "admin1": "Buenos Aires",
+          "records": 20
+        },
+        {
+          "country": "Finland",
+          "admin1": "Pallasjarvi",
+          "records": 19
+        },
+        {
+          "country": "Brazil",
+          "admin1": "Alto Paraiso",
+          "records": 17
+        },
+        {
+          "country": "Germany",
+          "admin1": "Horst",
+          "records": 17
+        },
+        {
+          "country": "China",
+          "admin1": "Gongzhuling",
+          "records": 16
+        },
+        {
+          "country": "South Korea",
+          "admin1": "Boseong-gun",
+          "records": 15
+        },
+        {
+          "country": "Czechia",
+          "admin1": "Vestec",
+          "records": 15
+        },
+        {
+          "country": "Lithuania",
+          "admin1": "Rusne",
+          "records": 15
+        },
+        {
+          "country": "France",
+          "admin1": "Elan",
+          "records": 14
+        },
+        {
+          "country": "United States of America",
+          "admin1": "Western MT",
+          "records": 14
+        },
+        {
+          "country": "Germany",
+          "admin1": "Gotha",
+          "records": 13
+        },
+        {
+          "country": "Chile",
+          "admin1": "Valdivia",
+          "records": 12
+        },
+        {
+          "country": "China",
+          "admin1": "Alataw Pass",
+          "records": 10
+        }
+      ]
+    },
+    "exposure": {
+      "interpretation": "Population inside matched admin-1 polygons for records with admin1 evidence. This broad areal tier is reported separately from point-supported distance footprints.",
+      "exposed_population": 1459983069.2798183,
+      "total_population_in_raster": 7840952947.013645,
+      "share_of_population": 0.18619969781043982,
+      "exposed_cells": 22634867,
+      "matched_admin_units": 110,
+      "timing_seconds": {
+        "rasterize": 3.3169866719981655,
+        "scan_and_write": 59.70432925003115
+      },
+      "settlement": {
+        "by_class": {
+          "10": {
+            "label": "water",
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "share_of_class_population": null,
+            "total_cells": 365190496,
+            "exposed_cells": 372481
+          },
+          "11": {
+            "label": "very_low_density_rural",
+            "total_population": 193210422.69075468,
+            "exposed_population": 33232705.936072163,
+            "share_of_class_population": 0.17200265634356166,
+            "total_cells": 135907204,
+            "exposed_cells": 20439700
+          },
+          "12": {
+            "label": "low_density_rural",
+            "total_population": 851203676.5010954,
+            "exposed_population": 148501557.4117861,
+            "share_of_class_population": 0.17446066260217216,
+            "total_cells": 6166097,
+            "exposed_cells": 1051044
+          },
+          "13": {
+            "label": "rural_cluster",
+            "total_population": 539994014.0406243,
+            "exposed_population": 85888080.6144336,
+            "share_of_class_population": 0.15905376426630566,
+            "total_cells": 767150,
+            "exposed_cells": 124465
+          },
+          "21": {
+            "label": "suburban_or_peri_urban",
+            "total_population": 1430017613.8779738,
+            "exposed_population": 292627278.8919695,
+            "share_of_class_population": 0.20463194023073059,
+            "total_cells": 2047041,
+            "exposed_cells": 416186
+          },
+          "22": {
+            "label": "semi_dense_urban_cluster",
+            "total_population": 284435528.36004525,
+            "exposed_population": 58931833.90530294,
+            "share_of_class_population": 0.2071887230300767,
+            "total_cells": 175791,
+            "exposed_cells": 35943
+          },
+          "23": {
+            "label": "dense_urban_cluster",
+            "total_population": 1046937208.3197956,
+            "exposed_population": 188039469.5521908,
+            "share_of_class_population": 0.1796091189212492,
+            "total_cells": 304998,
+            "exposed_cells": 58528
+          },
+          "30": {
+            "label": "urban_centre",
+            "total_population": 3495154483.223356,
+            "exposed_population": 652762142.9680616,
+            "share_of_class_population": 0.18676202900366828,
+            "total_cells": 621699,
+            "exposed_cells": 136520
+          },
+          "unclassified": {
+            "label": "no_data_or_unclassified",
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "share_of_class_population": null,
+            "total_cells": 138295524,
+            "exposed_cells": 0
+          }
+        },
+        "by_group": {
+          "urban": {
+            "classes": [
+              21,
+              22,
+              23,
+              30
+            ],
+            "total_population": 6256544833.781171,
+            "exposed_population": 1192360725.317525,
+            "share_of_class_population": 0.19057814768297862,
+            "total_cells": 3149529,
+            "exposed_cells": 647177
+          },
+          "rural": {
+            "classes": [
+              11,
+              12,
+              13
+            ],
+            "total_population": 1584408113.2324743,
+            "exposed_population": 267622343.96229187,
+            "share_of_class_population": 0.1689099807853765,
+            "total_cells": 142840451,
+            "exposed_cells": 21615209
+          },
+          "water": {
+            "classes": [
+              10
+            ],
+            "total_population": 0.0,
+            "exposed_population": 0.0,
+            "share_of_class_population": null,
+            "total_cells": 365190496,
+            "exposed_cells": 372481
+          }
+        }
+      },
+      "surface": {
+        "path": "/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_admin_supported_v1.tif",
+        "sha256": "47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d",
+        "size_bytes": 1005503
+      }
+    }
+  },
   "warnings": [
     "Point-supported exposure is a lower-bound local footprint because low-confidence records are not locally mapped.",
+    "Admin-supported exposure is a broad areal evidence tier and is not additive with the point-supported footprint.",
+    "Admin label matching is conservative; unmatched locality, county, and ambiguous labels stay out of the admin mask.",
     "Distance footprints are evidence footprints, not transmission probabilities.",
     "Rasterized geodesic footprints assign whole 1 km cells by the rasterization rule rather than sub-cell population fractions.",
+    "Admin polygons use center-cell rasterization at 1 km and can undercount very small boundary units.",
     "SMOD settlement strata describe where exposed population lives; they are not a reservoir-habitat model.",
     "GHSL 2020 population is used for all case years, so historical exposure is not population-year specific."
   ]

@@ -1,0 +1,333 @@
+country,admin1,normalized_country,normalized_admin1,records,count,evidence_weight,first_date,last_date,sources,matched,match_status,match_key,matched_name,matched_name_en,iso_3166_2,adm1_code,boundary_index
+Argentina,Buenos Aires,argentina,buenos aires,20,20,7.0,1983-07-01,2018-07-01,genbank_nuccore,False,ambiguous,buenos aires,,,,,
+Argentina,Buenos Aires province,argentina,buenos aires province,2,2,0.7,2020-11-15,2020-11-15,genbank_nuccore,False,ambiguous,buenos aires,,,,,
+Argentina,Entre Rios,argentina,entre rios,1,1,0.35,2019-07-01,2019-07-01,genbank_nuccore,True,matched,entre rios,Entre Ríos,Entre Ríos,AR-E,ARG-1309,0.0
+Argentina,Guachipas,argentina,guachipas,1,1,0.35,2024-07-01,2024-07-01,genbank_nuccore,False,unmatched,,,,,,
+Argentina,Salta,argentina,salta,3,3,1.0499999999999998,2014-01-15,2014-01-15,genbank_nuccore,True,matched,salta,Salta,Salta,AR-A,ARG-1303,11.0
+Argentina,Tucuman,argentina,tucuman,1,1,0.35,2021-07-01,2021-07-01,genbank_nuccore,True,matched,tucuman,Tucumán,Tucumán,AR-T,ARG-1305,3852.0
+Austria,Carinthia,austria,carinthia,6,6,2.0999999999999996,2017-07-01,2019-07-01,genbank_nuccore,True,matched,carinthia,Kärnten,Carinthia,AT-2,AUT-2325,590.0
+Austria,Lake Neusiedl,austria,lake neusiedl,2,2,0.7,2011-07-01,2017-07-01,genbank_nuccore,False,unmatched,,,,,,
+Austria,Murau in Styria,austria,murau in styria,1,1,0.35,2007-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Austria,St. Lambrecht in Styria,austria,st lambrecht in styria,1,1,0.35,2007-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Austria,St. Marein in Styria,austria,st marein in styria,1,1,0.35,2007-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Austria,Styria,austria,styria,55,55,19.25,2012-07-01,2019-07-01,genbank_nuccore,True,matched,styria,Steiermark,Styria,AT-6,AUT-2323,789.0
+Austria,Upper Austria,austria,upper austria,2,2,0.7,2019-07-01,2019-07-01,genbank_nuccore,True,matched,upper austria,Oberösterreich,Upper Austria,AT-4,AUT-2326,379.0
+Belgium,Genappe,belgium,genappe,1,1,0.35,2013-12-15,2013-12-15,genbank_nuccore,False,unmatched,,,,,,
+Belgium,Grotenhout,belgium,grotenhout,1,1,0.35,2017-02-15,2017-02-15,genbank_nuccore,False,unmatched,,,,,,
+Belgium,Zevendonk,belgium,zevendonk,1,1,0.35,2017-03-15,2017-03-15,genbank_nuccore,False,unmatched,,,,,,
+Belgium,Zottegem,belgium,zottegem,1,1,0.35,2015-01-15,2015-01-15,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Alto Paraiso,brazil,alto paraiso,17,17,5.949999999999999,2005-07-01,2005-07-01,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Amazon region,brazil,amazon region,2,2,0.7,2014-07-01,2014-07-01,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Araraquara,brazil,araraquara,2,2,0.7,2006-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Barra do Bugues-MT,brazil,barra do bugues mt,1,1,0.35,2005-03-15,2005-03-15,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Campo Novo dos Parecis,brazil,campo novo dos parecis,7,7,2.4499999999999997,2006-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Campo Novo dos Parecis-MT,brazil,campo novo dos parecis mt,8,8,2.8,2001-07-01,2006-08-15,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Diamantino-MT,brazil,diamantino mt,3,3,1.0499999999999998,2002-05-15,2006-08-15,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Goias State,brazil,goias state,2,2,0.7,2006-07-01,2006-08-15,genbank_nuccore,True,matched,goias,Goiás,Goiás,BR-GO,BRA-1294,3813.0
+Brazil,Itacoatiara,brazil,itacoatiara,2,2,0.7,2004-07-01,2004-07-01,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Maranhao,brazil,maranhao,1,1,0.35,2009-07-01,2009-07-01,genbank_nuccore,True,matched,maranhao,Maranhão,Maranhão,BR-MA,BRA-593,1726.0
+Brazil,Mato Grosso State,brazil,mato grosso state,1,1,0.35,2010-07-01,2010-07-01,genbank_nuccore,True,matched,mato grosso,Mato Grosso,Mato Grosso,BR-MT,BRA-602,1315.0
+Brazil,Mato Grosso do Sul,brazil,mato grosso do sul,4,4,1.4,2008-07-01,2008-07-01,genbank_nuccore,True,matched,mato grosso do sul,Mato Grosso do Sul,Mato Grosso do Sul,BR-MS,BRA-600,752.0
+Brazil,Minas Gerais State,brazil,minas gerais state,7,7,2.4499999999999997,2012-07-01,2012-07-01,genbank_nuccore,True,matched,minas gerais,Minas Gerais,Minas Gerais,BR-MG,BRA-601,3815.0
+Brazil,Nova Olimpia,brazil,nova olimpia,4,4,1.4,2007-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Nova Olimpia-MT,brazil,nova olimpia mt,1,1,0.35,2002-02-15,2002-02-15,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Novo Progresso,brazil,novo progresso,4,4,1.4,2008-07-01,2008-07-01,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Parque Morro do Diabo,brazil,parque morro do diabo,1,1,0.35,2012-07-01,2012-07-01,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Santo Afonso,brazil,santo afonso,1,1,0.35,2006-07-01,2006-07-01,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Santo Afonso-MT,brazil,santo afonso mt,1,1,0.35,2005-09-15,2005-09-15,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Sao Jose do Rio Claro-MT,brazil,sao jose do rio claro mt,1,1,0.35,2006-09-15,2006-09-15,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Tangara da Serra,brazil,tangara da serra,2,2,0.7,2006-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Brazil,Tangara da Serra-MT,brazil,tangara da serra mt,4,4,1.4,2001-07-01,2006-07-01,genbank_nuccore,False,unmatched,,,,,,
+Cambodia,Phnom Penh,cambodia,phnom penh,24,24,8.399999999999999,2020-06-15,2021-02-15,genbank_nuccore,True,matched,phnom penh,Phnom Penh,Phnom Penh,KH-12,KHM-1789,3812.0
+Chile,Region de Los Rios,chile,region de los rios,1,1,0.35,2024-06-15,2024-06-15,genbank_nuccore,True,matched,region de los rios,Los Ríos,Los Ríos,CL-LR,CHL-2701,1331.0
+Chile,Region de los Rios,chile,region de los rios,1,1,0.35,2024-06-15,2024-06-15,genbank_nuccore,True,matched,region de los rios,Los Ríos,Los Ríos,CL-LR,CHL-2701,1331.0
+Chile,Valdivia,chile,valdivia,12,12,4.199999999999999,2010-02-15,2012-02-15,genbank_nuccore,False,unmatched,,,,,,
+China,Alataw Pass,china,alataw pass,10,10,3.5,2016-05-15,2016-05-15,genbank_nuccore,False,unmatched,,,,,,
+China,Anyi,china,anyi,1,1,0.35,2015-07-01,2015-07-01,genbank_nuccore,False,unmatched,,,,,,
+China,Beijing,china,beijing,28,28,9.799999999999999,2002-07-01,2006-07-01,genbank_nuccore,True,matched,beijing,Beijing,Beijing,CN-BJ,CHN-1155,3787.0
+China,Dandong,china,dandong,1,1,0.35,2023-05-15,2023-05-15,genbank_nuccore,False,unmatched,,,,,,
+China,Fujian Province,china,fujian province,70,70,24.5,2010-07-01,2013-07-01,genbank_nuccore,True,matched,fujian,Fujian,Fujian,CN-FJ,CHN-1178,2025.0
+China,Gongzhuling,china,gongzhuling,16,16,5.6,2009-04-15,2011-04-15,genbank_nuccore,False,unmatched,,,,,,
+China,Guangdong,china,guangdong,33,33,11.549999999999999,2018-07-01,2024-07-01,genbank_nuccore,True,matched,guangdong,Guangdong,Guangdong,CN-GD,CHN-1180,1619.0
+China,Guangxi,china,guangxi,2,2,0.7,2009-07-01,2009-07-01,genbank_nuccore,True,matched,guangxi,Guangxi,Guangxi,CN-GX,CHN-1152,1214.0
+China,Guangzhou,china,guangzhou,1,1,0.35,2022-07-01,2022-07-01,genbank_nuccore,False,unmatched,,,,,,
+China,Guizhou,china,guizhou,6,6,2.0999999999999996,2004-07-01,2005-07-01,genbank_nuccore,True,matched,guizhou,Guizhou,Guizhou,CN-GZ,CHN-1153,3792.0
+China,Hainan Province,china,hainan province,2,2,0.7,2017-06-15,2017-06-15,genbank_nuccore,True,matched,hainan,Hainan,Hainan,CN-HI,CHN-1775,2016.0
+China,Hebei Province,china,hebei province,1,1,0.35,1996-07-01,1996-07-01,genbank_nuccore,True,matched,hebei,Hebei,Hebei,CN-HE,CHN-1811,2223.0
+China,Heilongjiang Province,china,heilongjiang province,2,2,0.7,2007-10-15,2008-12-15,genbank_nuccore,True,matched,heilongjiang,Heilongjiang,Heilongjiang,CN-HL,CHN-1839,950.0
+China,Henan,china,henan,61,61,21.349999999999998,2014-12-15,2022-09-15,genbank_nuccore,True,matched,henan,Henan,Henan,CN-HA,CHN-1812,3799.0
+China,Hinggan League,china,hinggan league,2,2,0.7,2025-03-15,2025-03-15,genbank_nuccore,False,unmatched,,,,,,
+China,Hubei Xiangyang,china,hubei xiangyang,1,1,0.35,2021-07-01,2021-07-01,genbank_nuccore,False,unmatched,,,,,,
+China,Hubei Xianning,china,hubei xianning,1,1,0.35,2025-07-01,2025-07-01,genbank_nuccore,False,unmatched,,,,,,
+China,Hubei province,china,hubei province,48,48,16.799999999999997,2002-07-01,2011-12-15,genbank_nuccore,True,matched,hubei,Hubei,Hubei,CN-HB,CHN-1807,3800.0
+China,Hunan,china,hunan,12,12,4.199999999999999,2006-07-01,2007-07-01,genbank_nuccore,True,matched,hunan,Hunan,Hunan,CN-HN,CHN-1808,3793.0
+China,Inner Mongolia,china,inner mongolia,1,1,0.35,2021-07-01,2021-07-01,genbank_nuccore,True,matched,inner mongolia,Inner Mongol,Inner Mongolia,CN-NM,CHN-1838,106.0
+China,Inner Mongolia Autonomous Region,china,inner mongolia autonomous region,2,2,0.7,2006-07-01,2006-07-01,genbank_nuccore,True,matched,inner mongolia autonomous region,Inner Mongol,Inner Mongolia,CN-NM,CHN-1838,106.0
+China,Jiande,china,jiande,1,1,0.35,2007-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+China,Jiangsu,china,jiangsu,1,1,0.35,2020-12-15,2020-12-15,genbank_nuccore,True,matched,jiangsu,Jiangsu,Jiangsu,CN-JS,CHN-1818,2118.0
+China,Jiangxi,china,jiangxi,127,127,44.449999999999996,2011-07-01,2022-01-09,"genbank_biosample,genbank_nuccore",True,matched,jiangxi,Jiangxi,Jiangxi,CN-JX,CHN-1817,3798.0
+China,Jiangxi Province,china,jiangxi province,1,1,0.35,2020-11-15,2020-11-15,genbank_nuccore,True,matched,jiangxi,Jiangxi,Jiangxi,CN-JX,CHN-1817,3798.0
+China,Jiangxi province,china,jiangxi province,3,3,1.0499999999999998,2022-07-01,2022-07-01,genbank_nuccore,True,matched,jiangxi,Jiangxi,Jiangxi,CN-JX,CHN-1817,3798.0
+China,Jilin,china,jilin,4,4,1.4,2002-07-01,2022-07-01,genbank_nuccore,True,matched,jilin,Jilin,Jilin,CN-JL,CHN-1828,955.0
+China,Jilin Changbai,china,jilin changbai,1,1,0.35,2011-09-15,2011-09-15,genbank_nuccore,False,unmatched,,,,,,
+China,Jilin Province,china,jilin province,3,3,1.0499999999999998,2011-09-15,2011-09-15,genbank_nuccore,True,matched,jilin,Jilin,Jilin,CN-JL,CHN-1828,955.0
+China,Jingmen Hubei,china,jingmen hubei,1,1,0.35,2021-07-01,2021-07-01,genbank_nuccore,False,unmatched,,,,,,
+China,Liaoning,china,liaoning,6,6,2.0999999999999996,2002-07-01,2002-07-01,genbank_nuccore,True,matched,liaoning,Liaoning,Liaoning,CN-LN,CHN-1813,960.0
+China,Lishui,china,lishui,4,4,1.4,2007-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+China,Luxi,china,luxi,1,1,0.35,2006-07-01,2006-07-01,genbank_nuccore,False,unmatched,,,,,,
+China,Shaanxi Province,china,shaanxi province,22,22,7.699999999999999,2017-07-01,2018-07-01,genbank_nuccore,True,matched,shaanxi,Shaanxi,Shaanxi,CN-SN,CHN-1804,3795.0
+China,Shandong Province,china,shandong province,3,3,1.0499999999999998,2006-07-01,2006-07-01,genbank_nuccore,True,matched,shandong,Shandong,Shandong,CN-SD,CHN-1814,2222.0
+China,Shandong province,china,shandong province,2,2,0.7,2004-07-01,2005-07-01,genbank_nuccore,True,matched,shandong,Shandong,Shandong,CN-SD,CHN-1814,2222.0
+China,Taonan,china,taonan,4,4,1.4,2011-04-15,2011-04-15,genbank_nuccore,False,unmatched,,,,,,
+China,Tibet,china,tibet,2,2,0.7,2013-06-15,2013-06-15,genbank_nuccore,True,matched,tibet,Xizang,Tibet,CN-XZ,CHN-1662,17.0
+China,Tong Liao,china,tong liao,4,4,1.4,2025-05-15,2025-05-15,genbank_nuccore,False,unmatched,,,,,,
+China,Xinjiang,china,xinjiang,3,3,1.0499999999999998,2010-09-15,2018-07-01,genbank_nuccore,True,matched,xinjiang,Xinjiang,Xinjiang,CN-XJ,CHN-1756,16.0
+China,Yanbian,china,yanbian,33,33,11.549999999999999,2022-03-15,2022-09-15,genbank_nuccore,False,unmatched,,,,,,
+China,Yunnan,china,yunnan,24,24,8.399999999999999,2011-07-01,2023-07-01,genbank_nuccore,True,matched,yunnan,Yunnan,Yunnan,CN-YN,CHN-1810,249.0
+China,Yunnan Province,china,yunnan province,9,9,3.15,2006-07-01,2020-11-15,genbank_nuccore,True,matched,yunnan,Yunnan,Yunnan,CN-YN,CHN-1810,249.0
+China,Zhoushan,china,zhoushan,10,10,3.5,2024-05-15,2024-05-15,genbank_nuccore,False,unmatched,,,,,,
+Colombia,Antioquia,colombia,antioquia,8,8,2.8,2008-03-15,2011-02-15,genbank_nuccore,True,matched,antioquia,Antioquia,Antioquia,CO-ANT,COL-1314,1885.0
+Czechia,Borek u C. Budejovic,czechia,borek u c budejovic,1,1,0.35,2016-07-01,2016-07-01,genbank_nuccore,False,unmatched,,,,,,
+Czechia,Ceske Budejovice,czechia,ceske budejovice,7,7,2.4499999999999997,2016-07-01,2020-07-01,genbank_nuccore,False,unmatched,,,,,,
+Czechia,Dolni Brezany,czechia,dolni brezany,3,3,1.0499999999999998,2020-07-01,2020-07-01,genbank_nuccore,False,unmatched,,,,,,
+Czechia,Luznice,czechia,luznice,2,2,0.7,2018-07-01,2018-07-01,genbank_nuccore,False,unmatched,,,,,,
+Czechia,Oldrisov,czechia,oldrisov,2,2,0.7,2016-07-01,2016-07-01,genbank_nuccore,False,unmatched,,,,,,
+Czechia,Oldrisov u Opavy,czechia,oldrisov u opavy,6,6,2.0999999999999996,2016-07-01,2016-07-01,genbank_nuccore,False,unmatched,,,,,,
+Czechia,Opava,czechia,opava,4,4,1.4,2012-10-15,2016-07-01,genbank_nuccore,False,unmatched,,,,,,
+Czechia,Podmokly,czechia,podmokly,1,1,0.35,2019-07-01,2019-07-01,genbank_nuccore,False,unmatched,,,,,,
+Czechia,Vestec,czechia,vestec,15,15,5.25,2020-07-01,2020-07-01,genbank_nuccore,False,unmatched,,,,,,
+Czechia,Zbytiny,czechia,zbytiny,1,1,0.35,2018-07-01,2018-07-01,genbank_nuccore,False,unmatched,,,,,,
+Ethiopia,Chennek,ethiopia,chennek,2,2,0.7,2015-09-15,2015-09-15,genbank_nuccore,False,unmatched,,,,,,
+Ethiopia,Hagere Selam,ethiopia,hagere selam,1,1,0.35,2017-10-15,2017-10-15,genbank_nuccore,False,unmatched,,,,,,
+Ethiopia,Lima Limo,ethiopia,lima limo,1,1,0.35,2015-10-15,2015-10-15,genbank_nuccore,False,unmatched,,,,,,
+Ethiopia,Sabat Minch,ethiopia,sabat minch,1,1,0.35,2015-10-15,2015-10-15,genbank_nuccore,False,unmatched,,,,,,
+Ethiopia,Sankaber,ethiopia,sankaber,2,2,0.7,2015-11-15,2015-11-15,genbank_nuccore,False,unmatched,,,,,,
+Ethiopia,Tigray region,ethiopia,tigray region,4,4,1.4,2010-07-01,2010-07-01,genbank_nuccore,True,matched,tigray region,Tigray,Tigray,ET-TI,ETH-3110,1108.0
+Finland,Pallasjarvi,finland,pallasjarvi,19,19,6.6499999999999995,1998-07-01,1998-07-01,genbank_nuccore,False,unmatched,,,,,,
+France,01560 Mantenay-Montlin,france,01560 mantenay montlin,2,2,0.7,2015-04-15,2015-04-15,genbank_nuccore,False,unmatched,,,,,,
+France,21000 Dijon,france,21000 dijon,1,1,0.35,2014-02-15,2014-02-15,genbank_nuccore,False,unmatched,,,,,,
+France,55000 Erize Saint Dizier,france,55000 erize saint dizier,2,2,0.7,2014-09-15,2014-10-15,genbank_nuccore,False,unmatched,,,,,,
+France,68230 Turckheim,france,68230 turckheim,3,3,1.0499999999999998,2016-01-15,2016-02-15,genbank_nuccore,False,unmatched,,,,,,
+France,77320 Chevru,france,77320 chevru,1,1,0.35,2015-06-15,2015-06-15,genbank_nuccore,False,unmatched,,,,,,
+France,Castelnau-le-Lez,france,castelnau le lez,1,1,0.35,2022-08-15,2022-08-15,genbank_nuccore,False,unmatched,,,,,,
+France,Croix-Scaille,france,croix scaille,41,41,14.35,2000-07-01,2009-10-15,genbank_nuccore,False,unmatched,,,,,,
+France,Elan,france,elan,14,14,4.8999999999999995,2003-06-15,2009-07-01,genbank_nuccore,False,unmatched,,,,,,
+France,Jura,france,jura,42,42,14.7,2005-04-15,2021-07-01,genbank_nuccore,True,matched,jura,Jura,Jura,FR-39,FRA-5312,783.0
+France,Lyon,france,lyon,8,8,2.8,2021-07-01,2024-06-15,genbank_nuccore,False,unmatched,,,,,,
+France,Mayotte Island,france,mayotte island,29,29,10.149999999999999,2007-04-15,2007-04-15,genbank_nuccore,True,matched,mayotte,Mayotte,Mayotte,FR-YT,FRA-4602,2770.0
+France,Mayotte island,france,mayotte island,4,4,1.4,2007-04-15,2007-04-15,genbank_nuccore,True,matched,mayotte,Mayotte,Mayotte,FR-YT,FRA-4602,2770.0
+France,Oise(60),france,oise 60,1,1,0.35,2018-07-01,2018-07-01,genbank_nuccore,True,matched,oise,Oise,Oise,FR-60,FRA-5331,4488.0
+Germany,Astrup 1,germany,astrup 1,1,1,0.35,2017-04-28,2017-04-28,genbank_nuccore,False,unmatched,,,,,,
+Germany,Astrup 2,germany,astrup 2,2,2,0.7,2015-04-23,2017-09-29,genbank_nuccore,False,unmatched,,,,,,
+Germany,Baden-Wuerttemberg,germany,baden wuerttemberg,125,125,43.75,2010-04-15,2014-07-01,genbank_nuccore,True,matched,baden wuerttemberg,Baden-Württemberg,Baden-Württemberg,DE-BW,DEU-1573,764.0
+Germany,Bentheim,germany,bentheim,2,2,0.7,2018-07-01,2018-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Billerbeck,germany,billerbeck,3,3,1.0499999999999998,2010-07-01,2010-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Bramsche Varus,germany,bramsche varus,1,1,0.35,2017-04-27,2017-04-27,genbank_nuccore,False,unmatched,,,,,,
+Germany,Crailsheim,germany,crailsheim,3,3,1.0499999999999998,2012-07-01,2012-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Geislingen,germany,geislingen,2,2,0.7,2012-07-01,2012-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Goeppingen,germany,goeppingen,3,3,1.0499999999999998,2012-07-01,2012-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Gotha,germany,gotha,13,13,4.55,2010-07-01,2013-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Horst,germany,horst,17,17,5.949999999999999,2010-07-01,2010-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Kenzingen,germany,kenzingen,3,3,1.0499999999999998,2012-07-01,2012-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Lower Saxony,germany,lower saxony,5,5,1.75,2007-08-15,2021-12-21,genbank_nuccore,True,matched,lower saxony,Niedersachsen,Lower Saxony,DE-NI,DEU-1576,408.0
+Germany,Michelbach,germany,michelbach,1,1,0.35,2007-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Moessingen,germany,moessingen,3,3,1.0499999999999998,2012-07-01,2012-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Muehlhausen,germany,muehlhausen,85,85,29.749999999999996,2017-07-01,2017-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Nordhorn,germany,nordhorn,4,4,1.4,2019-07-01,2019-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,North Rhine-Westphalia,germany,north rhine westphalia,73,73,25.549999999999997,2010-04-15,2021-11-14,genbank_nuccore,True,matched,north rhine westphalia,Nordrhein-Westfalen,North Rhine-Westphalia,DE-NW,DEU-1572,411.0
+Germany,Rosslau in Saxony-Anhalt,germany,rosslau in saxony anhalt,2,2,0.7,2006-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Saxony,germany,saxony,3,3,1.0499999999999998,2024-06-12,2024-06-12,genbank_nuccore,True,matched,saxony,Sachsen,Saxony,DE-SN,DEU-1601,117.0
+Germany,Schledehausen,germany,schledehausen,3,3,1.0499999999999998,2015-04-23,2017-09-29,genbank_nuccore,False,unmatched,,,,,,
+Germany,Steinheim,germany,steinheim,7,7,2.4499999999999997,2007-07-01,2012-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Stuttgart,germany,stuttgart,3,3,1.0499999999999998,2012-07-01,2012-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Traemmersee,germany,traemmersee,1,1,0.35,2008-11-15,2008-11-15,genbank_nuccore,False,unmatched,,,,,,
+Germany,Weissach,germany,weissach,25,25,8.75,2010-07-01,2012-07-01,genbank_nuccore,False,unmatched,,,,,,
+Germany,Zussdorf,germany,zussdorf,7,7,2.4499999999999997,2007-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Guinea,Meliandou,guinea,meliandou,1,1,0.35,2014-07-01,2014-07-01,genbank_nuccore,False,unmatched,,,,,,
+Hungary,Bakonybel,hungary,bakonybel,1,1,0.35,2023-07-01,2023-07-01,genbank_nuccore,False,unmatched,,,,,,
+Hungary,Csorotnek,hungary,csorotnek,1,1,0.35,2021-07-01,2021-07-01,genbank_nuccore,False,unmatched,,,,,,
+Hungary,Harasztifalu,hungary,harasztifalu,1,1,0.35,2020-07-01,2020-07-01,genbank_nuccore,False,unmatched,,,,,,
+Hungary,Lipot in Gyor-Sopron-Moson,hungary,lipot in gyor sopron moson,1,1,0.35,1997-07-01,1997-07-01,genbank_nuccore,False,unmatched,,,,,,
+Hungary,NUTS3,hungary,nuts3,1,1,0.35,2025-07-01,2025-07-01,genbank_nuccore,False,unmatched,,,,,,
+Hungary,Ocsa in Pest,hungary,ocsa in pest,5,5,1.75,2005-07-01,2005-07-01,genbank_nuccore,False,unmatched,,,,,,
+Hungary,Sarospatak,hungary,sarospatak,1,1,0.35,2024-07-01,2024-07-01,genbank_nuccore,False,unmatched,,,,,,
+Hungary,Szentendre,hungary,szentendre,1,1,0.35,2021-07-01,2021-07-01,genbank_nuccore,False,unmatched,,,,,,
+Hungary,Szeremle,hungary,szeremle,1,1,0.35,2019-07-01,2019-07-01,genbank_nuccore,False,unmatched,,,,,,
+Hungary,Szigetvar,hungary,szigetvar,1,1,0.35,2019-07-01,2019-07-01,genbank_nuccore,False,unmatched,,,,,,
+Hungary,Szombathely,hungary,szombathely,1,1,0.35,2020-07-01,2020-07-01,genbank_nuccore,True,matched,szombathely,Szombathely,Szombathely,HU-SH,HUN-4903,4379.0
+Hungary,Veszprem,hungary,veszprem,1,1,0.35,2023-07-01,2023-07-01,genbank_nuccore,False,ambiguous,veszprem,,,,,
+Indonesia,Bogor,indonesia,bogor,24,24,8.399999999999999,2019-10-15,2019-10-15,genbank_nuccore,False,unmatched,,,,,,
+Indonesia,Thousand Islands regency,indonesia,thousand islands regency,6,6,2.0999999999999996,2009-07-01,2009-07-01,genbank_nuccore,False,unmatched,,,,,,
+Iran,East Azerbaijan,iran,east azerbaijan,1,1,0.35,2018-06-15,2018-06-15,genbank_nuccore,True,matched,east azerbaijan,East Azarbaijan,East Azerbaijan,IR-01,IRN-3238,926.0
+Japan,Hokkaido,japan,hokkaido,46,46,16.099999999999998,1994-08-15,2010-09-15,genbank_nuccore,True,matched,hokkaido,Hokkaidō,Hokkaidō,JP-01,JPN-1847,2175.0
+Kenya,Baringo County,kenya,baringo county,4,4,1.4,2020-09-15,2020-09-15,genbank_nuccore,False,unmatched,,,,,,
+Lithuania,Birzai,lithuania,birzai,1,1,0.35,2016-07-01,2016-07-01,genbank_nuccore,False,unmatched,,,,,,
+Lithuania,Dembava,lithuania,dembava,1,1,0.35,2018-07-01,2018-07-01,genbank_nuccore,False,unmatched,,,,,,
+Lithuania,Kalpokai,lithuania,kalpokai,1,1,0.35,2018-07-01,2018-07-01,genbank_nuccore,False,unmatched,,,,,,
+Lithuania,Lukstas,lithuania,lukstas,8,8,2.8,2015-07-01,2018-07-01,genbank_nuccore,False,unmatched,,,,,,
+Lithuania,Mieliunai,lithuania,mieliunai,1,1,0.35,2018-07-01,2018-07-01,genbank_nuccore,False,unmatched,,,,,,
+Lithuania,Naradava,lithuania,naradava,1,1,0.35,2018-07-01,2018-07-01,genbank_nuccore,False,unmatched,,,,,,
+Lithuania,Rusne,lithuania,rusne,15,15,5.25,2015-07-01,2018-07-01,genbank_nuccore,False,unmatched,,,,,,
+Lithuania,Tytuvenai,lithuania,tytuvenai,3,3,1.0499999999999998,2018-07-01,2018-07-01,genbank_nuccore,False,unmatched,,,,,,
+Madagascar,Anjozorobe,madagascar,anjozorobe,75,75,26.25,2017-12-15,2021-05-15,genbank_nuccore,False,unmatched,,,,,,
+Malaysia,Sarawak,malaysia,sarawak,6,6,2.0999999999999996,2015-09-15,2016-04-15,genbank_nuccore,True,matched,sarawak,Sarawak,Sarawak,MY-13,MYS-1187,585.0
+Mali,Bamako,mali,bamako,15,15,5.25,2023-07-01,2023-07-01,genbank_nuccore,True,matched,bamako,Bamako,Bamako,ML-BKO,MLI-2792,4376.0
+Mexico,Guerrero,mexico,guerrero,4,4,1.4,2000-07-01,2000-07-01,genbank_nuccore,True,matched,guerrero,Guerrero,Guerrero,MX-GRO,MEX-2729,2099.0
+Mexico,Jalisco,mexico,jalisco,3,3,1.0499999999999998,2008-07-01,2008-07-01,genbank_nuccore,True,matched,jalisco,Jalisco,Jalisco,MX-JAL,MEX-2719,2097.0
+Mexico,Mexico state,mexico,mexico state,4,4,1.4,1998-06-15,1998-06-15,genbank_nuccore,False,ambiguous,mexico,,,,,
+Mexico,Nuevo Leon,mexico,nuevo leon,7,7,2.4499999999999997,2005-08-15,2006-07-01,genbank_nuccore,True,matched,nuevo leon,Nuevo León,Nuevo León,MX-NLE,MEX-2714,1263.0
+Mexico,San Luis Potosi,mexico,san luis potosi,5,5,1.75,2005-08-15,2006-07-01,genbank_nuccore,True,matched,san luis potosi,San Luis Potosí,San Luis Potosí,MX-SLP,MEX-2715,4205.0
+Mexico,Tamaulipas,mexico,tamaulipas,2,2,0.7,2005-08-15,2005-08-15,genbank_nuccore,True,matched,tamaulipas,Tamaulipas,Tamaulipas,MX-TAM,MEX-2716,1262.0
+Mexico,Veracruz,mexico,veracruz,10,10,3.5,2006-07-01,2006-07-01,genbank_nuccore,True,matched,veracruz,Veracruz,Veracruz,MX-VER,MEX-2734,2096.0
+Panama,Nuestra Senora de Los Angeles,panama,nuestra senora de los angeles,1,1,0.35,2006-03-15,2006-03-15,genbank_nuccore,False,unmatched,,,,,,
+Paraguay,Canindeyu Department,paraguay,canindeyu department,23,23,8.049999999999999,2015-05-15,2017-02-15,genbank_biosample,True,matched,canindeyu,Canindeyú,Canindeyú,PY-14,PRY-619,756.0
+Poland,Boginia,poland,boginia,1,1,0.35,2017-07-01,2017-07-01,genbank_nuccore,False,unmatched,,,,,,
+Poland,Mikolajki,poland,mikolajki,2,2,0.7,2009-08-15,2009-08-15,genbank_nuccore,False,unmatched,,,,,,
+Poland,Telesnica Oszwarowa,poland,telesnica oszwarowa,2,2,0.7,2009-08-15,2009-09-15,genbank_nuccore,False,unmatched,,,,,,
+Poland,colony,poland,colony,3,3,1.0499999999999998,2013-04-12,2013-04-12,genbank_nuccore,False,unmatched,,,,,,
+Russia,Altai Krai,russia,altai krai,4,4,1.4,2007-06-15,2008-06-15,genbank_nuccore,False,ambiguous,altai,,,,,
+Russia,Altai Republic,russia,altai republic,31,31,10.85,2007-06-15,2020-08-15,genbank_nuccore,False,ambiguous,altai republic,,,,,
+Russia,Altai region,russia,altai region,2,2,0.7,2007-06-15,2008-06-15,genbank_nuccore,False,ambiguous,altai,,,,,
+Russia,Amursk region,russia,amursk region,4,4,1.4,2002-07-01,2002-07-01,genbank_nuccore,False,unmatched,,,,,,
+Russia,Astrakhan,russia,astrakhan,4,4,1.4,2021-07-01,2021-07-01,genbank_nuccore,True,matched,astrakhan,Astrakhan',Astrakhan,RU-AST,RUS-2388,1392.0
+Russia,Bashkiria,russia,bashkiria,29,29,10.149999999999999,1986-07-01,2023-10-15,genbank_nuccore,False,unmatched,,,,,,
+Russia,Buryatia Republic,russia,buryatia republic,2,2,0.7,2005-08-15,2005-09-15,genbank_nuccore,True,matched,buryatia,Buryat,Republic of Buryatia,RU-BU,RUS-2606,941.0
+Russia,Chelyabinsk Oblas,russia,chelyabinsk oblas,2,2,0.7,2020-07-01,2020-07-01,genbank_nuccore,False,unmatched,,,,,,
+Russia,Chelyabinsk Oblast,russia,chelyabinsk oblast,6,6,2.0999999999999996,2020-07-01,2020-07-01,genbank_nuccore,True,matched,chelyabinsk,Chelyabinsk,Chelyabinsk,RU-CHE,RUS-2379,1387.0
+Russia,Chuvash Republic,russia,chuvash republic,1,1,0.35,2022-07-01,2022-07-01,genbank_nuccore,True,matched,chuvash republic,Chuvash,Chuvash Republic,RU-CU,RUS-2389,4143.0
+Russia,Dagestan,russia,dagestan,2,2,0.7,2023-03-15,2023-03-15,genbank_nuccore,True,matched,dagestan,Dagestan,Republic of Dagestan,RU-DA,RUS-2417,222.0
+Russia,East Sayan,russia,east sayan,2,2,0.7,2008-07-01,2008-07-01,genbank_nuccore,False,unmatched,,,,,,
+Russia,Irkutsk Oblast,russia,irkutsk oblast,2,2,0.7,2006-07-01,2006-07-01,genbank_nuccore,True,matched,irkutsk,Irkutsk,Irkutsk,RU-IRK,RUS-2602,4126.0
+Russia,Jewish Autonom Oblast,russia,jewish autonom oblast,1,1,0.35,2018-12-15,2018-12-15,genbank_nuccore,False,unmatched,,,,,,
+Russia,Jewish Autonomous Oblast,russia,jewish autonomous oblast,12,12,4.199999999999999,2015-07-01,2017-10-15,genbank_nuccore,True,matched,jewish,Yevrey,Jewish,RU-YEV,RUS-2613,952.0
+Russia,Jewish Autonomous region,russia,jewish autonomous region,2,2,0.7,2018-12-15,2022-09-15,genbank_nuccore,True,matched,jewish,Yevrey,Jewish,RU-YEV,RUS-2613,952.0
+Russia,Kazan,russia,kazan,1,1,0.35,2004-07-01,2004-07-01,genbank_nuccore,True,matched,kazan,Tatarstan,Republic of Tatarstan,RU-TA,RUS-2394,4121.0
+Russia,Kemerovo Region,russia,kemerovo region,3,3,1.0499999999999998,2008-07-01,2021-07-01,genbank_nuccore,True,matched,kemerovo,Kemerovo,Kemerovo,RU-KEM,RUS-2401,4124.0
+Russia,Kemerovo region,russia,kemerovo region,3,3,1.0499999999999998,2021-07-01,2022-07-01,genbank_nuccore,True,matched,kemerovo,Kemerovo,Kemerovo,RU-KEM,RUS-2401,4124.0
+Russia,Khabarovsk,russia,khabarovsk,23,23,8.049999999999999,1998-09-15,2023-09-15,genbank_nuccore,True,matched,khabarovsk,Khabarovsk,Khabarovsk Krai,RU-KHA,RUS-2614,953.0
+Russia,Khabarovsk Krai,russia,khabarovsk krai,76,76,26.599999999999998,2007-04-15,2023-09-15,genbank_nuccore,True,matched,khabarovsk krai,Khabarovsk,Khabarovsk Krai,RU-KHA,RUS-2614,953.0
+Russia,Khabarovsk region,russia,khabarovsk region,2,2,0.7,2008-02-15,2008-02-15,genbank_nuccore,True,matched,khabarovsk,Khabarovsk,Khabarovsk Krai,RU-KHA,RUS-2614,953.0
+Russia,Krasnoyarsk Krai,russia,krasnoyarsk krai,10,10,3.5,2008-08-15,2008-08-15,genbank_nuccore,True,matched,krasnoyarsk krai,Krasnoyarsk,Krasnoyarsk Krai,RU-KYA,RUS-2603,2437.0
+Russia,Kursk,russia,kursk,1,1,0.35,2008-07-01,2008-07-01,genbank_nuccore,True,matched,kursk,Kursk,Kursk,RU-KRS,RUS-2362,919.0
+Russia,Lipetzk,russia,lipetzk,1,1,0.35,2007-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Russia,Novosibirsk Region,russia,novosibirsk region,5,5,1.75,2019-07-01,2021-08-15,genbank_nuccore,True,matched,novosibirsk,Novosibirsk,Novosibirsk,RU-NVS,RUS-2403,1386.0
+Russia,Novosibirsk region,russia,novosibirsk region,7,7,2.4499999999999997,2007-07-01,2022-07-01,genbank_nuccore,True,matched,novosibirsk,Novosibirsk,Novosibirsk,RU-NVS,RUS-2403,1386.0
+Russia,Omsk,russia,omsk,1,1,0.35,2005-07-01,2005-07-01,genbank_nuccore,True,matched,omsk,Omsk,Omsk,RU-OMS,RUS-2397,1383.0
+Russia,Omsk Oblast,russia,omsk oblast,1,1,0.35,2017-06-15,2017-06-15,genbank_nuccore,True,matched,omsk,Omsk,Omsk,RU-OMS,RUS-2397,1383.0
+Russia,Orenburg,russia,orenburg,4,4,1.4,2007-07-01,2007-07-01,genbank_nuccore,True,matched,orenburg,Orenburg,Orenburg,RU-ORE,RUS-2391,1389.0
+Russia,Primorsky Krai,russia,primorsky krai,33,33,11.549999999999999,1997-10-15,2019-07-01,genbank_nuccore,True,matched,primorsky krai,Primor'ye,Primorsky Krai,RU-PRI,RUS-2611,954.0
+Russia,Republic Altai,russia,republic altai,8,8,2.8,2007-07-01,2007-08-15,genbank_nuccore,False,ambiguous,altai,,,,,
+Russia,Republic Bashkortostan,russia,republic bashkortostan,1,1,0.35,2018-10-15,2018-10-15,genbank_nuccore,True,matched,bashkortostan,Bashkortostan,Bashkortostan,RU-BA,RUS-2378,4115.0
+Russia,Republic Crimea,russia,republic crimea,4,4,1.4,2009-04-15,2009-04-15,genbank_nuccore,True,matched,crimea,Crimea,Autonomous Republic of Crimea,UA-43,RUS-283,1639.0
+Russia,Republic of Bashkortostan,russia,republic of bashkortostan,15,15,5.25,2020-07-01,2023-07-01,genbank_nuccore,True,matched,republic of bashkortostan,Bashkortostan,Bashkortostan,RU-BA,RUS-2378,4115.0
+Russia,Republic of Mordovia,russia,republic of mordovia,1,1,0.35,2021-07-01,2021-07-01,genbank_nuccore,True,matched,republic of mordovia,Mordovia,Republic of Mordovia,RU-MO,RUS-2372,4128.0
+Russia,Republic of Tatarstan,russia,republic of tatarstan,32,32,11.2,2015-07-01,2019-07-01,genbank_nuccore,True,matched,republic of tatarstan,Tatarstan,Republic of Tatarstan,RU-TA,RUS-2394,4121.0
+Russia,Russia,russia,russia,2,2,0.7,2009-04-15,2009-04-15,genbank_nuccore,False,unmatched,,,,,,
+Russia,Sakhalin,russia,sakhalin,4,4,1.4,1998-05-15,1998-05-15,genbank_nuccore,True,matched,sakhalin,Sakhalin,Sakhalin,RU-SAK,RUS-2616,2243.0
+Russia,Sakhalin Oblast,russia,sakhalin oblast,1,1,0.35,2015-09-15,2015-09-15,genbank_nuccore,True,matched,sakhalin,Sakhalin,Sakhalin,RU-SAK,RUS-2616,2243.0
+Russia,Saratov,russia,saratov,12,12,4.199999999999999,1987-07-01,2019-05-15,genbank_nuccore,True,matched,saratov,Saratov,Saratov,RU-SAR,RUS-2393,1391.0
+Russia,Saratov region Khvalynsky district,russia,saratov region khvalynsky district,3,3,1.0499999999999998,2021-05-15,2021-05-15,genbank_nuccore,False,unmatched,,,,,,
+Russia,Saratov region Novoburassky district,russia,saratov region novoburassky district,1,1,0.35,2021-08-15,2021-08-15,genbank_nuccore,False,unmatched,,,,,,
+Russia,The Republic of Tatarstan,russia,the republic of tatarstan,9,9,3.15,2015-07-01,2015-07-01,genbank_nuccore,True,matched,tatarstan,Tatarstan,Republic of Tatarstan,RU-TA,RUS-2394,4121.0
+Russia,Tiumen Oblast,russia,tiumen oblast,4,4,1.4,2007-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Russia,Tomsk Oblast,russia,tomsk oblast,24,24,8.399999999999999,2019-04-15,2019-08-15,genbank_nuccore,True,matched,tomsk,Tomsk,Tomsk,RU-TOM,RUS-2167,4120.0
+Russia,Tyumen,russia,tyumen,16,16,5.6,2006-07-01,2006-07-01,genbank_nuccore,True,matched,tyumen,Tyumen',Tyumen,RU-TYU,RUS-2398,1381.0
+Russia,Ulyanovsk region,russia,ulyanovsk region,18,18,6.3,2019-07-01,2019-07-01,genbank_nuccore,True,matched,ulyanovsk,Ul'yanovsk,Ulyanovsk,RU-ULY,RUS-2395,4122.0
+Russia,Zabaikalsky Krai,russia,zabaikalsky krai,6,6,2.0999999999999996,2019-07-01,2023-07-01,genbank_nuccore,False,unmatched,,,,,,
+Russia,near Irkutsk City,russia,near irkutsk city,3,3,1.0499999999999998,2007-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Russia,near Karasuk Village,russia,near karasuk village,2,2,0.7,2007-07-01,2008-07-01,genbank_nuccore,False,unmatched,,,,,,
+Russia,near Krapivino Village,russia,near krapivino village,1,1,0.35,2008-07-01,2008-07-01,genbank_nuccore,False,unmatched,,,,,,
+Russia,near Novosibirsk City,russia,near novosibirsk city,1,1,0.35,2008-07-01,2008-07-01,genbank_nuccore,False,unmatched,,,,,,
+Russia,near Parnaya Village,russia,near parnaya village,1,1,0.35,2008-07-01,2008-07-01,genbank_nuccore,False,unmatched,,,,,,
+Russia,near Teletskoye Lake,russia,near teletskoye lake,5,5,1.75,2007-07-01,2007-07-01,genbank_nuccore,False,unmatched,,,,,,
+Russia,the Chelyabinsk Oblast,russia,the chelyabinsk oblast,4,4,1.4,2020-07-01,2020-07-01,genbank_nuccore,True,matched,chelyabinsk,Chelyabinsk,Chelyabinsk,RU-CHE,RUS-2379,1387.0
+Russia,the Chuvash Republic,russia,the chuvash republic,1,1,0.35,2022-07-01,2022-07-01,genbank_nuccore,True,matched,chuvash,Chuvash,Chuvash Republic,RU-CU,RUS-2389,4143.0
+Russia,the Republic of Bashkortostan,russia,the republic of bashkortostan,12,12,4.199999999999999,2020-07-01,2023-07-01,genbank_nuccore,True,matched,bashkortostan,Bashkortostan,Bashkortostan,RU-BA,RUS-2378,4115.0
+Russia,the Republic of Mordovia,russia,the republic of mordovia,2,2,0.7,2021-07-01,2021-07-01,genbank_nuccore,True,matched,mordovia,Mordovia,Republic of Mordovia,RU-MO,RUS-2372,4128.0
+Russia,the Republic of Tatarstan,russia,the republic of tatarstan,229,229,80.14999999999999,2015-07-01,2023-07-01,genbank_nuccore,True,matched,tatarstan,Tatarstan,Republic of Tatarstan,RU-TA,RUS-2394,4121.0
+Russia,the Udmurt Republic,russia,the udmurt republic,18,18,6.3,2019-07-01,2019-07-01,genbank_nuccore,True,matched,udmurt,Udmurt,Udmurt Republic,RU-UD,RUS-2387,4151.0
+South Korea,Boseong,south korea,boseong,6,6,2.0999999999999996,2017-10-15,2018-10-15,genbank_nuccore,False,unmatched,,,,,,
+South Korea,Boseong-gun,south korea,boseong gun,15,15,5.25,2019-06-15,2019-11-15,genbank_nuccore,False,unmatched,,,,,,
+South Korea,Cheorwon,south korea,cheorwon,6,6,2.0999999999999996,2022-06-15,2023-04-15,genbank_nuccore,False,unmatched,,,,,,
+South Korea,Chuncheon,south korea,chuncheon,1,1,0.35,2018-11-14,2018-11-14,genbank_nuccore,False,unmatched,,,,,,
+South Korea,Gangneung,south korea,gangneung,1,1,0.35,2019-12-18,2019-12-18,genbank_nuccore,False,unmatched,,,,,,
+South Korea,Gwangju,south korea,gwangju,3,3,1.0499999999999998,2017-09-15,2017-11-15,genbank_nuccore,True,matched,gwangju,Gwangju,Gwangju,KR-29,KOR-2500,4141.0
+South Korea,Gwangju-si,south korea,gwangju si,5,5,1.75,2017-09-15,2017-11-15,genbank_nuccore,False,unmatched,,,,,,
+South Korea,Hongcheon,south korea,hongcheon,3,3,1.0499999999999998,2015-09-15,2018-10-15,genbank_nuccore,False,unmatched,,,,,,
+South Korea,Hwacheon,south korea,hwacheon,1,1,0.35,2022-05-15,2022-05-15,genbank_nuccore,False,unmatched,,,,,,
+South Korea,Inje,south korea,inje,1,1,0.35,2022-04-15,2022-04-15,genbank_nuccore,False,unmatched,,,,,,
+South Korea,Jeju,south korea,jeju,14,14,4.8999999999999995,2018-05-15,2024-06-15,genbank_nuccore,True,matched,jeju,Jeju,Jeju,KR-49,KOR-2510,2917.0
+South Korea,Jeju Island,south korea,jeju island,18,18,6.3,2007-11-15,2023-04-15,genbank_nuccore,True,matched,jeju,Jeju,Jeju,KR-49,KOR-2510,2917.0
+South Korea,Paju,south korea,paju,6,6,2.0999999999999996,2016-11-25,2023-03-15,"genbank_biosample,genbank_nuccore",False,unmatched,,,,,,
+South Korea,Pocheon,south korea,pocheon,2,2,0.7,2016-06-21,2017-04-27,genbank_biosample,False,unmatched,,,,,,
+South Korea,Pyeongchang,south korea,pyeongchang,2,2,0.7,2015-09-15,2018-10-15,genbank_nuccore,False,unmatched,,,,,,
+South Korea,Yeoncheon,south korea,yeoncheon,5,5,1.75,2016-10-12,2023-03-15,"genbank_biosample,genbank_nuccore",False,unmatched,,,,,,
+Spain,Cocena,spain,cocena,2,2,0.7,2011-06-14,2011-06-14,genbank_biosample,False,unmatched,,,,,,
+Spain,Fresnadiellu,spain,fresnadiellu,1,1,0.35,2012-06-15,2012-06-15,genbank_biosample,False,unmatched,,,,,,
+Spain,Oles,spain,oles,2,2,0.7,2011-03-22,2012-08-22,genbank_biosample,False,unmatched,,,,,,
+Spain,Priesca,spain,priesca,2,2,0.7,2011-06-27,2011-06-29,genbank_biosample,False,unmatched,,,,,,
+Sweden,Vasterbotten County,sweden,vasterbotten county,3,3,1.0499999999999998,1998-07-01,1998-07-01,genbank_nuccore,True,matched,vasterbotten,Västerbotten,Västerbotten,SE-AC,SWE-192,164.0
+Switzerland,Seewis in Graubunden,switzerland,seewis in graubunden,1,1,0.35,2006-07-01,2006-07-01,genbank_nuccore,False,unmatched,,,,,,
+Taiwan,New Taipei City,taiwan,new taipei city,1,1,0.35,2023-07-01,2023-07-01,genbank_nuccore,True,matched,new taipei city,New Taipei City,New Taipei,TW-TPQ,TWN-1167,2071.0
+United Kingdom,Site G,united kingdom,site g,1,1,0.35,2015-07-01,2015-07-01,genbank_nuccore,False,unmatched,,,,,,
+United Kingdom,Site H,united kingdom,site h,1,1,0.35,2015-07-01,2015-07-01,genbank_nuccore,False,unmatched,,,,,,
+United Kingdom,Site J,united kingdom,site j,1,1,0.35,2015-07-01,2015-07-01,genbank_nuccore,False,unmatched,,,,,,
+United Kingdom,Site L,united kingdom,site l,1,1,0.35,2015-07-01,2015-07-01,genbank_nuccore,False,unmatched,,,,,,
+United Kingdom,Site M,united kingdom,site m,1,1,0.35,2015-07-01,2015-07-01,genbank_nuccore,False,unmatched,,,,,,
+United States of America,AZ,united states of america,az,3,3,1.0499999999999998,2005-07-01,2020-03-15,genbank_nuccore,True,matched,az,Arizona,Arizona,US-AZ,USA-3520,1254.0
+United States of America,Alabama,united states of america,alabama,1,1,0.65,2021-02-08,2021-02-08,cdc_nndss,True,matched,alabama,Alabama,Alabama,US-AL,USA-3541,2076.0
+United States of America,Arizona,united states of america,arizona,3,3,1.9500000000000002,2020-01-20,2020-09-28,cdc_nndss,True,matched,arizona,Arizona,Arizona,US-AZ,USA-3520,1254.0
+United States of America,Benton County,united states of america,benton county,67,67,23.45,2020-06-15,2021-06-15,genbank_nuccore,False,unmatched,,,,,,
+United States of America,CA,united states of america,ca,8,8,2.8,1999-04-15,2017-01-15,genbank_nuccore,True,matched,ca,California,California,US-CA,USA-3521,1257.0
+United States of America,CO,united states of america,co,3,3,1.0499999999999998,2011-03-15,2021-03-15,genbank_nuccore,True,matched,co,Colorado,Colorado,US-CO,USA-3522,3278.0
+United States of America,California,united states of america,california,13,13,4.55,2014-05-15,2018-05-15,genbank_nuccore,True,matched,california,California,California,US-CA,USA-3521,1257.0
+United States of America,Colorado,united states of america,colorado,3,4,2.0,2017-01-15,2021-04-19,"cdc_nndss,genbank_nuccore",True,matched,colorado,Colorado,Colorado,US-CO,USA-3522,3278.0
+United States of America,Death Valley National Park,united states of america,death valley national park,49,49,17.15,2010-03-15,2011-10-15,genbank_nuccore,False,unmatched,,,,,,
+United States of America,Gregson,united states of america,gregson,1,1,0.35,2009-07-01,2009-07-01,genbank_nuccore,False,unmatched,,,,,,
+United States of America,Idaho,united states of america,idaho,1,1,0.65,2019-07-22,2019-07-22,cdc_nndss,True,matched,idaho,Idaho,Idaho,US-ID,USA-3518,1237.0
+United States of America,Illinois,united states of america,illinois,7,7,2.4499999999999997,2017-01-15,2018-06-15,genbank_nuccore,True,matched,illinois,Illinois,Illinois,US-IL,USA-3546,4355.0
+United States of America,Iowa,united states of america,iowa,2,2,1.0,2017-03-15,2021-11-01,"cdc_nndss,genbank_nuccore",True,matched,iowa,Iowa,Iowa,US-IA,USA-3529,3283.0
+United States of America,Limestone Canyon,united states of america,limestone canyon,8,8,2.8,2006-07-01,2006-07-01,genbank_nuccore,False,unmatched,,,,,,
+United States of America,ME,united states of america,me,1,1,0.35,2011-04-15,2011-04-15,genbank_nuccore,True,matched,me,Maine,Maine,US-ME,USA-3561,1252.0
+United States of America,Michigan,united states of america,michigan,6,6,2.0999999999999996,2021-05-15,2021-05-15,genbank_nuccore,True,matched,michigan,Michigan,Michigan,US-MI,USA-3562,1245.0
+United States of America,Montana,united states of america,montana,1,1,0.65,2021-08-02,2021-08-02,cdc_nndss,True,matched,montana,Montana,Montana,US-MT,USA-3515,1238.0
+United States of America,Mount Haggin,united states of america,mount haggin,3,3,1.0499999999999998,2008-07-01,2008-07-01,genbank_nuccore,False,unmatched,,,,,,
+United States of America,NM,united states of america,nm,1,1,0.35,2019-08-15,2019-08-15,genbank_nuccore,True,matched,nm,New Mexico,New Mexico,US-NM,USA-3524,1258.0
+United States of America,NV,united states of america,nv,1,1,0.35,2019-08-15,2019-08-15,genbank_nuccore,True,matched,nv,Nevada,Nevada,US-NV,USA-3523,3277.0
+United States of America,NY,united states of america,ny,2,2,0.7,2011-06-15,2019-08-15,genbank_nuccore,True,matched,ny,New York,New York,US-NY,USA-3559,1248.0
+United States of America,Nevada,united states of america,nevada,2,3,1.9500000000000002,2019-08-26,2021-06-14,cdc_nndss,True,matched,nevada,Nevada,Nevada,US-NV,USA-3523,3277.0
+United States of America,New Mexico,united states of america,new mexico,5,5,3.25,2019-05-27,2021-06-21,cdc_nndss,True,matched,new mexico,New Mexico,New Mexico,US-NM,USA-3524,1258.0
+United States of America,New York,united states of america,new york,17,17,6.25,2013-06-15,2020-11-16,"cdc_nndss,genbank_nuccore",True,matched,new york,New York,New York,US-NY,USA-3559,1248.0
+United States of America,North Dakota,united states of america,north dakota,1,1,0.65,2020-12-21,2020-12-21,cdc_nndss,True,matched,north dakota,North Dakota,North Dakota,US-ND,USA-3516,1241.0
+United States of America,OK,united states of america,ok,1,1,0.35,2019-05-15,2019-05-15,genbank_nuccore,True,matched,ok,Oklahoma,Oklahoma,US-OK,USA-3533,3282.0
+United States of America,Oklahoma,united states of america,oklahoma,1,1,0.65,2019-05-27,2019-05-27,cdc_nndss,True,matched,oklahoma,Oklahoma,Oklahoma,US-OK,USA-3533,3282.0
+United States of America,Oregon,united states of america,oregon,2,2,1.3,2020-06-08,2020-09-07,cdc_nndss,True,matched,oregon,Oregon,Oregon,US-OR,USA-3525,2171.0
+United States of America,Polson,united states of america,polson,1,1,0.35,2009-07-01,2009-07-01,genbank_nuccore,False,unmatched,,,,,,
+United States of America,Shelter Island,united states of america,shelter island,3,3,1.0499999999999998,1994-10-15,1994-10-15,genbank_nuccore,False,unmatched,,,,,,
+United States of America,South Dakota,united states of america,south dakota,2,2,1.3,2019-09-16,2019-11-04,cdc_nndss,True,matched,south dakota,South Dakota,South Dakota,US-SD,USA-3534,3279.0
+United States of America,Tennessee,united states of america,tennessee,1,1,0.35,2017-02-15,2017-02-15,genbank_nuccore,True,matched,tennessee,Tennessee,Tennessee,US-TN,USA-3551,4358.0
+United States of America,Texas (Brazoria Co),united states of america,texas brazoria co,1,1,0.35,1998-04-15,1998-04-15,genbank_nuccore,True,matched,texas,Texas,Texas,US-TX,USA-3536,1260.0
+United States of America,Texas (Cottle Co),united states of america,texas cottle co,5,5,1.75,1998-02-15,1998-02-15,genbank_nuccore,True,matched,texas,Texas,Texas,US-TX,USA-3536,1260.0
+United States of America,Texas (Dimmit Co),united states of america,texas dimmit co,1,1,0.35,2002-01-15,2002-01-15,genbank_nuccore,True,matched,texas,Texas,Texas,US-TX,USA-3536,1260.0
+United States of America,Texas (Jeff Davis Co),united states of america,texas jeff davis co,5,5,1.75,1998-07-01,1999-07-01,genbank_nuccore,True,matched,texas,Texas,Texas,US-TX,USA-3536,1260.0
+United States of America,Texas (Kerr Co),united states of america,texas kerr co,5,5,1.75,1998-05-15,1998-05-15,genbank_nuccore,True,matched,texas,Texas,Texas,US-TX,USA-3536,1260.0
+United States of America,Texas (Lynn Co),united states of america,texas lynn co,1,1,0.35,2007-07-01,2007-07-01,genbank_nuccore,True,matched,texas,Texas,Texas,US-TX,USA-3536,1260.0
+United States of America,Texas (Matagorda Co),united states of america,texas matagorda co,1,1,0.35,1998-04-15,1998-04-15,genbank_nuccore,True,matched,texas,Texas,Texas,US-TX,USA-3536,1260.0
+United States of America,Texas (Morris Co),united states of america,texas morris co,4,4,1.4,1999-07-01,1999-07-01,genbank_nuccore,True,matched,texas,Texas,Texas,US-TX,USA-3536,1260.0
+United States of America,Utah,united states of america,utah,4,4,2.0,2017-02-15,2020-10-19,"cdc_nndss,genbank_nuccore",True,matched,utah,Utah,Utah,US-UT,USA-3526,3275.0
+United States of America,WY,united states of america,wy,2,2,0.7,2020-07-01,2020-11-15,genbank_nuccore,True,matched,wy,Wyoming,Wyoming,US-WY,USA-3527,3276.0
+United States of America,Washington,united states of america,washington,1,1,0.65,2019-07-08,2019-07-08,cdc_nndss,False,ambiguous,washington,,,,,
+United States of America,Washington State,united states of america,washington state,30,30,10.5,2023-06-15,2023-07-01,genbank_nuccore,False,ambiguous,washington,,,,,
+United States of America,Western MT,united states of america,western mt,14,14,4.8999999999999995,2017-07-01,2018-06-15,genbank_nuccore,False,unmatched,,,,,,
+United States of America,Wisconsin,united states of america,wisconsin,2,2,0.7,2017-01-15,2017-02-15,genbank_nuccore,True,matched,wisconsin,Wisconsin,Wisconsin,US-WI,USA-3553,4354.0
+Uruguay,Laguna de Castillos,uruguay,laguna de castillos,1,1,0.35,2008-10-15,2008-10-15,genbank_nuccore,False,unmatched,,,,,,
+Uruguay,Las Piedras,uruguay,las piedras,1,1,0.35,2013-12-15,2013-12-15,genbank_nuccore,False,unmatched,,,,,,
+Uruguay,Punta del Diablo,uruguay,punta del diablo,1,1,0.35,2012-03-15,2012-03-15,genbank_nuccore,False,unmatched,,,,,,
+Uruguay,San Pedro,uruguay,san pedro,2,2,0.7,2013-04-15,2013-04-15,genbank_nuccore,False,unmatched,,,,,,
+Vietnam,Binh Dinh,vietnam,binh dinh,1,1,0.35,2016-07-01,2016-07-01,genbank_nuccore,True,matched,binh dinh,Bình Định,Bình Định,VN-31,VNM-485,2215.0
+Vietnam,HCMC,vietnam,hcmc,6,6,2.0999999999999996,2008-07-01,2008-07-01,genbank_nuccore,False,unmatched,,,,,,
+Vietnam,Haiphong,vietnam,haiphong,8,8,2.8,2011-01-15,2011-01-15,genbank_nuccore,True,matched,haiphong,Hải Phòng,Haiphong,VN-HP,VNM-4600,2221.0
+Vietnam,Hanoi,vietnam,hanoi,3,3,1.0499999999999998,2011-01-15,2011-01-15,genbank_nuccore,True,matched,hanoi,Ha Noi,Hanoi,VN-HN,VNM-462,3198.0
+Vietnam,Ho Chi Minh City,vietnam,ho chi minh city,1,1,0.35,2008-07-01,2008-07-01,genbank_nuccore,True,matched,ho chi minh city,Hồ Chí Minh city,Ho Chi Minh,VN-SG,VNM-501,1877.0
+Vietnam,Hoang Lien National Park,vietnam,hoang lien national park,6,6,2.0999999999999996,2014-06-15,2014-06-15,genbank_nuccore,False,unmatched,,,,,,
+Vietnam,Saigon harbor,vietnam,saigon harbor,25,25,8.75,2007-07-01,2008-07-01,genbank_nuccore,False,unmatched,,,,,,

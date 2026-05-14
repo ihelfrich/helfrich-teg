@@ -205,22 +205,25 @@ Input files:
 
 ## Global Exposure v1
 
-Generated at: `2026-05-13T23:48:14Z`
+Generated at: `2026-05-14T04:38:20Z`
 
 Output:
 
 | Path | Size | SHA-256 | Description |
 |---|---:|---|---|
-| `data/outputs/global_exposure_v1.json` | 17321 | `5b5490fed7467d9bd6692f0aadd7813aa6ab26e3910e31f55f7abc96391f5792` | Global exposed-population summary by 25, 50, and 100 km reported-case geodesic footprints, stratified by GHS-SMOD settlement class. |
+| `data/outputs/global_exposure_v1.json` | 26710 | `6072fae6ba89fcd284b82b553d5ba7827c887c17e182daca714de391bcf31cf4` | Global exposed-population summary by 25, 50, and 100 km point-supported reported-case geodesic footprints plus a separate admin-supported areal tier, stratified by GHS-SMOD settlement class. |
 | `data/outputs/global_exposure_locations_v1.csv` | 28439 | `157e568c1214c031894fa0cb1f540966b0bd59e4df9f629778a6bfd2e725ee09` | Unique high-confidence reported-case locations used for granular exposure accounting. |
-| `data/outputs/_external_index.json` | 549 | `92f9ff067ff784247c30631dc8d7b3948ab9c31afddf53c81e4ebcfb7686736f` | Pointer to the off-repo 100 km exposure mask. |
+| `data/outputs/global_exposure_admin_v1.csv` | 45971 | `7599fd9b747484d48a7d6a5d7c770a93aff83e95a7f4f864af32559c7441492f` | Audit table for admin1 label matching, including matched, unmatched, and ambiguous labels. |
+| `data/outputs/_external_index.json` | 1012 | `2db459a31a122c6484360eb4311e42641eccbe513040ca97ec06c34bde599f35` | Pointer to the off-repo 100 km point-supported exposure mask and admin-supported areal mask. |
 | `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif` | 786185 | `19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e` | External compressed GeoTIFF mask for cells within 100 km geodesic distance of point-supported reported case locations. |
+| `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_admin_supported_v1.tif` | 1005503 | `47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d` | External compressed GeoTIFF mask for cells inside conservatively matched Natural Earth Admin 1 reported-case evidence. |
 
 Input files:
 
 | Path | Source URL | Pulled at UTC | Size | SHA-256 | License/terms | Citation | Description |
 |---|---|---:|---:|---|---|---|---|
-| `data/outputs/cases_panel_v1.parquet` | derived from Case Panel v1 inputs above | 2026-05-13T19:27:59Z | 59096 | `e56c94395e212c577036af0c3acea5e2b4c4c1b9b18cf35c56c534a38c612656` | Mixed upstream terms; see Case Panel v1 | TEG case-panel loader output. | Unified hantavirus case panel; high-confidence point records were used for granular exposure footprints, with lower-confidence records reported as unlocalizable. |
+| `data/outputs/cases_panel_v1.parquet` | derived from Case Panel v1 inputs above | 2026-05-13T19:27:59Z | 59096 | `e56c94395e212c577036af0c3acea5e2b4c4c1b9b18cf35c56c534a38c612656` | Mixed upstream terms; see Case Panel v1 | TEG case-panel loader output. | Unified hantavirus case panel; high-confidence point records were used for granular exposure footprints, with lower-confidence admin1 records matched to the separate areal tier when possible. |
 | `/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.zip` | https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_GLOBE_R2023A/GHS_POP_E2020_GLOBE_R2023A_54009_1000/V1-0/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.zip | 2026-05-13T22:43:32Z | 322293568 | `40ccf52af857a82cd327b882d1ebb901f84363b0e7e6806ccee56b0a85df6d2c` | European Commission reuse policy / GHSL terms | Schiavina, M., Freire, S., MacManus, K. et al. GHS-POP R2023A. | Downloaded GHSL 2020 global 1 km population archive. |
 | `/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.tif` | extracted from GHSL archive above | 2026-05-13T22:48:38Z | 261128685 | `db25d12ab0851446af467a56eb1651d383867dc3fbf4aa6348ec8e3372225196` | European Commission reuse policy / GHSL terms | Schiavina, M., Freire, S., MacManus, K. et al. GHS-POP R2023A. | Equal-area World Mollweide population denominator for exposure accounting. |
 | `/Volumes/HELFRICH-GD/KatiaBlendedFinance/raster_cache/ghs_smod/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V2_0.tif` | https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_SMOD_GLOBE_R2023A/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000/V2-0/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V2_0.zip | existing local cache, reused 2026-05-13 | 17958428 | `1e2d7d7a6994b0458fc5d6ff985fb872f27841162b1808a3d52e32ae1a4953a0` | European Commission reuse policy / GHSL terms | Pesaresi, M., Politis, P. et al. GHS-SMOD R2023A. | Settlement-class raster aligned to the GHSL population grid for exposure stratification. |
+| `/Volumes/HELFRICH-GD/TEG_data/inputs/boundaries/ne_10m_admin_1_states_provinces.zip` | https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_admin_1_states_provinces.zip | 2026-05-14T04:07:58Z | 14909524 | `efc59726337323058f9446210adc96673179cd344e053666ee3d28cb58ba2b05` | Public domain | Natural Earth. 1:10m Cultural Vectors, Admin 1 States and Provinces. | Administrative boundaries used for the separate admin-supported areal exposure tier. |
