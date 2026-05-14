@@ -5,7 +5,7 @@
       "sha256": "47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d",
       "size_bytes": 1005503,
       "description": "Global 1 km admin-supported areal exposure mask for matched Natural Earth Admin 1 reported-case evidence.",
-      "created_at_utc": "2026-05-14T04:38:20Z",
+      "created_at_utc": "2026-05-14T20:05:00Z",
       "source_script": "pipeline/exposure/exposed_population.py"
     },
     {
@@ -13,9 +13,9 @@
       "sha256": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e",
       "size_bytes": 786185,
       "description": "Global 1 km point-supported geodesic exposure mask within 100 km of high-confidence reported hantavirus case locations.",
-      "created_at_utc": "2026-05-14T04:38:20Z",
+      "created_at_utc": "2026-05-14T20:05:00Z",
       "source_script": "pipeline/exposure/exposed_population.py"
     }
   ],
-  "updated_at_utc": "2026-05-14T04:38:20Z"
+  "updated_at_utc": "2026-05-14T20:05:00Z"
 }

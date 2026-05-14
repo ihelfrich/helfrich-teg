@@ -162,6 +162,17 @@ def plot_surfaces(
     crs,
     output_path: Path,
 ) -> None:
+    plt.rcParams.update({
+        "font.family": "serif",
+        "font.serif": ["Times", "Times New Roman", "DejaVu Serif"],
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+        "axes.edgecolor": "#333333",
+        "text.color": "#111111",
+        "axes.labelcolor": "#111111",
+        "xtick.color": "#111111",
+        "ytick.color": "#111111",
+    })
     countries = _load_country_outlines(crs)
     point = _surface_for_radius(report, report["parameters"]["surface_radius_km"])
     admin = report["admin_supported"]["exposure"]

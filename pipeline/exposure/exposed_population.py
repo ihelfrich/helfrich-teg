@@ -99,6 +99,7 @@ SMOD_LOOKUP_OFFSET = 10000
 SMOD_LOOKUP = np.full(SMOD_LOOKUP_OFFSET + max(SMOD_CLASS_KEYS) + 1, SMOD_UNCLASSIFIED_INDEX, dtype=np.int16)
 for _smod_idx, _smod_cls in enumerate(SMOD_CLASS_KEYS):
     SMOD_LOOKUP[SMOD_LOOKUP_OFFSET + _smod_cls] = _smod_idx
+POPULATION_SMOD_CLASSES = [11, 12, 13, 21, 22, 23, 30]
 
 
 @dataclass
@@ -137,17 +138,24 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _write_external_index(entry: dict[str, Any]) -> None:
-    EXTERNAL_INDEX.parent.mkdir(parents=True, exist_ok=True)
-    if EXTERNAL_INDEX.exists():
-        payload = json.loads(EXTERNAL_INDEX.read_text(encoding="utf-8"))
+def _display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(REPO_ROOT))
+    except ValueError:
+        return str(path)
+
+
+def _write_external_index(entry: dict[str, Any], *, index_path: Path) -> None:
+    index_path.parent.mkdir(parents=True, exist_ok=True)
+    if index_path.exists():
+        payload = json.loads(index_path.read_text(encoding="utf-8"))
     else:
         payload = {"artifacts": []}
     artifacts = [item for item in payload.get("artifacts", []) if item.get("path") != entry["path"]]
     artifacts.append(entry)
     payload["artifacts"] = sorted(artifacts, key=lambda item: item["path"])
     payload["updated_at_utc"] = _now_utc()
-    EXTERNAL_INDEX.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    index_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
 def _assert_same_grid(a, b, *, label_a: str, label_b: str) -> None:
@@ -324,6 +332,7 @@ def _load_admin_supported_evidence(
     *,
     point_confidence: float,
     admin_min_confidence: float,
+    output_path: Path,
     download: bool,
 ) -> tuple[gpd.GeoDataFrame, pd.DataFrame, dict[str, Any]]:
     cases = gpd.read_parquet(cases_path)
@@ -339,8 +348,8 @@ def _load_admin_supported_evidence(
     ].copy()
     if valid.empty:
         empty = pd.DataFrame(columns=ADMIN_MATCH_COLUMNS)
-        OUTPUT_ADMIN.parent.mkdir(parents=True, exist_ok=True)
-        empty.to_csv(OUTPUT_ADMIN, index=False)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        empty.to_csv(output_path, index=False)
         return gpd.GeoDataFrame(), empty, {
             "candidate_records": 0,
             "candidate_count": 0,
@@ -406,8 +415,8 @@ def _load_admin_supported_evidence(
         )
 
     match_frame = pd.DataFrame(rows)
-    OUTPUT_ADMIN.parent.mkdir(parents=True, exist_ok=True)
-    match_frame.to_csv(OUTPUT_ADMIN, index=False)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    match_frame.to_csv(output_path, index=False)
     matched_boundaries = boundaries.loc[sorted(matched_indices)].copy()
 
     diagnostics = {
@@ -439,6 +448,7 @@ def _admin_supported_exposure(
     *,
     surface_path: Path | None,
     smod_src=None,
+    allowed_smod_classes: list[int] | None = None,
 ) -> dict[str, Any] | None:
     if admin_boundaries.empty:
         return None
@@ -464,6 +474,7 @@ def _admin_supported_exposure(
         mask,
         surface_path=surface_path,
         smod_src=smod_src,
+        allowed_smod_classes=allowed_smod_classes,
     )
     scan_seconds = time.perf_counter() - t1
     del mask
@@ -564,6 +575,7 @@ def _sum_population_and_write_surface(
     *,
     surface_path: Path | None,
     smod_src=None,
+    allowed_smod_classes: list[int] | None = None,
 ) -> tuple[float, float, int, dict[str, Any] | None]:
     exposed_population = 0.0
     total_population = 0.0
@@ -596,11 +608,23 @@ def _sum_population_and_write_surface(
             pop = src.read(1, window=window, masked=True).filled(0).astype(np.float64)
             pop[pop < 0] = 0
             local_mask = np.asarray(mask[row0:row1, col0:col1], dtype=np.uint8)
+
+            smod = None
+            if smod_src is not None:
+                smod = (
+                    smod_src.read(1, window=window, masked=True)
+                    .filled(-9999)
+                    .astype(np.int16)
+                )
+
+            if allowed_smod_classes is not None and smod is not None:
+                allowed_mask = np.isin(smod, allowed_smod_classes)
+                local_mask[~allowed_mask] = 0
+
             total_population += float(pop.sum())
             exposed_cells += int(local_mask.sum())
             exposed_population += float(pop[local_mask == 1].sum())
-            if smod_src is not None and settlement is not None:
-                smod = smod_src.read(1, window=window, masked=True).filled(-9999).astype(np.int16)
+            if smod is not None and settlement is not None:
                 class_idx = _smod_class_indices(smod).ravel()
                 pop_flat = pop.ravel()
                 exposed_flat = local_mask.ravel() == 1
@@ -632,6 +656,55 @@ def _sum_population_and_write_surface(
     return exposed_population, total_population, exposed_cells, settlement_summary
 
 
+def _resolve_allowed_smod_classes(
+    args: argparse.Namespace,
+    smod_path: Path | None,
+) -> tuple[list[int] | None, str]:
+    """Resolve optional settlement-class masking without changing the default metric."""
+    if args.no_smod and (args.allowed_smod_classes or args.smod_population_only):
+        raise ValueError("SMOD filtering requires the GHS-SMOD raster; remove --no-smod.")
+    if args.allowed_smod_classes and args.smod_population_only:
+        raise ValueError("Use either --allowed-smod-classes or --smod-population-only, not both.")
+    if smod_path is None:
+        return None, "none"
+    if args.smod_population_only:
+        return POPULATION_SMOD_CLASSES.copy(), "population_settlement_classes"
+    if args.allowed_smod_classes:
+        allowed = sorted({int(cls) for cls in args.allowed_smod_classes})
+        unknown = [cls for cls in allowed if cls not in SMOD_CLASS_LABELS]
+        if unknown:
+            raise ValueError(f"Unknown GHS-SMOD classes: {unknown}")
+        return allowed, "explicit"
+    return None, "none"
+
+
+def _validate_filtered_output_paths(
+    args: argparse.Namespace,
+    allowed_smod_classes: list[int] | None,
+) -> None:
+    """Prevent filtered sensitivity runs from overwriting canonical outputs."""
+    if allowed_smod_classes is None:
+        return
+
+    defaults = {
+        "--output-json": (args.output_json, OUTPUT_JSON),
+        "--surface-path": (args.surface_path, DEFAULT_SURFACE),
+    }
+    if not args.no_admin:
+        defaults["--admin-surface-path"] = (args.admin_surface_path, DEFAULT_ADMIN_SURFACE)
+
+    conflicting = [
+        flag
+        for flag, (chosen, default) in defaults.items()
+        if Path(chosen).resolve() == Path(default).resolve()
+    ]
+    if conflicting:
+        raise ValueError(
+            "SMOD-filtered runs are sensitivity analyses and cannot overwrite canonical "
+            f"baseline outputs. Provide variant paths for: {', '.join(conflicting)}."
+        )
+
+
 def _iter_windows(height: int, width: int, *, block_size: int) -> list[Window]:
     windows = []
     for row_off in range(0, height, block_size):
@@ -655,6 +728,7 @@ def _radius_exposure(
     surface_path: Path | None,
     geodesic_vertices: int,
     smod_src=None,
+    allowed_smod_classes: list[int] | None = None,
 ) -> dict[str, Any]:
     height, width = src.height, src.width
     radius_m = float(radius_km) * 1000.0
@@ -678,6 +752,7 @@ def _radius_exposure(
         mask,
         surface_path=surface_path,
         smod_src=smod_src,
+        allowed_smod_classes=allowed_smod_classes,
     )
     scan_seconds = time.perf_counter() - t1
     del mask
@@ -708,6 +783,8 @@ def _radius_exposure(
 def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
     pop_path = ensure_ghs_pop_2020_1km(download=not args.no_download)
     smod_path = None if args.no_smod else ensure_ghs_smod_2020_1km(download=not args.no_download)
+    allowed_smod_classes, smod_filter_policy = _resolve_allowed_smod_classes(args, smod_path)
+    _validate_filtered_output_paths(args, allowed_smod_classes)
     radii = sorted({float(radius) for radius in args.radii_km})
     surface_radius = float(args.surface_radius_km)
     if surface_radius not in radii:
@@ -730,8 +807,8 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
             raise RuntimeError("No point-supported locations fall inside the population raster")
 
         location_frame = pd.DataFrame([asdict(location) for location in locations])
-        OUTPUT_LOCATIONS.parent.mkdir(parents=True, exist_ok=True)
-        location_frame.to_csv(OUTPUT_LOCATIONS, index=False)
+        args.output_locations.parent.mkdir(parents=True, exist_ok=True)
+        location_frame.to_csv(args.output_locations, index=False)
 
         radius_results = []
         for radius in radii:
@@ -744,8 +821,9 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
                     surface_path=surface_path,
                     geodesic_vertices=args.geodesic_vertices,
                     smod_src=smod_src,
+                    allowed_smod_classes=allowed_smod_classes,
                 )
-        )
+            )
 
         admin_boundaries = gpd.GeoDataFrame()
         admin_diagnostics = {
@@ -768,6 +846,7 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
                 CASES_PATH,
                 point_confidence=args.min_confidence,
                 admin_min_confidence=args.admin_min_confidence,
+                output_path=args.output_admin_matches,
                 download=not args.no_download,
             )
         admin_result = None
@@ -777,6 +856,7 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
                 admin_boundaries,
                 surface_path=args.admin_surface_path,
                 smod_src=smod_src,
+                allowed_smod_classes=allowed_smod_classes,
             )
         if smod_src is not None:
             smod_src.close()
@@ -809,7 +889,8 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
                 ),
                 "created_at_utc": _now_utc(),
                 "source_script": "pipeline/exposure/exposed_population.py",
-            }
+            },
+            index_path=args.external_index,
         )
     if admin_result and "surface" in admin_result:
         _write_external_index(
@@ -821,22 +902,23 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
                 ),
                 "created_at_utc": _now_utc(),
                 "source_script": "pipeline/exposure/exposed_population.py",
-            }
+            },
+            index_path=args.external_index,
         )
 
     output_entries = {
         "locations_csv": {
-            "path": str(OUTPUT_LOCATIONS.relative_to(REPO_ROOT)),
-            "sha256": _sha256(OUTPUT_LOCATIONS),
-            "size_bytes": OUTPUT_LOCATIONS.stat().st_size,
+            "path": _display_path(args.output_locations),
+            "sha256": _sha256(args.output_locations),
+            "size_bytes": args.output_locations.stat().st_size,
         },
-        "external_index": str(EXTERNAL_INDEX.relative_to(REPO_ROOT)),
+        "external_index": _display_path(args.external_index),
     }
-    if not args.no_admin and OUTPUT_ADMIN.exists():
+    if not args.no_admin and args.output_admin_matches.exists():
         output_entries["admin_matches_csv"] = {
-            "path": str(OUTPUT_ADMIN.relative_to(REPO_ROOT)),
-            "sha256": _sha256(OUTPUT_ADMIN),
-            "size_bytes": OUTPUT_ADMIN.stat().st_size,
+            "path": _display_path(args.output_admin_matches),
+            "sha256": _sha256(args.output_admin_matches),
+            "size_bytes": args.output_admin_matches.stat().st_size,
         }
 
     output = {
@@ -859,6 +941,8 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
                 "country-only records remain unlocalizable; matched admin1 records are reported "
                 "as a separate broad areal exposure tier, not as point hotspots"
             ),
+            "smod_filter_policy": smod_filter_policy,
+            "allowed_smod_classes": allowed_smod_classes,
         },
         "population_raster": {
             "path": str(pop_path),
@@ -908,8 +992,8 @@ def build_global_exposure(args: argparse.Namespace) -> dict[str, Any]:
             "GHSL 2020 population is used for all case years, so historical exposure is not population-year specific.",
         ],
     }
-    OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_JSON.write_text(json.dumps(output, indent=2), encoding="utf-8")
+    args.output_json.parent.mkdir(parents=True, exist_ok=True)
+    args.output_json.write_text(json.dumps(output, indent=2), encoding="utf-8")
     return output
 
 
@@ -920,12 +1004,28 @@ def main() -> None:
     parser.add_argument("--min-confidence", type=float, default=0.95)
     parser.add_argument("--coordinate-precision", type=int, default=5)
     parser.add_argument("--geodesic-vertices", type=int, default=96)
+    parser.add_argument("--output-json", type=Path, default=OUTPUT_JSON)
+    parser.add_argument("--output-locations", type=Path, default=OUTPUT_LOCATIONS)
+    parser.add_argument("--output-admin-matches", type=Path, default=OUTPUT_ADMIN)
+    parser.add_argument("--external-index", type=Path, default=EXTERNAL_INDEX)
     parser.add_argument("--surface-path", type=Path, default=DEFAULT_SURFACE)
     parser.add_argument("--admin-surface-path", type=Path, default=DEFAULT_ADMIN_SURFACE)
     parser.add_argument("--admin-min-confidence", type=float, default=0.35)
     parser.add_argument("--no-admin", action="store_true")
     parser.add_argument("--no-smod", action="store_true")
     parser.add_argument("--no-download", action="store_true")
+    parser.add_argument(
+        "--allowed-smod-classes",
+        type=int,
+        nargs="+",
+        default=None,
+        help="Strictly filter exposed population to these explicit GHS-SMOD classes.",
+    )
+    parser.add_argument(
+        "--smod-population-only",
+        action="store_true",
+        help="Filter exposure to GHS-SMOD populated settlement classes: 11, 12, 13, 21, 22, 23, and 30.",
+    )
     args = parser.parse_args()
 
     result = build_global_exposure(args)
@@ -955,8 +1055,8 @@ def main() -> None:
                 cells=admin["exposure"]["exposed_cells"],
             )
         )
-    print(f"Saved: {OUTPUT_JSON}")
-    print(f"Locations: {OUTPUT_LOCATIONS}")
+    print(f"Saved: {args.output_json}")
+    print(f"Locations: {args.output_locations}")
 
 
 if __name__ == "__main__":

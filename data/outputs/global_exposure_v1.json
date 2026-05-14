@@ -1,6 +1,6 @@
 {
   "schema_version": "global_exposure_v1_1",
-  "created_at_utc": "2026-05-14T04:38:20Z",
+  "created_at_utc": "2026-05-14T20:05:00Z",
   "interpretation": "Population residing within distance footprints of high-confidence reported case locations. This is exposure accounting from reported evidence, not origin inference.",
   "case_evidence": {
     "case_records_total": 9039,
@@ -60,7 +60,9 @@
     "distance_footprint": "geodesic circle rasterized to the GHSL World Mollweide grid",
     "geodesic_vertices": 96,
     "admin_min_confidence": 0.35,
-    "low_confidence_policy": "country-only records remain unlocalizable; matched admin1 records are reported as a separate broad areal exposure tier, not as point hotspots"
+    "low_confidence_policy": "country-only records remain unlocalizable; matched admin1 records are reported as a separate broad areal exposure tier, not as point hotspots",
+    "smod_filter_policy": "none",
+    "allowed_smod_classes": null
   },
   "population_raster": {
     "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.tif",
@@ -135,8 +137,8 @@
       "exposed_cells": 180353,
       "skipped_footprints": 0,
       "timing_seconds": {
-        "mark": 1.4896536309970543,
-        "scan_and_write": 66.9468660929706
+        "mark": 15.202892462955788,
+        "scan_and_write": 343.4069562210934
       },
       "settlement": {
         "by_class": {
@@ -260,8 +262,8 @@
       "exposed_cells": 627852,
       "skipped_footprints": 0,
       "timing_seconds": {
-        "mark": 2.2443908249260858,
-        "scan_and_write": 91.96152611006983
+        "mark": 8.160548768006265,
+        "scan_and_write": 369.1871577450074
       },
       "settlement": {
         "by_class": {
@@ -385,8 +387,8 @@
       "exposed_cells": 2178451,
       "skipped_footprints": 0,
       "timing_seconds": {
-        "mark": 1.7503376399399713,
-        "scan_and_write": 59.64215934090316
+        "mark": 11.24253341392614,
+        "scan_and_write": 303.8467155370163
       },
       "surface": {
         "path": "/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif",
@@ -657,8 +659,8 @@
       "exposed_cells": 22634867,
       "matched_admin_units": 110,
       "timing_seconds": {
-        "rasterize": 3.3169866719981655,
-        "scan_and_write": 59.70432925003115
+        "rasterize": 24.742550421040505,
+        "scan_and_write": 133.23013572604395
       },
       "settlement": {
         "by_class": {

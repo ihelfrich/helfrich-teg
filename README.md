@@ -128,6 +128,12 @@ unmatched or ambiguous admin labels remain unlocalizable evidence.
 python3 pipeline/exposure/exposed_population.py
 ```
 
+By default this is an all-population accounting run: GHS-SMOD is used for
+stratification, not for excluding people from the denominator. SMOD-filtered
+sensitivity runs require explicit non-canonical output paths via
+`--output-json`, `--surface-path`, and `--admin-surface-path`, so they do not
+overwrite `global_exposure_v1`.
+
 Expected wall-time on Ian's Mac: 15-18 minutes on a warm GHSL/GHS-SMOD/Natural
 Earth cache. The script scans the global 1 km population and settlement rasters
 for each exposure radius, keeps the per-radius geodesic mask in memory, and
@@ -171,7 +177,7 @@ Earth country outlines, and writes small checked-in artifacts.
 Expected outputs:
 
 - `data/outputs/P1_v2_exposure_surfaces.png` (~283 KB)
-- `data/outputs/P1_v2_exposure_summary.png` (~157 KB)
+- `data/outputs/P1_v2_exposure_summary.png` (~139 KB)
 - `data/outputs/P1_v2_exposure_v1.npz` (~18 KB)
 
 The older hardcoded Brazil first run is retained at
@@ -188,15 +194,18 @@ non-additive union of point/admin exposure.
 
 ```bash
 python3 pipeline/outputs/P1_v2_country_audit.py
+python3 pipeline/outputs/P1_v2_plot_audit.py
 ```
 
-Expected wall-time on Ian's Mac: about 1 minute on a warm cache. The script
-rasterizes country IDs on the GHSL grid and scans the population, point mask,
-and admin mask once in windows.
+Expected wall-time on Ian's Mac: about 1 minute for the audit table and under
+10 seconds for the map on a warm cache. The audit script rasterizes country IDs
+on the GHSL grid and scans the population, point mask, and admin mask once in
+windows.
 
 Expected output:
 
 - `data/outputs/P1_v2_country_audit_v1.csv` (~114 KB)
+- `data/outputs/P1_v2_country_audit_map.png` (~455 KB)
 
 Current result: 179 audit rows. Country-assigned point-supported exposure sums
 to 358.8 million people and country-assigned admin-supported exposure sums to
