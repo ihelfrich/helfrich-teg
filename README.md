@@ -178,6 +178,26 @@ The older hardcoded Brazil first run is retained at
 `pipeline/_demos/P1_first_run.py` as a smoke test, but it is no longer part of
 the main P1 reproduction path.
 
+### Step 5: P0 method-paper skeleton
+
+Creates the Quarto source scaffold for the methods paper. The file contains
+section stubs and links to pipeline figures in `data/outputs/`; it does not yet
+contain full paper prose.
+
+```bash
+quarto render papers/P0_method/paper.qmd --to html
+```
+
+Expected wall-time on Ian's Mac: under 10 seconds with Quarto installed.
+
+Expected source:
+
+- `papers/P0_method/paper.qmd` (~2 KB)
+
+Expected render output if the optional command is run:
+
+- `papers/P0_method/paper.html` (not checked in)
+
 ## Data Provenance
 
 Case-panel source caches are stored outside git at
