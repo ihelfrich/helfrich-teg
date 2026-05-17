@@ -215,7 +215,30 @@ also separates `__unassigned_geometry__` raster cells from
 `__missing_country__` case records so missing case metadata is not confused with
 boundary-overlay gaps.
 
-### Step 6: P0 method-paper skeleton
+### Step 6: P1 v2 validation gate
+
+Checks that the canonical exposure JSON, external GeoTIFF masks, dashboard NPZ,
+and country audit describe the same all-population baseline run. This is the
+guardrail that catches stale hashes, accidental SMOD-filtered overwrites, and
+audit totals that no longer reconcile.
+
+```bash
+python3 pipeline/validation/validate_p1_v2.py
+```
+
+Expected wall-time on Ian's Mac: under 10 seconds on a warm cache. The script
+hashes small checked-in artifacts, hashes the two external masks, verifies the
+expected `smod_filter_policy`, and reconciles JSON totals against audit sums.
+
+Expected output:
+
+- `data/outputs/P1_v2_validation_v1.json` (~10 KB)
+
+Current result: passed 42 checks with `smod_filter_policy=none`,
+358.8 million people in the 100 km point-supported footprint, and 1.46 billion
+people in the admin-supported areal tier.
+
+### Step 7: P0 method-paper skeleton
 
 Creates the Quarto source scaffold for the methods paper. The file contains
 section stubs and links to pipeline figures in `data/outputs/`; it does not yet

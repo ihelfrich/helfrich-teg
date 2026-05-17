@@ -1,0 +1,402 @@
+{
+  "schema_version": "P1_v2_validation_v1",
+  "created_at_utc": "2026-05-17T01:16:19Z",
+  "status": "passed",
+  "checks_passed": 42,
+  "checks_failed": 0,
+  "summary": {
+    "smod_filter_policy": "none",
+    "allowed_smod_classes": null,
+    "point_supported_population_100km": 358844368.12507915,
+    "admin_supported_population": 1459983069.2798183,
+    "audit_union_population": 1687407067.812072,
+    "country_audit_rows": 179
+  },
+  "artifacts": {
+    "exposure_json": {
+      "path": "data/outputs/global_exposure_v1.json",
+      "sha256": "624b94488266d3215f02635aa4a8c389118991810bfacb2806a1b71e6f1722f9",
+      "size_bytes": 26777
+    },
+    "country_audit": {
+      "path": "data/outputs/P1_v2_country_audit_v1.csv",
+      "sha256": "8fd7322f606310159d682f7060d7aa368155bc2a1d579e46d442a18cb64b271a",
+      "size_bytes": 116313
+    },
+    "npz": {
+      "path": "data/outputs/P1_v2_exposure_v1.npz",
+      "sha256": "4b71c08ee58f1e47ee53314376164d4ad1d19214dcd21a4c28d37f038ef5d0d3",
+      "size_bytes": 18748
+    }
+  },
+  "checks": [
+    {
+      "name": "exposure_json_exists",
+      "ok": true,
+      "details": {
+        "path": "data/outputs/global_exposure_v1.json"
+      }
+    },
+    {
+      "name": "external_index_exists",
+      "ok": true,
+      "details": {
+        "path": "data/outputs/_external_index.json"
+      }
+    },
+    {
+      "name": "country_audit_exists",
+      "ok": true,
+      "details": {
+        "path": "data/outputs/P1_v2_country_audit_v1.csv"
+      }
+    },
+    {
+      "name": "npz_output_exists",
+      "ok": true,
+      "details": {
+        "path": "data/outputs/P1_v2_exposure_v1.npz"
+      }
+    },
+    {
+      "name": "exposure_schema",
+      "ok": true,
+      "details": {
+        "actual": "global_exposure_v1_1",
+        "expected": "global_exposure_v1_1"
+      }
+    },
+    {
+      "name": "smod_filter_policy",
+      "ok": true,
+      "details": {
+        "actual": "none",
+        "expected": "none"
+      }
+    },
+    {
+      "name": "allowed_smod_classes",
+      "ok": true,
+      "details": {
+        "actual": null,
+        "expected": null
+      }
+    },
+    {
+      "name": "locations_csv_hash",
+      "ok": true,
+      "details": {
+        "path": "data/outputs/global_exposure_locations_v1.csv",
+        "actual": "157e568c1214c031894fa0cb1f540966b0bd59e4df9f629778a6bfd2e725ee09",
+        "expected": "157e568c1214c031894fa0cb1f540966b0bd59e4df9f629778a6bfd2e725ee09"
+      }
+    },
+    {
+      "name": "locations_csv_size",
+      "ok": true,
+      "details": {
+        "path": "data/outputs/global_exposure_locations_v1.csv",
+        "actual": 28439,
+        "expected": 28439
+      }
+    },
+    {
+      "name": "admin_matches_csv_hash",
+      "ok": true,
+      "details": {
+        "path": "data/outputs/global_exposure_admin_v1.csv",
+        "actual": "7599fd9b747484d48a7d6a5d7c770a93aff83e95a7f4f864af32559c7441492f",
+        "expected": "7599fd9b747484d48a7d6a5d7c770a93aff83e95a7f4f864af32559c7441492f"
+      }
+    },
+    {
+      "name": "admin_matches_csv_size",
+      "ok": true,
+      "details": {
+        "path": "data/outputs/global_exposure_admin_v1.csv",
+        "actual": 45971,
+        "expected": 45971
+      }
+    },
+    {
+      "name": "global_exposure_point_supported_100km_v1.tif_in_external_index",
+      "ok": true,
+      "details": {
+        "path": "/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif"
+      }
+    },
+    {
+      "name": "global_exposure_point_supported_100km_v1.tif_hash",
+      "ok": true,
+      "details": {
+        "actual": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e",
+        "expected": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e"
+      }
+    },
+    {
+      "name": "global_exposure_point_supported_100km_v1.tif_size",
+      "ok": true,
+      "details": {
+        "actual": 786185,
+        "expected": 786185
+      }
+    },
+    {
+      "name": "global_exposure_point_supported_100km_v1.tif_external_index_hash",
+      "ok": true,
+      "details": {
+        "index": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e",
+        "report": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e"
+      }
+    },
+    {
+      "name": "global_exposure_point_supported_100km_v1.tif_external_index_size",
+      "ok": true,
+      "details": {
+        "index": 786185,
+        "report": 786185
+      }
+    },
+    {
+      "name": "global_exposure_admin_supported_v1.tif_in_external_index",
+      "ok": true,
+      "details": {
+        "path": "/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_admin_supported_v1.tif"
+      }
+    },
+    {
+      "name": "global_exposure_admin_supported_v1.tif_hash",
+      "ok": true,
+      "details": {
+        "actual": "47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d",
+        "expected": "47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d"
+      }
+    },
+    {
+      "name": "global_exposure_admin_supported_v1.tif_size",
+      "ok": true,
+      "details": {
+        "actual": 1005503,
+        "expected": 1005503
+      }
+    },
+    {
+      "name": "global_exposure_admin_supported_v1.tif_external_index_hash",
+      "ok": true,
+      "details": {
+        "index": "47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d",
+        "report": "47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d"
+      }
+    },
+    {
+      "name": "global_exposure_admin_supported_v1.tif_external_index_size",
+      "ok": true,
+      "details": {
+        "index": 1005503,
+        "report": 1005503
+      }
+    },
+    {
+      "name": "audit_point_population_reconciles",
+      "ok": true,
+      "details": {
+        "audit": 358844368.12507904,
+        "json": 358844368.12507915
+      }
+    },
+    {
+      "name": "audit_admin_population_reconciles",
+      "ok": true,
+      "details": {
+        "audit": 1459983069.2798164,
+        "json": 1459983069.2798183
+      }
+    },
+    {
+      "name": "audit_point_cells_reconcile",
+      "ok": true,
+      "details": {
+        "audit": 2178451,
+        "json": 2178451
+      }
+    },
+    {
+      "name": "audit_admin_cells_reconcile",
+      "ok": true,
+      "details": {
+        "audit": 22634867,
+        "json": 22634867
+      }
+    },
+    {
+      "name": "audit_union_not_additive_overrun",
+      "ok": true,
+      "details": {}
+    },
+    {
+      "name": "audit_exposure_json_sha256",
+      "ok": true,
+      "details": {
+        "actual": "624b94488266d3215f02635aa4a8c389118991810bfacb2806a1b71e6f1722f9",
+        "expected": "624b94488266d3215f02635aa4a8c389118991810bfacb2806a1b71e6f1722f9"
+      }
+    },
+    {
+      "name": "audit_locations_csv_sha256",
+      "ok": true,
+      "details": {
+        "actual": "157e568c1214c031894fa0cb1f540966b0bd59e4df9f629778a6bfd2e725ee09",
+        "expected": "157e568c1214c031894fa0cb1f540966b0bd59e4df9f629778a6bfd2e725ee09"
+      }
+    },
+    {
+      "name": "audit_admin_matches_csv_sha256",
+      "ok": true,
+      "details": {
+        "actual": "7599fd9b747484d48a7d6a5d7c770a93aff83e95a7f4f864af32559c7441492f",
+        "expected": "7599fd9b747484d48a7d6a5d7c770a93aff83e95a7f4f864af32559c7441492f"
+      }
+    },
+    {
+      "name": "audit_point_surface_sha256",
+      "ok": true,
+      "details": {
+        "actual": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e",
+        "expected": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e"
+      }
+    },
+    {
+      "name": "audit_admin_surface_sha256",
+      "ok": true,
+      "details": {
+        "actual": "47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d",
+        "expected": "47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d"
+      }
+    },
+    {
+      "name": "npz_required_keys",
+      "ok": true,
+      "details": {
+        "missing": []
+      }
+    },
+    {
+      "name": "npz_schema",
+      "ok": true,
+      "details": {
+        "actual": "P1_v2_exposure_v1",
+        "expected": "P1_v2_exposure_v1"
+      }
+    },
+    {
+      "name": "npz_exposure_hash",
+      "ok": true,
+      "details": {
+        "actual": "624b94488266d3215f02635aa4a8c389118991810bfacb2806a1b71e6f1722f9",
+        "expected": "624b94488266d3215f02635aa4a8c389118991810bfacb2806a1b71e6f1722f9"
+      }
+    },
+    {
+      "name": "npz_admin_hash",
+      "ok": true,
+      "details": {
+        "actual": "7599fd9b747484d48a7d6a5d7c770a93aff83e95a7f4f864af32559c7441492f",
+        "expected": "7599fd9b747484d48a7d6a5d7c770a93aff83e95a7f4f864af32559c7441492f"
+      }
+    },
+    {
+      "name": "npz_point_surface_hash",
+      "ok": true,
+      "details": {
+        "actual": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e",
+        "expected": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e"
+      }
+    },
+    {
+      "name": "npz_admin_surface_hash",
+      "ok": true,
+      "details": {
+        "actual": "47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d",
+        "expected": "47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d"
+      }
+    },
+    {
+      "name": "npz_radii_match",
+      "ok": true,
+      "details": {
+        "actual": [
+          25.0,
+          50.0,
+          100.0
+        ],
+        "expected": [
+          25.0,
+          50.0,
+          100.0
+        ]
+      }
+    },
+    {
+      "name": "npz_radius_population_match",
+      "ok": true,
+      "details": {
+        "actual": [
+          66330941.31275122,
+          144355214.857457,
+          358844368.12507915
+        ],
+        "expected": [
+          66330941.31275122,
+          144355214.857457,
+          358844368.12507915
+        ]
+      }
+    },
+    {
+      "name": "npz_radius_share_match",
+      "ok": true,
+      "details": {
+        "actual": [
+          0.00845955099603224,
+          0.01841041718180914,
+          0.04576540256650193
+        ],
+        "expected": [
+          0.00845955099603224,
+          0.01841041718180914,
+          0.04576540256650193
+        ]
+      }
+    },
+    {
+      "name": "npz_evidence_counts_match",
+      "ok": true,
+      "details": {
+        "actual": [
+          882,
+          1779,
+          6378
+        ],
+        "expected": [
+          882,
+          1779,
+          6378
+        ]
+      }
+    },
+    {
+      "name": "npz_preview_shapes_match",
+      "ok": true,
+      "details": {
+        "point": [
+          1059,
+          2123
+        ],
+        "admin": [
+          1059,
+          2123
+        ]
+      }
+    }
+  ]
+}

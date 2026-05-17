@@ -273,3 +273,22 @@ Input files:
 | `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif` | derived from Global Exposure v1 inputs above | 2026-05-14T20:05:00Z | 786185 | `19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e` | Mixed upstream terms; see Global Exposure v1 | TEG point-supported 100 km exposure mask. | External mask scanned by country overlay. |
 | `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_admin_supported_v1.tif` | derived from Global Exposure v1 inputs above | 2026-05-14T20:05:00Z | 1005503 | `47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d` | Mixed upstream terms; see Global Exposure v1 | TEG admin-supported exposure mask. | External mask scanned by country overlay. |
 | `/Volumes/HELFRICH-GD/TEG_data/inputs/cases/boundaries/ne_110m_admin_0_countries.zip` | https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_countries.zip | 2026-05-13T19:20:30Z | 214976 | `0f243aeac8ac6cf26f0417285b0bd33ac47f1b5bdb719fd3e0df37d03ea37110` | Public domain | Natural Earth. 1:110m Cultural Vectors, Admin 0 Countries. | Country polygons used to aggregate GHSL population and exposure masks. |
+
+## P1 v2 Validation
+
+Generated at: `2026-05-17T01:16:19Z`
+
+Output:
+
+| Path | Size | SHA-256 | Description |
+|---|---:|---|---|
+| `data/outputs/P1_v2_validation_v1.json` | 10511 | `0de2a0ac6c518a94143f41593a1165d83831411bb020b1f564c18892bef3cc6b` | Machine-readable validation report for the canonical P1 v2 exposure bundle. |
+
+Input files:
+
+| Path | Source URL | Pulled at UTC | Size | SHA-256 | License/terms | Citation | Description |
+|---|---|---:|---:|---|---|---|---|
+| `data/outputs/global_exposure_v1.json` | derived from Global Exposure v1 inputs above | 2026-05-14T20:05:04Z | 26777 | `624b94488266d3215f02635aa4a8c389118991810bfacb2806a1b71e6f1722f9` | Mixed upstream terms; see Global Exposure v1 | TEG global exposure output. | Canonical exposure JSON checked for schema, SMOD policy, output references, and totals. |
+| `data/outputs/_external_index.json` | derived from Global Exposure v1 inputs above | 2026-05-14T20:05:00Z | 1012 | `c7808baa955b3d78fb6bc51e93a0cfd4fb59cedc32a4f1cf7cb0ba054f0f3692` | Mixed upstream terms; see Global Exposure v1 | TEG external artifact pointer. | External mask index checked against JSON surface metadata and file hashes. |
+| `data/outputs/P1_v2_country_audit_v1.csv` | derived from P1 v2 Country Audit inputs above | 2026-05-14T20:06:33Z | 116313 | `8fd7322f606310159d682f7060d7aa368155bc2a1d579e46d442a18cb64b271a` | Mixed upstream terms; see P1 v2 Country Audit | TEG country audit output. | Country audit table checked against JSON exposure totals and provenance hashes. |
+| `data/outputs/P1_v2_exposure_v1.npz` | derived from P1 v2 Exposure Outputs inputs above | 2026-05-14T20:05:30Z | 18748 | `4b71c08ee58f1e47ee53314376164d4ad1d19214dcd21a4c28d37f038ef5d0d3` | Mixed upstream terms; see P1 v2 Exposure Outputs | TEG dashboard preview arrays. | Dashboard NPZ checked for source hashes, radii, exposure totals, and mask shape agreement. |
