@@ -284,6 +284,7 @@ Output:
 |---|---:|---:|---|---|
 | `data/outputs/P1_v2_smod_sensitivity_v1.json` | NA | 9175 | `8d9615d041b81569fbc0312519f0bda2bdbe9a4934d047eb762402eef5750689` | Machine-readable SMOD-filtered sensitivity report derived from the canonical P1 v2 point-supported and admin-supported masks. |
 | `data/outputs/P1_v2_smod_sensitivity_v1.csv` | 12 | 6497 | `73ac82d869525eb68f06ccc62452856cdd7e770f692db003ba5010e634630a9f` | Long-format sensitivity table for all-population, population-settlement, urban, and rural SMOD variants across point, admin, and union tiers. |
+| `data/outputs/P1_v2_smod_sensitivity.png` | NA | 130810 | `aac943b4d8503956e74f93095d0a9e2d309f8df6adc201596386919079e4eee0` | Publication/dashboard figure showing urban and rural SMOD sensitivity across point-supported, admin-supported, and union evidence tiers. |
 
 Input files:
 
@@ -294,6 +295,7 @@ Input files:
 | `/Volumes/HELFRICH-GD/KatiaBlendedFinance/raster_cache/ghs_smod/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V2_0.tif` | https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_SMOD_GLOBE_R2023A/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000/V2-0/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V2_0.zip | existing local cache, reused 2026-05-18 | 17958428 | `1e2d7d7a6994b0458fc5d6ff985fb872f27841162b1808a3d52e32ae1a4953a0` | European Commission reuse policy / GHSL terms | Pesaresi, M., Politis, P. et al. GHS-SMOD R2023A. | Settlement classes used to build sensitivity variants without changing exposure footprints. |
 | `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif` | derived from Global Exposure v1 inputs above | 2026-05-14T20:05:00Z | 786185 | `19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e` | Mixed upstream terms; see Global Exposure v1 | TEG point-supported 100 km exposure mask. | Canonical point-supported mask intersected with SMOD sensitivity classes. |
 | `/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_admin_supported_v1.tif` | derived from Global Exposure v1 inputs above | 2026-05-14T20:05:00Z | 1005503 | `47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d` | Mixed upstream terms; see Global Exposure v1 | TEG admin-supported exposure mask. | Canonical admin-supported mask intersected with SMOD sensitivity classes. |
+| `data/outputs/P1_v2_smod_sensitivity_v1.json` | derived from P1 v2 SMOD Sensitivity inputs above | 2026-05-18T13:59:17Z | 9175 | `8d9615d041b81569fbc0312519f0bda2bdbe9a4934d047eb762402eef5750689` | Mixed upstream terms; see P1 v2 SMOD Sensitivity | TEG SMOD sensitivity output. | Source table for rendering the SMOD sensitivity figure. |
 
 ## P1 v2 Validation
 

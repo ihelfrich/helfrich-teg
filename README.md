@@ -249,16 +249,19 @@ not rerasterize exposure footprints and does not overwrite the canonical
 
 ```bash
 python3 pipeline/outputs/P1_v2_smod_sensitivity.py --no-download
+python3 pipeline/outputs/P1_v2_plot_smod_sensitivity.py
 ```
 
 Expected wall-time on Ian's Mac: about 75 seconds on a warm cache. The script
 uses windowed raster reads and fails if the all-population sensitivity totals do
-not reconcile with `global_exposure_v1.json`.
+not reconcile with `global_exposure_v1.json`. The plotting step takes under 5
+seconds.
 
 Expected output:
 
 - `data/outputs/P1_v2_smod_sensitivity_v1.json` (~9 KB)
 - `data/outputs/P1_v2_smod_sensitivity_v1.csv` (~6 KB)
+- `data/outputs/P1_v2_smod_sensitivity.png` (~128 KB)
 
 Current result: the canonical all-population 100 km point footprint is 358.8
 million people, with 312.5 million in GHS-SMOD urban classes and 46.3 million
