@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEG Scan</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">Topological Epidemic Geometry</p>
+          <h1>TEG Scan</h1>
+        </div>
+        <div class="status" id="status">Loading</div>
+      </section>
+
+      <section class="metric-grid" id="metrics"></section>
+
+      <section class="workbench">
+        <div class="panel exposure-panel">
+          <div class="panel-header">
+            <h2>Evidence Tiers</h2>
+            <span id="generated"></span>
+          </div>
+          <div class="tier-list" id="tiers"></div>
+        </div>
+
+        <div class="panel checks-panel">
+          <div class="panel-header">
+            <h2>Validation</h2>
+            <button class="icon-button" id="refresh" title="Refresh">
+              <span aria-hidden="true">&#8635;</span>
+            </button>
+          </div>
+          <div class="check-list" id="checks"></div>
+        </div>
+      </section>
+
+      <section class="panel warning-panel" id="warnings"></section>
+    </main>
+    <script src="./renderer.js"></script>
+  </body>
+</html>

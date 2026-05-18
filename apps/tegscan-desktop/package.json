@@ -1,0 +1,15 @@
+{
+  "name": "tegscan-desktop",
+  "version": "0.1.0",
+  "description": "Desktop interface for TEG exposure-accounting outputs.",
+  "private": true,
+  "main": "src/main.js",
+  "scripts": {
+    "build:cli": "cd ../../tools/tegscan && go build -o bin/tegscan .",
+    "start": "npm run build:cli && electron .",
+    "smoke": "npm run build:cli && node scripts/smoke.mjs"
+  },
+  "devDependencies": {
+    "electron": "^42.1.0"
+  }
+}

@@ -1,0 +1,313 @@
+:root {
+  color: #111827;
+  background: #f7f8fb;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 900px;
+  background: #f7f8fb;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 100vh;
+  padding: 34px 34px 28px;
+}
+
+.topbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  min-height: 76px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #5b6472;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 42px;
+  line-height: 1;
+  font-weight: 780;
+}
+
+h2 {
+  font-size: 17px;
+  font-weight: 760;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: 720;
+}
+
+.status {
+  min-width: 112px;
+  padding: 8px 12px;
+  border: 1px solid #cfd6e2;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #394150;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.status[data-state="passed"] {
+  border-color: #bbd7b5;
+  color: #2f6b21;
+  background: #f4fbf2;
+}
+
+.status[data-state="failed"] {
+  border-color: #f1b6bd;
+  color: #9f1239;
+  background: #fff5f6;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.metric-card,
+.panel {
+  border: 1px solid #dbe1ea;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(20, 25, 36, 0.05);
+}
+
+.metric-card {
+  min-height: 138px;
+  padding: 18px;
+}
+
+.metric-card p {
+  color: #5b6472;
+  font-size: 13px;
+  font-weight: 740;
+}
+
+.metric-card strong {
+  display: block;
+  margin: 10px 0 8px;
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 780;
+}
+
+.metric-card span {
+  display: block;
+  max-width: 34ch;
+  color: #606a7a;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.workbench {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(330px, 0.55fr);
+  gap: 14px;
+  min-height: 430px;
+}
+
+.panel {
+  padding: 18px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+}
+
+.panel-header span {
+  color: #6b7280;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #cfd6e2;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #344054;
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  background: #eef2f7;
+}
+
+.tier-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tier-row {
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fbfcfe;
+}
+
+.tier-title,
+.tier-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.tier-title span {
+  font-size: 18px;
+  font-weight: 780;
+  font-variant-numeric: tabular-nums;
+}
+
+.stack {
+  display: flex;
+  overflow: hidden;
+  height: 18px;
+  margin: 14px 0 10px;
+  border-radius: 4px;
+  background: #e2e8f0;
+}
+
+.urban {
+  background: #2463eb;
+}
+
+.rural {
+  background: #5ca404;
+}
+
+.other {
+  background: #94a3b8;
+}
+
+.tier-stats {
+  color: #5b6472;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.tier-stats span {
+  min-width: 0;
+}
+
+.tier-stats b {
+  color: #1f2937;
+}
+
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  max-height: 360px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.check-item {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fbfcfe;
+}
+
+.check-item > span {
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.check-item.ok > span {
+  background: #eef8ea;
+  color: #2f6b21;
+}
+
+.check-item.fail > span {
+  background: #fff1f2;
+  color: #9f1239;
+}
+
+.check-item strong {
+  display: block;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.check-item p {
+  overflow-wrap: anywhere;
+  margin-top: 3px;
+  color: #697386;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.warning-panel {
+  display: grid;
+  gap: 8px;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.error-box {
+  padding: 16px;
+  border: 1px solid #f1b6bd;
+  border-radius: 8px;
+  background: #fff5f6;
+  color: #9f1239;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 1060px) {
+  .metric-grid,
+  .workbench {
+    grid-template-columns: 1fr;
+  }
+
+  body {
+    min-width: 760px;
+  }
+}

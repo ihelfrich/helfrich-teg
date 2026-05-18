@@ -62,6 +62,8 @@ data/
   outputs/     — checked in; what the dashboard consumes
 notebooks/     — exploratory analyses; one per paper
 site_layers/   — PMTiles, GeoJSON, and JSON metric files served to the Observatory dashboard
+tools/         — native command-line tools that wrap validated pipeline outputs
+apps/          — desktop and dashboard application shells
 ```
 
 ## Reproduction
@@ -287,6 +289,55 @@ Expected source:
 Expected render output if the optional command is run:
 
 - `papers/P0_method/paper.html` (not checked in)
+
+## Native tools
+
+The first native tool is `tegscan`, a pure-Go CLI that validates and summarizes
+the checked-in P1 v2 exposure outputs. It intentionally avoids GDAL bindings for
+now because the macOS GDAL/Homebrew dynamic-library stack is fragile on the
+current development machine. Raster scanning remains in the Python pipeline
+until the native raster engine has a stable dependency path.
+
+Install prerequisites:
+
+- Go 1.26 or newer
+- Node 22.12 or newer and npm 10 or newer for the Electron shell
+
+Build and test the CLI:
+
+```bash
+cd tools/tegscan
+go test ./...
+go build -o bin/tegscan .
+./bin/tegscan doctor --repo ../..
+./bin/tegscan summary --repo ../..
+```
+
+Expected wall-time on Ian's Mac: under 5 seconds. Expected local artifact:
+
+- `tools/tegscan/bin/tegscan` (gitignored)
+
+Run the desktop smoke test:
+
+```bash
+cd apps/tegscan-desktop
+npm install
+npm run smoke
+```
+
+Expected wall-time on Ian's Mac: under 30 seconds after npm has installed
+Electron. The smoke test builds `tegscan`, asks it for desktop JSON, and checks
+that the three dashboard metrics and evidence tiers are present.
+
+Launch the Electron shell:
+
+```bash
+cd apps/tegscan-desktop
+npm start
+```
+
+The app is currently a local dashboard/control surface over validated exposure
+outputs. It is not yet packaged or signed as a macOS application.
 
 ## Data Provenance
 
