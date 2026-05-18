@@ -1,0 +1,246 @@
+{
+  "schema_version": "P1_v2_smod_sensitivity_v1",
+  "created_at_utc": "2026-05-18T13:59:17Z",
+  "interpretation": "SMOD sensitivity report derived from the canonical P1 v2 exposure masks. Variants restrict which settlement classes are counted; they do not alter the reported-evidence footprints.",
+  "source_exposure": {
+    "path": "data/outputs/global_exposure_v1.json",
+    "schema_version": "global_exposure_v1_1",
+    "sha256": "624b94488266d3215f02635aa4a8c389118991810bfacb2806a1b71e6f1722f9",
+    "surface_radius_km": 100.0,
+    "smod_filter_policy": "none",
+    "allowed_smod_classes": null
+  },
+  "inputs": {
+    "population_raster": {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/inputs/ghsl/pop/GHS_POP_E2020_GLOBE_R2023A_54009_1000_V1_0.tif",
+      "sha256": "db25d12ab0851446af467a56eb1651d383867dc3fbf4aa6348ec8e3372225196",
+      "size_bytes": 261128685
+    },
+    "settlement_raster": {
+      "path": "/Volumes/HELFRICH-GD/KatiaBlendedFinance/raster_cache/ghs_smod/GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V2_0.tif",
+      "sha256": "1e2d7d7a6994b0458fc5d6ff985fb872f27841162b1808a3d52e32ae1a4953a0",
+      "size_bytes": 17958428,
+      "class_labels": {
+        "10": "water",
+        "11": "very_low_density_rural",
+        "12": "low_density_rural",
+        "13": "rural_cluster",
+        "21": "suburban_or_peri_urban",
+        "22": "semi_dense_urban_cluster",
+        "23": "dense_urban_cluster",
+        "30": "urban_centre"
+      },
+      "groups": {
+        "urban": [
+          21,
+          22,
+          23,
+          30
+        ],
+        "rural": [
+          11,
+          12,
+          13
+        ],
+        "water": [
+          10
+        ]
+      }
+    },
+    "point_surface": {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_point_supported_100km_v1.tif",
+      "sha256": "19352cd97aa1be8f5964222ec8623460119c66faad066b94d8177d9a5d80502e",
+      "size_bytes": 786185
+    },
+    "admin_surface": {
+      "path": "/Volumes/HELFRICH-GD/TEG_data/outputs/global_exposure_admin_supported_v1.tif",
+      "sha256": "47d8070d5f0772bfbb329edf796a10e4fd914d1e31d953e0d824f8c1978c644d",
+      "size_bytes": 1005503
+    }
+  },
+  "tiers": {
+    "point_supported_100km": "point-supported 100 km geodesic footprint",
+    "admin_supported": "admin-supported areal footprint",
+    "union": "non-additive union of point-supported and admin-supported footprints"
+  },
+  "variants": {
+    "all_population": {
+      "allowed_smod_classes": null,
+      "class_labels": null,
+      "total_population_in_variant": 7840952947.013645,
+      "total_cells_in_variant": 649476000,
+      "share_of_global_population_in_variant": 1.0,
+      "tiers": {
+        "point_supported_100km": {
+          "exposed_population": 358844368.12507915,
+          "exposed_cells": 2178451,
+          "share_of_global_population": 0.04576540256650193,
+          "share_of_variant_population": 0.04576540256650193,
+          "delta_from_all_population": null,
+          "delta_pct_from_all_population": null
+        },
+        "admin_supported": {
+          "exposed_population": 1459983069.2798183,
+          "exposed_cells": 22634867,
+          "share_of_global_population": 0.18619969781043982,
+          "share_of_variant_population": 0.18619969781043982,
+          "delta_from_all_population": null,
+          "delta_pct_from_all_population": null
+        },
+        "union": {
+          "exposed_population": 1687407067.8120742,
+          "exposed_cells": 24061530,
+          "share_of_global_population": 0.21520433539328288,
+          "share_of_variant_population": 0.21520433539328288,
+          "delta_from_all_population": null,
+          "delta_pct_from_all_population": null
+        }
+      }
+    },
+    "population_settlement": {
+      "allowed_smod_classes": [
+        11,
+        12,
+        13,
+        21,
+        22,
+        23,
+        30
+      ],
+      "class_labels": {
+        "11": "very_low_density_rural",
+        "12": "low_density_rural",
+        "13": "rural_cluster",
+        "21": "suburban_or_peri_urban",
+        "22": "semi_dense_urban_cluster",
+        "23": "dense_urban_cluster",
+        "30": "urban_centre"
+      },
+      "total_population_in_variant": 7840952947.013645,
+      "total_cells_in_variant": 145989980,
+      "share_of_global_population_in_variant": 1.0,
+      "tiers": {
+        "point_supported_100km": {
+          "exposed_population": 358844368.12507915,
+          "exposed_cells": 1960789,
+          "share_of_global_population": 0.04576540256650193,
+          "share_of_variant_population": 0.04576540256650193,
+          "delta_from_all_population": 0.0,
+          "delta_pct_from_all_population": 0.0
+        },
+        "admin_supported": {
+          "exposed_population": 1459983069.2798185,
+          "exposed_cells": 22262386,
+          "share_of_global_population": 0.18619969781043985,
+          "share_of_variant_population": 0.18619969781043985,
+          "delta_from_all_population": 2.384185791015625e-07,
+          "delta_pct_from_all_population": 1.6330229036092166e-16
+        },
+        "union": {
+          "exposed_population": 1687407067.8120744,
+          "exposed_cells": 23478838,
+          "share_of_global_population": 0.2152043353932829,
+          "share_of_variant_population": 0.2152043353932829,
+          "delta_from_all_population": 2.384185791015625e-07,
+          "delta_pct_from_all_population": 1.4129286504097723e-16
+        }
+      }
+    },
+    "urban": {
+      "allowed_smod_classes": [
+        21,
+        22,
+        23,
+        30
+      ],
+      "class_labels": {
+        "21": "suburban_or_peri_urban",
+        "22": "semi_dense_urban_cluster",
+        "23": "dense_urban_cluster",
+        "30": "urban_centre"
+      },
+      "total_population_in_variant": 6256544833.781177,
+      "total_cells_in_variant": 3149529,
+      "share_of_global_population_in_variant": 0.7979316896888259,
+      "tiers": {
+        "point_supported_100km": {
+          "exposed_population": 312517839.7199062,
+          "exposed_cells": 121198,
+          "share_of_global_population": 0.03985712474386595,
+          "share_of_variant_population": 0.049950547470309484,
+          "delta_from_all_population": -46326528.405172944,
+          "delta_pct_from_all_population": -0.129099221055701
+        },
+        "admin_supported": {
+          "exposed_population": 1192360725.3175256,
+          "exposed_cells": 647177,
+          "share_of_global_population": 0.1520683433984457,
+          "share_of_variant_population": 0.19057814768297857,
+          "delta_from_all_population": -267622343.96229267,
+          "delta_pct_from_all_population": -0.18330510099292155
+        },
+        "union": {
+          "exposed_population": 1389869620.2645624,
+          "exposed_cells": 719477,
+          "share_of_global_population": 0.17725774273316064,
+          "share_of_variant_population": 0.22214651332156876,
+          "delta_from_all_population": -297537447.5475118,
+          "delta_pct_from_all_population": -0.17632819799273736
+        }
+      }
+    },
+    "rural": {
+      "allowed_smod_classes": [
+        11,
+        12,
+        13
+      ],
+      "class_labels": {
+        "11": "very_low_density_rural",
+        "12": "low_density_rural",
+        "13": "rural_cluster"
+      },
+      "total_population_in_variant": 1584408113.2324746,
+      "total_cells_in_variant": 142840451,
+      "share_of_global_population_in_variant": 0.2020683103111749,
+      "tiers": {
+        "point_supported_100km": {
+          "exposed_population": 46326528.40517282,
+          "exposed_cells": 1839591,
+          "share_of_global_population": 0.005908277822635963,
+          "share_of_variant_population": 0.029239012359422,
+          "delta_from_all_population": -312517839.71990633,
+          "delta_pct_from_all_population": -0.8709007789442993
+        },
+        "admin_supported": {
+          "exposed_population": 267622343.962292,
+          "exposed_cells": 21615209,
+          "share_of_global_population": 0.03413135441199406,
+          "share_of_variant_population": 0.16890998078537656,
+          "delta_from_all_population": -1192360725.3175263,
+          "delta_pct_from_all_population": -0.8166948990070789
+        },
+        "union": {
+          "exposed_population": 297537447.5475123,
+          "exposed_cells": 22759361,
+          "share_of_global_population": 0.0379465926601223,
+          "share_of_variant_population": 0.187790913882966,
+          "delta_from_all_population": -1389869620.264562,
+          "delta_pct_from_all_population": -0.8236718020072623
+        }
+      }
+    }
+  },
+  "checks": {
+    "canonical_smod_policy_is_none": true,
+    "canonical_allowed_smod_classes_is_null": true,
+    "point_population_matches_canonical": true,
+    "point_cells_match_canonical": true,
+    "admin_population_matches_canonical": true,
+    "admin_cells_match_canonical": true
+  },
+  "warnings": [
+    "Urban and rural variants are sensitivity definitions, not evidence that exposure is absent outside those classes.",
+    "The admin-supported tier is broad areal evidence and should not be added to the point-supported tier; use the union tier when a single footprint total is needed."
+  ]
+}

@@ -238,7 +238,34 @@ Current result: passed 42 checks with `smod_filter_policy=none`,
 358.8 million people in the 100 km point-supported footprint, and 1.46 billion
 people in the admin-supported areal tier.
 
-### Step 7: P0 method-paper skeleton
+### Step 7: P1 v2 SMOD sensitivity totals
+
+Builds a derived sensitivity table from the validated point-supported and
+admin-supported masks. This step scans GHSL population, GHS-SMOD, and the
+canonical masks once, then reports exposed-population totals under all
+population, population-settlement, urban, and rural SMOD definitions. It does
+not rerasterize exposure footprints and does not overwrite the canonical
+`global_exposure_v1` outputs.
+
+```bash
+python3 pipeline/outputs/P1_v2_smod_sensitivity.py --no-download
+```
+
+Expected wall-time on Ian's Mac: about 75 seconds on a warm cache. The script
+uses windowed raster reads and fails if the all-population sensitivity totals do
+not reconcile with `global_exposure_v1.json`.
+
+Expected output:
+
+- `data/outputs/P1_v2_smod_sensitivity_v1.json` (~9 KB)
+- `data/outputs/P1_v2_smod_sensitivity_v1.csv` (~6 KB)
+
+Current result: the canonical all-population 100 km point footprint is 358.8
+million people, with 312.5 million in GHS-SMOD urban classes and 46.3 million
+in rural classes. The non-additive union of point-supported and admin-supported
+evidence covers 1.69 billion people.
+
+### Step 8: P0 method-paper skeleton
 
 Creates the Quarto source scaffold for the methods paper. The file contains
 section stubs and links to pipeline figures in `data/outputs/`; it does not yet
